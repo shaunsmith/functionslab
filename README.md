@@ -4,6 +4,10 @@ In this lab, you will explore basic Docker commands to run a Docker container an
 
 This document is meant to be an overview of the entire lab.  Throughout, you may be directed to other labs, to run specific sections.  It is important that when you finish each major section, you return to this document for the next section.
 
+## Section 0 - Install VirtualBox and Example VM
+
+* [Follow these instructions](vm.md)
+
 ## Section 1 - Verify Docker Engine Hands on Lab Environment
 
 In this first section you are going to verify that you are able to access to your Docker Engine environment. For convenience, run as root, so that you do not have to preface everything with sudo.  In a terminal: 
