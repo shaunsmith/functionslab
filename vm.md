@@ -1,4 +1,4 @@
-A Virtual box vm can be used for this lab:
+# You will need a Docker environment to complete this lab.  A Virtual box vm can be used as an option:
 
 ## 1. Install VirtualBox if needed:
 
