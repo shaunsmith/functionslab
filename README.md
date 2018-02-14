@@ -36,7 +36,7 @@ Docker version 17.0x.x-ce, build 276fd32
 
 * [Create a Dockerfile and Docker image](https://github.com/oracle/cloud-native-devops-workshop/blob/master/containers/docker001/Participant-Guide.md#create-a-dockerfile-and-docker-image)
 
-* [Push and Image to your Docker Hub Account](https://github.com/oracle/cloud-native-devops-workshop/blob/master/containers/docker001/Participant-Guide.md#create-a-dockerfile-and-docker-image)
+* [Push an Image to your Docker Hub Account](https://github.com/oracle/cloud-native-devops-workshop/blob/master/containers/docker001/Participant-Guide.md#create-a-dockerfile-and-docker-image)
 
 > *Note - Be sure to return to this lab, after completing the above.
 
