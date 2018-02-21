@@ -4,9 +4,9 @@ In this lab, you will explore basic Docker commands to run a Docker container an
 
 This document is meant to be an overview of the entire lab.  Throughout, you may be directed to other labs, to run specific sections.  It is important that when you finish each major section, you return to this document for the next section.
 
-## Section 0 - Install VirtualBox and Example VM
+## Section 0 - Have a Docker Environment
 
-* [Follow these instructions](vm.md)
+* [Docker Options](vm.md)
 
 ## Section 1 - Verify Docker Engine Hands on Lab Environment
 
