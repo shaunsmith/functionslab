@@ -12,6 +12,7 @@ You will need a Docker environment to complete this lab.  A Virtual box vm can b
 
 * When importing the ova, set CPU and Memory appropriately for your laptop.  Typically, use half of your actual CPU and Memory.
 * Once you have imported the VM, you can remove or reconfigure the shared folder (Settings > Shared Folders)
+
 When the VM is running:
 * Set Keyboard to US English (set "en1" to "en2" on Top Nav, to the left of the Date and Time)
 * Set Proxy Settings in Firefox to "No Proxy" (Preferences > Advanced > Network > Connection > Settings)
