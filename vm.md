@@ -6,7 +6,9 @@ You will need a Docker environment to complete this lab.
 
 ## You can use an Oracle Linux 7 VM with UEK R4, then install Docker:
 
-* [Install Docs](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
+* [Install Docs for OL7](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
+
+* [For other Linux versions](https://www.docker.com/community-edition)
 
 
 ## A VirtualBox VM can be used as an option:
