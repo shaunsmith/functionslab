@@ -1,6 +1,6 @@
 # functionslab
 
-In this lab, you will explore basic Docker commands to run a Docker container and build an image, then push it to a registry.  You will also explore (enter functions overview)
+In this lab, you will explore basic Docker commands to run a Docker container and build an image, then push it to a registry.  You will also explore serverless computing using functions with the Docker-based open source Fn project.
 
 This document is meant to be an overview of the entire lab.  Throughout, you may be directed to other labs, to run specific sections.  It is important that when you finish each major section, you return to this document for the next section.
 
@@ -42,3 +42,17 @@ Docker version 17.0x.x-ce, build 276fd32
 
 ## Section 3 - Functions
 
+With core Docker usage under your belt it's time to move on to functions.
+Functions as a Service (FaaS) platforms provide a way to deploy code to
+the cloud without having to worry about provisioning or managing any compute
+infrastructure.  The goal of the open source Fn project is to provide a functions
+platform that you can run anywhere--on your laptop or in the cloud.  And Fn will
+also be the basis of a fully serverless FaaS platform.  With Fn you can develop
+locally and deploy to the cloud knowing your functions are running on *exactly*
+the same underlying platform.
+
+* [Install Fn and deploy your first functions](https://github.com/fnproject/tutorials/blob/master/Introduction/README.md)
+
+* [Introduction to Java Functions](https://github.com/fnproject/tutorials/blob/master/JavaFDKIntroduction/README.md)
+
+* [Containers as Functions](https://github.com/fnproject/tutorials/blob/master/ContainerAsFunction/README.md)
