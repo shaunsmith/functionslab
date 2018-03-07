@@ -51,8 +51,17 @@ also be the basis of a fully serverless FaaS platform.  With Fn you can develop
 locally and deploy to the cloud knowing your functions are running on *exactly*
 the same underlying platform.
 
-* [Install Fn and deploy your first functions](https://github.com/fnproject/tutorials/blob/master/Introduction/README.md)
+* [Install Fn and deploy your first functions](http://fnproject.io/tutorials/Introduction)
 
-* [Introduction to Java Functions](https://github.com/fnproject/tutorials/blob/master/JavaFDKIntroduction/README.md)
+* [Introduction to Java Functions](http://fnproject.io/tutorials/JavaFDKIntroduction)
 
-* [Containers as Functions](https://github.com/fnproject/tutorials/blob/master/ContainerAsFunction/README.md)
+* [Containers as Functions](http://fnproject.io/tutorials/ContainerAsFunction/)
+
+### More Fn Tutorials!
+
+If you've completed these tutorial and want to try
+more you're in luck.  There's an ever expanding
+collection of Fn tutorials you can try on your own time.
+
+Check out these [Fn Tutorials](http://fnproject.io/tutorials) and just
+skip the ones you've already completed.
