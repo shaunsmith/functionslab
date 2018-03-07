@@ -40,6 +40,10 @@ Docker version 17.0x.x-ce, build 276fd32
 
 > *Note - Be sure to return to this lab, after completing the above.
 
+```
+Close the Terminal Window before proceeding to the next section
+```
+
 ## Section 3 - Functions
 
 With core Docker usage under your belt it's time to move on to functions.

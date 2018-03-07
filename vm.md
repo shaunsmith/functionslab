@@ -30,4 +30,4 @@ When the VM is running:
 * Set Keyboard to US English (set "en1" to "en2" on Top Nav, to the left of the Date and Time)
 * Set Proxy Settings in Firefox to "No Proxy" (Preferences > Advanced > Network > Connection > Settings)
 * When running the terminal, do not update when prompted, this is not nessecary.
-* When running "$ Sudo -s" the password is "demo"
+* When running "$ sudo -s" the password is "demo"
