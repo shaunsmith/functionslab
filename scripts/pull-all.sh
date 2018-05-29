@@ -11,7 +11,3 @@ docker pull fnproject/ui:latest
 docker pull fnproject/go:latest
 docker pull fnproject/go:dev
 docker pull node:8-alpine
-docker pull hello-world
-docker pull karthequian/helloworld:latest
-docker pull docker/whalesay:latest
-
