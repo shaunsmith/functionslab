@@ -11,7 +11,3 @@ docker load < fnproject-ui.latest.tgz
 docker load < fnproject-go.latest.tgz
 docker load < fnproject-go.dev.tgz
 docker load < node.8-alpine.tgz
-docker load < hello-world.tgz
-docker load < karthequian-helloworld.latest.tgz
-docker load < docker-whalesay.latest.tgz 
-

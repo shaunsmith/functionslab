@@ -11,7 +11,3 @@ docker save fnproject/ui:latest | gzip -c > fnproject-ui.latest.tgz
 docker save fnproject/go:latest | gzip -c > fnproject-go.latest.tgz
 docker save fnproject/go:dev | gzip -c > fnproject-go.dev.tgz
 docker save node:8-alpine | gzip -c > node.8-alpine.tgz
-docker save hello-world | gzip -c > hello-world.tgz
-docker save karthequian/helloworld:latest | gzip -c > karthequian-helloworld.latest.tgz
-docker save docker/whalesay:latest | gzip -c > docker-whalesay.latest.tgz 
-
