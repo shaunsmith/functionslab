@@ -1,29 +1,58 @@
-You will need a Docker environment to complete this lab.  
+# Lab environment Options
+
+* Install Docker on your personal machine
+* Run Docker (and the lab) inside a virtual machine using VirtualBox
+
+Follow the instructions below for each option.
 
 ## If you have a Mac, just install Docker:
 
 * [https://docs.docker.com/docker-for-mac/install/](https://docs.docker.com/docker-for-mac/install/)
 
-## You can use Linux:
+## If You use Linux:
 
-* [Install Docs for OL7 with UEK 4](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
+* [Installation instructions for Oracle Linux 7 with UEK 4](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
 
 * [For other Linux versions](https://www.docker.com/community-edition)
 
+## If you use Windows, run inside a VirtualBox Virtual Machine
 
-## A VirtualBox VM can be used as an option:
+### 1. Install VirtualBox if needed
 
-### 1. Install VirtualBox if needed:
+Your lab instructor may have a USB stick with installers or you can download from
+http://www.oracle.com/technetwork/server-storage/virtualbox/overview/index.html
 
-* [Get and Install VirtualBox for your Laptop](http://www.oracle.com/technetwork/server-storage/virtualbox/overview/index.html)
+### 2. Import the lab VM appliance
 
-### 2. Import the example VM provided in the lab:
+Run VirtualBox and select File>Import Appliance...
 
-### 3. Note these configuration changes:
+![](images/import-appliance.jpg)
 
-* When importing the ova, set CPU and Memory appropriately for your laptop.  Typically, use half of your actual CPU and Memory.
+Navigate to the folder with the fnlab.ova appliance and select.
 
-When the VM is running:
-* Set Proxy Settings in Firefox to "No Proxy" (Preferences > Advanced > Network > Connection > Settings)
-* When running the terminal, do not update when prompted, this is not nessecary.
-* When running "$ sudo -s" the password is "demo"
+![](images/appliance-to-import.jpg)
+
+![](images/fnlab-ova.jpg)
+
+Before importing you can review and adjust the settings but the defaults should be fine on a host machine with at least 8GB of RAM.
+
+![](images/import-settings.jpg)
+
+I can take a few minutes to import the applicance to create a virtual machine.
+
+![](images/importing-ova.jpg)
+
+Once imported you'll see the `fnlab` virtual machine in the VirtualBox Manager.
+
+### 3. Start the lab virtual machine
+
+![](images/virtualbox-manager.jpg)
+
+Select `fnlab` and click the `Start` button to launch the virtual machine
+and open a Linux desktop.
+
+![](images/linux-desktop.jpg)
+
+Double click on `Terminal` to open a terminal.  Do *not* update when prompted, this is not necessary.
+
+When running "$ sudo -s" the password is "demo"
