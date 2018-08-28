@@ -2,11 +2,20 @@
 
 Clone or download this repo.
 
-## Collect information needed in subsequent steps
+## Information needed in subsequent steps
 
-1. user OCID - Please get your user OCID from OCI console > User Settings screen
+1. OCI Console: https://console.us-ashburn-1.oraclecloud.com
 
-2. private key file - See next step for keys 
+2. Tenant: oracle-serverless-devrel
+
+3. Region: us-ashburn-1
+
+4. Username and password: Your lab instructor will give you your user name and password
+
+5. User OCID: Please get your user OCID from OCI console > User Settings screen
+
+6. Key files: See next step for keys 
+
 
 
 ## API Signing Key 
