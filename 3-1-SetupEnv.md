@@ -22,7 +22,7 @@ Note: Functions does NOT require you to install the OCI CLI. All you need to do 
 
 Edit (or create) your `~/.oci/config` file. Copy the contents of the file [workshop-devrel-profile](util/workshop-devrel-profile) shown below and append (paste) to the bottom of your `~/.oci/config` file.
 
-Don't forget to add your user OCID and the full path to your private key file.
+*Don't forget to add your user OCID and the full path to your private key file.*
 
 ```
 [workshop-devrel-profile]
@@ -53,21 +53,42 @@ Server version:  ?
 
 ## Fn Context for OCI 
 
-Keep the fn context file [workshop.yaml](util/workshop.yaml) in the `~/.fn/contexts/` folder. 
+1. Keep the `fn context` file [workshop.yaml](util/workshop.yaml) in the `~/.fn/contexts/` folder. Contents of the file are shown below. 
 
-Run the following command to check.
+*Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
+
+```
+api-url: https://api.test.us-ashburn-1.functions.oci.oraclecloud.com
+call-url: https://call.test.us-ashburn-1.functions.oci.oraclecloud.com
+oracle.compartment-id: ocid1.compartment.oc1..aaaaaaaaokbzj2jn3hf5kwdwqoxl2dq7u54p3tsmxrjd7s3uu7x23tkegiua
+oracle.profile: workshop-devrel-profile
+provider: oracle
+registry: iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+```
+
+2. List all `fn contexts` on your machine. Run the following command:
 
 ```
 $ fn ls context
+
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-*	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-150
+	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
 ```
 
+3. Use `workshop` context. Run the following command:
 
+```
+$ fn use context workshop
+
+Now using context: workshop
+```
+
+4. Check if `workshop` is now the current context. Run the following command. An `*` is used to indicate the current context as shown below.
 
 ```
 $ fn ls context
+
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
 *	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-150
