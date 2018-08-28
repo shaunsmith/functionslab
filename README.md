@@ -77,19 +77,19 @@ the same underlying platform.
 * [Hello World - Go (Http Triggers)](3-3-GoHello.md)
 
 
-### 5) Function to Object Store
-
-TODO - WILL CLEAN UP TOMORROW
-TODO - Also need to share the Object Store bucket details
-
-[OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
-
-### 6) Function to Database
+### 5) Function to Database
 
 TODO - WILL CLEAN UP TOMORROW
 TODO - Also need to share the DB connection details
 
 [OSS Fn to OCI DB](https://github.com/abhirockzz/fn-oracledb-java)
+
+### 6) Function to Object Store
+
+TODO - WILL CLEAN UP TOMORROW
+TODO - Also need to share the Object Store bucket details
+
+[OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
 
 ### 7) Troubleshooting
 
