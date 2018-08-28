@@ -62,7 +62,7 @@ the same underlying platform.
 
 ### 2) Functions Commands Cheatsheet
 
-* Use the [Functions Commands Cheatsheet](function-cheatsheet.md)
+* Use the [Functions Commands Cheatsheet](wiki/Functions-Commands-Cheatsheet)
 
 * Also see the [fn CLI docs](https://github.com/fnproject/docs/blob/master/cli/README.md)
 
