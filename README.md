@@ -55,32 +55,32 @@ locally and deploy to the cloud knowing your functions are running on *exactly*
 the same underlying platform.
 
 
-### Setup Local Development Environment
+### 3.1 Setup Local Development Environment
 
 * [Setup Local Development Environment](3-1-SetupEnv.md)
 
 
-### Your First Function
+### 3.2 Your First Function
 
 * [Hello World - Node (Http Trigger)](3-2-NodeHello.md)
 
 
 
-### Your Second Function
+### 3.3 Your Second Function
 
-* [Hello World - Go (Http Trigger)](3-2-GoHello.md)
-
-
-
-### Function to Object Store
+* [Hello World - Go (Http Trigger)](3-3-GoHello.md)
 
 
 
-### Function to Database
+### 3.4 Function to Object Store
 
 
 
-### Troubleshooting
+### 3.5 Function to Database
+
+
+
+### 3.6 Troubleshooting
 
 Logs, DEBUG=1, Common Errors
 
