@@ -108,4 +108,27 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 
 Note: If you forget the Auth Token you can delete this one and repeat the above steps to create a new token.
 
+## OCIR Login from your machine 
 
+1. Login to OCIR from a terminal window on the machine where you will run "fn deploy" later in the labs. Run the following command:
+
+*Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
+
+```
+$ docker login iad.ocir.io
+Username: oracle-serverless-devrel/workshop-<NNN>
+Password:
+Login Succeeded
+```
+
+## Verify the Setup
+
+1. List apps in the workshop compartment. You may see zero or more apps. Run the following command:
+
+```
+$ fn list apps
+ 
+NAME
+workshop-100-app
+workshop-101-app
+```
