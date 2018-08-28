@@ -16,9 +16,11 @@ Make a note of the full path of your private key file.
 
 ## OCI CLI configuration
 
-Note: Functions does NOT require you to install the OCI CLI. All you need is to enter your user account details in the  ~/.oci/config file
+Note: Functions does NOT require you to install the OCI CLI. All you need is to enter your user account details in the  `~/.oci/config` file.
 
-Create/edit the `~/.oci/config` file. Copy paste the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) to the bottom of ~/.oci/config
+Edit (or create) the `~/.oci/config` file. Copy paste the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) to the bottom of your `~/.oci/config` file.
+
+## 
 
 
 
