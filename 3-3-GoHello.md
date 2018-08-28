@@ -1,13 +1,10 @@
-# Hello World - Go (Fn Triggers)
+# Hello World - Go (HTTP Triggers)
 
 *Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
 
-## Create your first app
+## Reuse your first app
 
-![](images/userinput.png)
->```
-> fn create app workshop-<NNN>-app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.iad.aaaaaaaah2hbng6hb4lvnaqfmenqlejmp677vojolwcablnp4rjbikgrn5ja"]'
->```  
+We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-2-NodeHello.md) example. We will add the Go function to the same app.
 
 ## Create a boiler plate Go function with an http trigger
 
