@@ -20,7 +20,7 @@ Make a note of the full path of your private key file.
 
 Note: Functions does NOT require you to install the OCI CLI. All you need to do is to enter your OCI user account details in the `~/.oci/config` file.
 
-Edit (or create) your `~/.oci/config` file. Copy the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) shown below and append (paste) to the bottom of your `~/.oci/config` file.
+Edit (or create) your `~/.oci/config` file. Copy the contents of the file [workshop-devrel-profile](util/workshop-devrel-profile) shown below and append (paste) to the bottom of your `~/.oci/config` file.
 
 Don't forget to add your user OCID and the full path to your private key file.
 
@@ -53,7 +53,23 @@ Server version:  ?
 
 ## Fn Context for OCI 
 
-Copy the fn context file [util/workshop.yaml](util/workshop.yaml) and place it in the `~/.fn/contexts/` folder. 
+Keep the fn context file [workshop.yaml](util/workshop.yaml) in the `~/.fn/contexts/` folder. 
+
+Run the following command to check.
+
+```
+$ fn ls context
+CURRENT	NAME				PROVIDER	API URL			REGISTRY
+	default				default		http://localhost:8080/v1
+*	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-150
+```
 
 
+
+```
+$ fn ls context
+CURRENT	NAME				PROVIDER	API URL			REGISTRY
+	default				default		http://localhost:8080/v1
+*	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-150
+```
 
