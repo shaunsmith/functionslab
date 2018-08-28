@@ -36,7 +36,7 @@ pass_phrase=emea
 
 ## oci-curl Configuration
 
-1. Edit the file [/util/oci-curl.sh](/util/oci-curl.sh) cloned/downloaded to your machine. The relevant section of the file containing user account details is shown below. 
+1. Edit the file [/util/oci-curl.sh](/util/oci-curl.sh) cloned/downloaded on your machine. The relevant section of the file containing user account details is shown below. 
 
 *Don't forget to add your user OCID and the full path to your private key file.*
 
