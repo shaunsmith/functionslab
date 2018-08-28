@@ -18,11 +18,11 @@ Make a note of the full path of your private key file.
 
 Note: Functions does NOT require you to install the OCI CLI. All you need is to enter your user account details in the  `~/.oci/config` file.
 
-Edit (or create) the `~/.oci/config` file. Copy paste the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) to the bottom of your `~/.oci/config` file.
+Edit (or create) the `~/.oci/config` file. Copy the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) and append (paste) to the bottom of your `~/.oci/config` file.
 
 ## Install Fn CLI
 
-Run the following command to install Fn CLI. This is documented in the `install` section of the [Fn CLI readme](https://github.com/fnproject/cli/blob/master/README.md#install). 
+Run the following command to install (or update) the `fn` CLI. This is documented in the `install` section of the [fn CLI readme](https://github.com/fnproject/cli/blob/master/README.md#install). 
 
 ``` 
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
