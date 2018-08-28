@@ -20,7 +20,17 @@ Note: Functions does NOT require you to install the OCI CLI. All you need is to 
 
 Edit (or create) the `~/.oci/config` file. Copy paste the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) to the bottom of your `~/.oci/config` file.
 
+## Install Fn CLI
+
+Follow the [install step](https://github.com/fnproject/cli/blob/master/README.md#install).
+
+``` 
+curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+```
+
 ## 
+
+
 
 
 
