@@ -45,11 +45,14 @@ commands with `sudo` in which case you would have to type:
 With Docker successfully installed it's time to move on to functions.
 Functions as a Service (FaaS) platforms provide a way to deploy code to
 the cloud without having to worry about provisioning or managing any compute
-infrastructure. The goal of the open source Fn project is to provide a functions
-platform that you can run anywhere--on your laptop or in the cloud. And Fn is
-the basis of Oracle Functions, a fully managed serverless FaaS platform running 
-in Oracle Cloud. With Fn you can develop locally and deploy to the cloud 
-knowing your functions are running on *exactly* the same underlying platform.
+infrastructure. 
+
+Oracle Functions is a fully managed serverless FaaS platform running in Oracle 
+Cloud. Functions uses open source Fn Project as it's underlying FaaS platform.
+
+Fn Project can run anywhere - on your laptop or in the cloud. With Fn you can develop
+locally and deploy to the cloud knowing your functions are running on *exactly* 
+the same underlying platform.
 
 
 ### Section 3.1 - Setup Local Development Environment
