@@ -22,7 +22,7 @@ Edit (or create) the `~/.oci/config` file. Copy paste the contents of [util/work
 
 ## Install Fn CLI
 
-Follow the [install step](https://github.com/fnproject/cli/blob/master/README.md#install).
+Run the following command to install Fn CLI. This is documented in the `install` section of the [Fn CLI readme](https://github.com/fnproject/cli/blob/master/README.md#install). 
 
 ``` 
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
