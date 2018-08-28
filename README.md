@@ -60,7 +60,11 @@ the same underlying platform.
 * [Setup Local Development Environment](3-1-SetupEnv.md)
 
 
-### 2) Cheatsheet
+### 2) Functions Commands Cheatsheet
+
+* Use the [Functions Commands Cheatsheet](function-cheatsheet.md)
+
+* Also see the [fn CLI docs](https://github.com/fnproject/docs/blob/master/cli/README.md)
 
 
 ### 3) Your First Function
