@@ -26,3 +26,22 @@
 >```
 > fn -v invoke workshop-<NNN>-app go-fn
 >```
+
+In OCI you need to sign your requests to function http endpoints. Refer to OCI Signed Requests for more information and for sample clients in various popular languages.
+
+One such client that OCI provides to generate signed curl requests is called `oci-curl`. This section shows how to access function endpoints using `oci-curl`.
+
+![](images/userinput.png)
+>```
+> source oci-curl.sh
+>```
+
+![](images/userinput.png)
+>```
+> fn ls t workshop-<NNN>-app
+>```
+
+![](images/userinput.png)
+>```
+> oci-curl 66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/go-fn-trigger"
+>```
