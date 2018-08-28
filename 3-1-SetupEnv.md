@@ -11,12 +11,14 @@ private key file -
 
 Ask your lab instructor for the actual keys to use during the labs. Overwrite empty key files in the [keys](keys) folder with the actual key files provided by your instructor.
 
+Make a note of the full path of your private key file.
+
 
 ## OCI CLI configuration
 
-* Note: Functions does NOT require you to install the OCI CLI. All you need is to enter your user account details in the  ~/.oci/config file
+Note: Functions does NOT require you to install the OCI CLI. All you need is to enter your user account details in the  ~/.oci/config file
 
-Edit the ~/.oci/config file. Copy paste the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) to the bottom of ~/.oci/config
+Create/edit the `~/.oci/config` file. Copy paste the contents of [util/workshop-devrel-profile](util/workshop-devrel-profile) to the bottom of ~/.oci/config
 
 
 
