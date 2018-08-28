@@ -96,3 +96,16 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 *	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
 ```
 
+## Start Docker
+
+1. If you haven't already, start Docker. Follow the steps for your OS.
+
+## Auth Token for OCIR
+
+1. Go to OCI Console > User settings > Auth tokens and generate a new Auth token. You will need this later to login to OCIR from a terminal window. 
+
+2. Please make a note of your Auth Token (created above). You won't see it again on the OCI Console.
+
+Note: If you forget the Auth Token you can delete this one and repeat the above steps to create a new token.
+
+
