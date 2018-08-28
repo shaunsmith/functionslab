@@ -51,6 +51,12 @@ the basis of Oracle Functions, a fully managed serverless FaaS platform running
 in Oracle Cloud. With Fn you can develop locally and deploy to the cloud 
 knowing your functions are running on *exactly* the same underlying platform.
 
+
+### Section 3.1 - Setup Local Development Environment
+
+* [Setup Local Development Environment](3-1-SetupEnv.md)
+
+
 ### Your First Function
 
 Hello World - Node (Http Trigger)
