@@ -1,6 +1,6 @@
 #  Setup Local Development Environment
 
-Clone this repo.
+Clone or download this repo.
 
 ## Collect information needed in subsequent steps
 
@@ -41,6 +41,8 @@ pass_phrase=emea
 ``` 
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 ```
+
+TODO: Docker pull go, node, and fnserver
 
 This above command will install the `fn` CLI on your machine. 
 
