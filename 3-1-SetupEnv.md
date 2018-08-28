@@ -42,8 +42,6 @@ pass_phrase=emea
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 ```
 
-TODO: Docker pull go, node, and fnserver
-
 This above command will install the `fn` CLI on your machine. 
 
 2. Run the following command to verify the installation.
@@ -122,6 +120,22 @@ Username: oracle-serverless-devrel/workshop-<NNN>
 Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
 ```
+
+## [ONLY IF YOU HAVE AN OLDER FN SETUP] Update Old Images
+
+If you have never played with open source Fn before you can skip this step.
+
+```
+docker pull node:8-alpine
+docker pull fnproject/go:latest
+docker pull fnproject/go:dev
+```
+
+```
+docker pull fnproject/fnserver:latest
+docker pull fnproject/ui:latest
+```
+
 
 ## Verify the Setup
 
