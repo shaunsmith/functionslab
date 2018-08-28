@@ -43,5 +43,5 @@ One such client that OCI provides to generate signed curl requests is called `oc
 
 ![](images/userinput.png)
 >```
-> oci-curl 66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/go-fn-trigger"
+> oci-curl 66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/node-fn-trigger"
 >```
