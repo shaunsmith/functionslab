@@ -79,13 +79,24 @@ the same underlying platform.
 
 ### 5) Function to Object Store
 
+TODO - WILL CLEAN UP TOMORROW
+TODO - Also need to share the Object Store bucket details
 
+[OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
 
 ### 6) Function to Database
 
+TODO - WILL CLEAN UP TOMORROW
+TODO - Also need to share the DB connection details
 
+[OSS Fn to OCI DB](https://github.com/abhirockzz/fn-oracledb-java)
 
 ### 7) Troubleshooting
 
 Logs, DEBUG=1, Common Errors
+
+TODO - WILL CLEAN UP TOMORROW
+TODO - Ask folks to create a papertrail account
+
+[OSS App/Function Logs](https://github.com/abhirockzz/fn-syslog-example)
 
