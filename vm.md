@@ -1,6 +1,9 @@
 # Lab environment Options
 
-* Install Docker on your personal machine
+* Install Docker on your personal machine. This is a pre-requisite for the Fn CLI
+
+**Minimum version = Docker 17.10.0-ce or later**
+
 * Run Docker (and the lab) inside a virtual machine using VirtualBox
 
 Follow the instructions below for each option.
