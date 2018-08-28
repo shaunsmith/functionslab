@@ -121,7 +121,7 @@ Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
 ```
 
-## [ONLY IF YOU HAVE AN OLDER FN SETUP] Update Old Images
+## Update Old Images (ONLY if you have an OLD Fn setup on your machine)
 
 If you have never played with open source Fn before you can skip this step.
 
