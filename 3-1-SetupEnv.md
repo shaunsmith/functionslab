@@ -57,7 +57,7 @@ Server version:  ?
 
 ## Fn Context for OCI 
 
-1. Keep the `fn context` file [workshop.yaml](util/workshop.yaml) in the `~/.fn/contexts/` folder. Contents of the file are shown below. 
+1. Copy the `fn context` file [workshop.yaml](util/workshop.yaml) to the `~/.fn/contexts/` folder. Contents of the file are shown below. 
 
 *Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
 
