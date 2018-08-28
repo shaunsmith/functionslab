@@ -1,5 +1,7 @@
 # Hello World - Go (Fn Triggers)
 
+*Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
+
 ![](images/userinput.png)
 >```
 > fn init --runtime go --trigger http go-fn
