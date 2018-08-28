@@ -119,7 +119,7 @@ Note: If you forget the Auth Token you can delete this one and repeat the above 
 ```
 $ docker login iad.ocir.io
 Username: oracle-serverless-devrel/workshop-<NNN>
-Password:
+Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
 ```
 
