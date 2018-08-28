@@ -62,13 +62,13 @@ the same underlying platform.
 
 ### Your First Function
 
-* [Hello World - Node (Http Trigger)](3-2-NodeHello)
+* [Hello World - Node (Http Trigger)](3-2-NodeHello.md)
 
 
 
 ### Your Second Function
 
-* [Hello World - Go (Http Trigger)](3-2-GoHello)
+* [Hello World - Go (Http Trigger)](3-2-GoHello.md)
 
 
 
