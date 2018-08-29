@@ -57,17 +57,29 @@ In OCI you need to sign your requests to function http endpoints. Refer to [OCI 
 
 One such client that OCI provides to generate signed curl requests is called `oci-curl`. This section shows how to access function endpoints using `oci-curl`.
 
+In [Setup Local Development Environment > oci-curl Configuration](3-1-SetupEnv.md#oci-curl-configuration) section, you have already configured your credentials with [util/oci-curl.sh](util/oci-curl.sh)
+
 ![](images/userinput.png)
 >```
-> source oci-curl.sh
+> source <full/path/to/oci-curl.sh> 
 >```
 
 ![](images/userinput.png)
 >```
 > fn ls t workshop-<NNN>-app
+>
+> FUNCTION	NAME		TYPE	SOURCE			ENDPOINT
+> go-fn		go-fn-trigger	http	/go-fn-trigger		https://<app-short-code>.call.test.us-ashburn-1.functions.oci.oraclecloud.com/t/go-fn-trigger
 >```
+
+Use the endpoint from the above command to construct the parameters for oci-curl as shown below.
+
+Note: Enter passphrase as `emea`
 
 ![](images/userinput.png)
 >```
-> oci-curl 66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/go-fn-trigger"
+> oci-curl <app-short-code>.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/go-fn-trigger"
+> 
+> Enter pass phrase for /Users/amy/keys/labs_pri_key.pem: emea
+> 
 >```
