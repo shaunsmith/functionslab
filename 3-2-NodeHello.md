@@ -83,6 +83,6 @@ Note: Enter passphrase as `emea`
 >```
 > oci-curl <app-short-code>.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/node-fn-trigger"
 > 
-> Enter pass phrase for /Users/sachinpikle/doag/emea/keys/labs_pri_key.pem: emea
+> Enter pass phrase for /Users/amy/keys/labs_pri_key.pem: emea
 > 
 >```
