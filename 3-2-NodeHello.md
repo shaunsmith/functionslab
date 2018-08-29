@@ -69,7 +69,10 @@ In [Setup Local Development Environment > oci-curl Configuration](3-1-SetupEnv.m
 
 ![](images/userinput.png)
 >```
-> fn ls t workshop-<NNN>-app
+> fn ls t workshop-150-app
+>
+> FUNCTION	NAME		TYPE	SOURCE			ENDPOINT
+> node-fn		node-fn-trigger	http	/node-fn-trigger	https://66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com/t/node-fn-trigger
 >```
 
 ![](images/userinput.png)
