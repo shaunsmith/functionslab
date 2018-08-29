@@ -44,7 +44,7 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 ![](images/userinput.png)
 >```
 > On the OCIR console, make your repo (created by Fn deploy) public: 
-> iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>/node-fn:0.0.1
+> iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>/node-fn
 >```
 
 ## Invoke the function using CLI
