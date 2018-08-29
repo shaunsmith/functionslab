@@ -87,7 +87,7 @@ TODO - Also need to share the DB connection details
 
 ### 2) Function to Object Store
 
-TODO - Also need to share the Object Store bucket details
+Note - The OCI Object Store bucket details are in the example below
 
 * [OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
 
