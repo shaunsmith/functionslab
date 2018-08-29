@@ -77,26 +77,25 @@ the same underlying platform.
 * [Hello World - Go (Http Triggers)](3-3-GoHello.md)
 
 
-### 5) Function to Database
+## Section 4 - Open Source Fn
 
-TODO - WILL CLEAN UP TOMORROW
+### 1) Function to Database
+
 TODO - Also need to share the DB connection details
 
-[OSS Fn to OCI DB](https://github.com/abhirockzz/fn-oracledb-java)
+* [OSS Fn to OCI DB](https://github.com/abhirockzz/fn-oracledb-java)
 
-### 6) Function to Object Store
+### 2) Function to Object Store
 
-TODO - WILL CLEAN UP TOMORROW
 TODO - Also need to share the Object Store bucket details
 
-[OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
+* [OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
 
-### 7) Troubleshooting
+### 3) Troubleshooting
 
-Logs, DEBUG=1, Common Errors
+TODO - Add DEBUG=1, Common Errors
 
-TODO - WILL CLEAN UP TOMORROW
 TODO - Ask folks to create a papertrail account
 
-[OSS App/Function Logs](https://github.com/abhirockzz/fn-syslog-example)
+* [OSS App/Function Logs](https://github.com/abhirockzz/fn-syslog-example)
 
