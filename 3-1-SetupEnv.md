@@ -71,7 +71,7 @@ This above command will install the `fn` CLI on your machine.
 2. Run the following command to verify the installation.
 
 ```
-$ fn version
+fn version
 
 Client version: 0.4.150
 Server version:  ?
@@ -95,7 +95,7 @@ registry: iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
 2. List all `fn contexts` on your machine. Run the following command:
 
 ```
-$ fn ls context
+fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
@@ -105,7 +105,7 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 3. Use `workshop` context. Run the following command:
 
 ```
-$ fn use context workshop
+fn use context workshop
 
 Now using context: workshop
 ```
@@ -113,7 +113,7 @@ Now using context: workshop
 4. Check if `workshop` is now the current context. Run the following command. An `*` is used to indicate the current context as shown below.
 
 ```
-$ fn ls context
+fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
@@ -139,7 +139,7 @@ Note: If you forget the Auth Token you can delete this one and repeat the above 
 *Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
 
 ```
-$ docker login iad.ocir.io
+docker login iad.ocir.io
 Username: oracle-serverless-devrel/workshop-<NNN>
 Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
@@ -165,7 +165,7 @@ docker pull fnproject/ui:latest
 1. List apps in the workshop compartment. You may see zero or more apps. Run the following command:
 
 ```
-$ fn list apps
+fn list apps
  
 NAME
 workshop-100-app
