@@ -34,6 +34,16 @@ We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-
 > fn list triggers workshop-<NNN>-app
 >```
 
+## [TEMPORARY SOLUTION] Make the OCIR repo public
+
+Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet#triggers-list-inspect-invoke) section.
+
+![](images/userinput.png)
+>```
+> On the OCIR console, make your repo (created by Fn deploy) public: 
+> iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>/go-fn
+>```
+
 ## Invoke the function using CLI
 
 ![](images/userinput.png)
