@@ -60,9 +60,11 @@ In OCI you need to sign your requests to function http endpoints. Refer to [OCI 
 
 One such client that OCI provides to generate signed curl requests is called `oci-curl`. This section shows how to access function endpoints using `oci-curl`.
 
+In [Setup Local Development Environment > oci-curl Configuration](3-1-SetupEnv.md#oci-curl-configuration) section, you have already configured your credentials with [util/oci-curl.sh](util/oci-curl.sh)
+
 ![](images/userinput.png)
 >```
-> source oci-curl.sh
+> source <full/path/to/oci-curl.sh> 
 >```
 
 ![](images/userinput.png)
