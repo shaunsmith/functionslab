@@ -69,13 +69,20 @@ In [Setup Local Development Environment > oci-curl Configuration](3-1-SetupEnv.m
 
 ![](images/userinput.png)
 >```
-> fn ls t workshop-150-app
+> fn ls t workshop-<NNN>-app
 >
 > FUNCTION	NAME		TYPE	SOURCE			ENDPOINT
-> node-fn		node-fn-trigger	http	/node-fn-trigger	https://66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com/t/node-fn-trigger
+> node-fn		node-fn-trigger	http	/node-fn-trigger	https://<app-short-code>.call.test.us-ashburn-1.functions.oci.oraclecloud.com/t/node-fn-trigger
 >```
+
+Use the endpoint from the above command to construct the parameters for oci-curl as shown below.
+
+Note: Enter passphrase as `emea`
 
 ![](images/userinput.png)
 >```
-> oci-curl 66smj7vz6qq.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/node-fn-trigger"
+> oci-curl <app-short-code>.call.test.us-ashburn-1.functions.oci.oraclecloud.com get "/t/node-fn-trigger"
+> 
+> Enter pass phrase for /Users/sachinpikle/doag/emea/keys/labs_pri_key.pem: emea
+> 
 >```
