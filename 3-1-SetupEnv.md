@@ -20,7 +20,7 @@ Clone or download this repo.
 
 ## API Signing Key 
 
-1. This is your OCI private key, public key and fingerprint. Ask your lab instructor for the actual keys to use during the labs. Overwrite empty key files in the [keys](keys) folder with the actual key files provided by your instructor.
+1. This is your OCI private key, public key and fingerprint. Login to OCI Console > Object Store > Buckets > Go to the "workshop-prereqs" bucket and download your public and private keys. Overwrite empty key files in the [keys](keys) folder with the actual key files you downloaded from the storage bucket.
 
 2. Make a note of the full path of your private key file.
 
