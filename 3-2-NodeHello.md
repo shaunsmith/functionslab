@@ -97,3 +97,25 @@ Note: Enter passphrase as `emea`
 > Enter pass phrase for /Users/amy/keys/labs_pri_key.pem: emea
 > 
 >```
+
+
+## Clean up
+
+Congratulations! Now that you have verified you deployed function you should clean up the trigger and function.
+
+First, delete the trigger.
+![](images/userinput.png)
+>```
+> fn delete trigger workshop-<NNN>-app node-fn node-fn-trigger
+> 
+> workshop-<NNN>-app node-fn node-fn-trigger deleted
+>```
+
+Next, delete the function. Leave the app as-is since we will reuse it in the next example.
+
+![](images/userinput.png)
+>```
+> fn delete function workshop-<NNN>-app node-fn
+> 
+> workshop-<NNN>-app node-fn deleted
+>```
