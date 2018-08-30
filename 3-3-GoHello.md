@@ -51,6 +51,15 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 > fn -v invoke workshop-<NNN>-app go-fn
 >```
 
+And you can pass parameters as shown below:
+
+![](images/userinput.png)
+>```
+> echo -n '{"name":"EMEA"}' | fn invoke workshop-<NNN>-app go-fn --content-type application/json
+>
+> {"message":"Hello EMEA"}
+>```
+
 ## Invoke the function using oci-curl
 
 In OCI you need to sign your requests to function http endpoints. Refer to [OCI Signed Requests](https://docs.cloud.oracle.com/iaas/Content/API/Concepts/signingrequests.htm?TocPath=Developer%20Tools%20|REST%20APIs%20|_____4) for more information and for sample clients in various popular languages.
