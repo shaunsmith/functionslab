@@ -56,7 +56,7 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 > {"message":"Hello World"}
 >```
 
-And to pass parameters
+And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
