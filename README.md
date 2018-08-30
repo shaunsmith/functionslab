@@ -79,17 +79,17 @@ the same underlying platform.
 
 ## Section 4 - Open Source Fn
 
-### 1) Function to Database
+### 1) Function to Oracle Database
 
-TODO - Also need to share the DB connection details
+Note: Your lab instructor will share your DB connection details
 
-* [OSS Fn to OCI DB](https://github.com/abhirockzz/fn-oracledb-java)
+* [Java Function to Oracle Database](https://github.com/abhirockzz/fn-oracledb-java-workshop)
 
-### 2) Function to Object Store
+### 2) Function to OCI Object Store
 
-Note - The OCI Object Store bucket details are in the example below
+Note: Your lab instructor will share the object store bucket details
 
-* [OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-obj-store-sample)
+* [OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop)
 
 ### 3) Troubleshooting
 
@@ -97,5 +97,5 @@ TODO - Add DEBUG=1, Common Errors
 
 TODO - Ask folks to create a papertrail account
 
-* [OSS App/Function Logs](https://github.com/abhirockzz/fn-syslog-example)
+* [OSS App/Function Logs](https://github.com/abhirockzz/fn-syslog-workshop)
 
