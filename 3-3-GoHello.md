@@ -94,3 +94,37 @@ Note: Enter passphrase as `emea`
 > Enter pass phrase for /Users/amy/keys/labs_pri_key.pem: emea
 > 
 >```
+
+## Clean up
+
+Congratulations! Now that you have verified your deployed function, you should clean up the trigger, function and app.
+
+Refer to [Delete (Trigger, Function, App)](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet#delete-trigger-function-app) section.
+
+First, delete the trigger as shown below.
+
+![](images/userinput.png)
+>```
+> fn delete trigger workshop-<NNN>-app go-fn go-fn-trigger
+> 
+> workshop-<NNN>-app go-fn go-fn-trigger deleted
+>```
+
+Then, delete the function as shown below.
+
+![](images/userinput.png)
+>```
+> fn delete function workshop-<NNN>-app go-fn
+> 
+> workshop-<NNN>-app go-fn deleted
+>```
+
+And finally, delete the app as shown below.
+
+![](images/userinput.png)
+>```
+> fn delete app workshop-<NNN>-app
+> 
+> workshop-<NNN>-app deleted
+>```
+
