@@ -97,5 +97,5 @@ TODO - Add DEBUG=1, Common Errors
 
 TODO - Ask folks to create a papertrail account
 
-* [OSS App/Function Logs](https://github.com/abhirockzz/fn-syslog-workshop)
+* [View your Function logs](https://github.com/abhirockzz/fn-syslog-example)
 
