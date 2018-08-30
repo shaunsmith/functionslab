@@ -101,9 +101,11 @@ Note: Enter passphrase as `emea`
 
 ## Clean up
 
-Congratulations! Now that you have verified your deployed function, you should clean up the trigger and function.Leave the app as-is since we will reuse it in the next example.
+Congratulations! Now that you have verified your deployed function, you should clean up the trigger and function. Leave the app as-is since we will reuse it in the next example.
 
-First, delete the trigger.
+Refer to [Delete (Trigger, Function, App)](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet#delete-trigger-function-app) section.
+
+First, delete the trigger as shown below.
 
 ![](images/userinput.png)
 >```
@@ -112,7 +114,7 @@ First, delete the trigger.
 > workshop-<NNN>-app node-fn node-fn-trigger deleted
 >```
 
-Next, delete the function. 
+And then, delete the function as shown below.
 
 ![](images/userinput.png)
 >```
@@ -120,3 +122,5 @@ Next, delete the function.
 > 
 > workshop-<NNN>-app node-fn deleted
 >```
+
+Leave the app as-is since we will reuse it in the next example.
