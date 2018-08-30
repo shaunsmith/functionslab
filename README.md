@@ -89,7 +89,7 @@ Note: Your lab instructor will share your DB connection details
 
 Note: Your lab instructor will share the object store bucket details
 
-* [OSS Fn to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop)
+* [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop)
 
 ### 3) Troubleshooting
 
