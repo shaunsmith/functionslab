@@ -101,9 +101,10 @@ Note: Enter passphrase as `emea`
 
 ## Clean up
 
-Congratulations! Now that you have verified you deployed function you should clean up the trigger and function.
+Congratulations! Now that you have verified your deployed function, you should clean up the trigger and function.Leave the app as-is since we will reuse it in the next example.
 
 First, delete the trigger.
+
 ![](images/userinput.png)
 >```
 > fn delete trigger workshop-<NNN>-app node-fn node-fn-trigger
@@ -111,7 +112,7 @@ First, delete the trigger.
 > workshop-<NNN>-app node-fn node-fn-trigger deleted
 >```
 
-Next, delete the function. Leave the app as-is since we will reuse it in the next example.
+Next, delete the function. 
 
 ![](images/userinput.png)
 >```
