@@ -49,6 +49,8 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 ![](images/userinput.png)
 >```
 > fn -v invoke workshop-<NNN>-app go-fn
+>
+> {"message":"Hello World"}
 >```
 
 And you can pass parameters as shown below:
