@@ -52,6 +52,17 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 ![](images/userinput.png)
 >```
 > fn -v invoke workshop-<NNN>-app node-fn
+> 
+> {"message":"Hello World"}
+>```
+
+And to pass parameters
+
+![](images/userinput.png)
+>```
+> echo -n '{"name":"EMEA"}' | fn invoke workshop-<NNN>-app go-fn --content-type application/json
+>
+> {"message":"Hello EMEA"}
 >```
 
 ## Invoke the function using oci-curl
