@@ -60,7 +60,7 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke workshop-<NNN>-app go-fn --content-type application/json
+> echo -n '{"name":"EMEA"}' | fn invoke workshop-<NNN>-app node-fn --content-type application/json
 >
 > {"message":"Hello EMEA"}
 >```
