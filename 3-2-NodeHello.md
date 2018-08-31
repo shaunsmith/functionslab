@@ -4,6 +4,21 @@
 
 ## Create your first app
 
+You may use one of the following subnets:
+
+Subnet Name | Subnet OCID
+--- | ---
+Public Subnet xqgA:US-ASHBURN-AD-1	| ocid1.subnet.oc1.iad.aaaaaaaaxrpre3meci53mgajfa6q45jvq2ffkeq763sq7qyhjlppnwrujcqa
+Public Subnet xqgA:US-ASHBURN-AD-2	| ocid1.subnet.oc1.iad.aaaaaaaas2yhahemdivjfnvyb3gkatgj66nporafite2cjxtqhpfhgfwszhq
+Public Subnet xqgA:US-ASHBURN-AD-3	| ocid1.subnet.oc1.iad.aaaaaaaah2hbng6hb4lvnaqfmenqlejmp677vojolwcablnp4rjbikgrn5ja
+
+![](images/userinput.png)
+>```
+> fn create app workshop-<NNN>-app --annotation oracle.com/oci/subnetIds='["subnet-ocid-use-any-one-from-the-above"]'
+>```  
+
+Example:
+
 ![](images/userinput.png)
 >```
 > fn create app workshop-<NNN>-app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.iad.aaaaaaaah2hbng6hb4lvnaqfmenqlejmp677vojolwcablnp4rjbikgrn5ja"]'
