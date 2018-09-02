@@ -95,7 +95,5 @@ Note: Your lab instructor will share the object store bucket details
 
 TODO - Add DEBUG=1, Common Errors
 
-TODO - Ask folks to create a papertrail account
-
 * [View your Function logs](https://github.com/abhirockzz/fn-syslog-example)
 
