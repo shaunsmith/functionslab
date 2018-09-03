@@ -1,7 +1,5 @@
 #  Setup Local Development Environment
 
-Clone or download this repo.
-
 ## Information needed in subsequent steps
 
 1. OCI Console: https://console.us-ashburn-1.oraclecloud.com
@@ -16,6 +14,9 @@ Clone or download this repo.
 
 6. Key files: See next step for keys 
 
+## Clone or download this repo.
+
+Clone or download this repo.
 
 
 ## API Signing Key 
