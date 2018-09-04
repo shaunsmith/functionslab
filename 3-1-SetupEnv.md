@@ -14,7 +14,7 @@
 
 6. Key files: See next step for keys 
 
-## Clone or download this repo.
+## Clone or download this repo
 
 Clone or download this repo.
 
