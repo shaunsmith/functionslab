@@ -74,7 +74,7 @@ This above command will install the `fn` CLI on your machine.
 ```
 fn version
 
-Client version: 0.4.150
+Client version: 0.4.153
 Server version:  ?
 ```
 
@@ -146,7 +146,7 @@ Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
 ```
 
-## Update Old Images (ONLY if you have an OLD Fn setup on your machine)
+## Update Old Images (if you are using fnlab.ova virtual box image or if you have an OLD Fn setup on your machine)
 
 If you have never played with open source Fn before you can skip this step.
 
