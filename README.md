@@ -54,7 +54,6 @@ Fn Project can run anywhere - on your laptop or in the cloud. With Fn you can de
 locally and deploy to the cloud knowing your functions are running on *exactly* 
 the same underlying platform.
 
-
 ### 1) Setup Local Development Environment
 
 * [Setup Local Development Environment](3-1-SetupEnv.md)
