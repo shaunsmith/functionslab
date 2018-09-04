@@ -12,6 +12,12 @@ As you make your way through the tutorials, look out for this icon.
 ![](images/userinput.png) Whenever you see it, it's time for you to
 perform an action.
 
+Note:
+
+1. Make sure you use `clear-guest` or `clear-internet`. And NOT `clear-corporate`. 
+
+2. If you are using virtualbox with the "fnlab.ova" image make sure you run the entire lab inside the "fnlab VM".
+
 ## Section 1 - Setting up a Docker Environment
 
 * [Docker Options](vm.md)
