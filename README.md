@@ -42,6 +42,8 @@ commands with `sudo` in which case you would have to type:
 
 ## Section 3 - Functions
 
+Note: For this section you do NOT need the fn server on your machine. Your CLI will connect to the Functions cloud service.
+
 With Docker successfully installed it's time to move on to functions.
 Functions as a Service (FaaS) platforms provide a way to deploy code to
 the cloud without having to worry about provisioning or managing any compute
@@ -77,6 +79,8 @@ the same underlying platform.
 
 
 ## Section 4 - Open Source Fn
+
+Note: For this section you need the fn server running on your machine. Each lab below has a step to start the fn server.
 
 ### 1) Function to Oracle Database
 
