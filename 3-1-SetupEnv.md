@@ -44,21 +44,6 @@ key_file=<full-path-to-your-private-key> e.g. /Users/amy/labs_pri_key.pem
 pass_phrase=emea
 ```
 
-## oci-curl Configuration
-
-1. Edit the file [/util/oci-curl.sh](/util/oci-curl.sh) cloned/downloaded on your machine. The relevant section of the file containing user account details is shown below. 
-
-*Don't forget to add your user OCID and the full path to your private key file.*
-
-```
-	# workshop-NNN -in- oracle-serverless-devrel
-        local tenancyId="ocid1.tenancy.oc1..aaaaaaaaydrjm77otncda2xn7qtv7l3hqnd3zxn2u6siwdhniibwfv4wwhta";
-	local authUserId="<your-user-ocid>";
-	local keyFingerprint="2c:bd:7b:5c:76:58:ec:77:6d:9b:f8:3b:be:a6:23:2b";
-	local privateKeyPath="<full-path-to-your-private-key> e.g. /Users/john/labs_pri_key.pem";
-```
-
-
 ## Fn CLI
 
 1. Run the following command to install (or update) the `fn` CLI. This is documented in the `install` section of the [fn CLI readme](https://github.com/fnproject/cli/blob/master/README.md#install). 
