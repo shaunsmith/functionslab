@@ -59,4 +59,4 @@ and open a Linux desktop.
 
 Double click on `Terminal` to open a terminal.  Do *not* update when prompted, this is not necessary.
 
-When running "$ sudo -s" the password is "demo"
+The password for sudo is demo.
