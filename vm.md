@@ -15,7 +15,11 @@ Follow the instructions below for each option.
 
 ## If You use Linux:
 
-* Steps to follow if you are using an OCI VM Standard1.1 with Oracle Linux 7.5
+* Installation instructions if you use an OCI VM Standard1.1 with Oracle Linux 7.5
+
+```
+ssh -i /Users/amy/ssh-keys/id_rsa opc@<public-ip-of-your-oci-vm>
+```
 
 ```
  sudo yum install docker-engine
