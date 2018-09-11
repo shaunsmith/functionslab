@@ -18,36 +18,42 @@ Follow the instructions below for each option.
 * Installation instructions if you use an OCI VM Standard1.1 with Oracle Linux 7.5
 
 ```
-ssh -i /Users/amy/ssh-keys/id_rsa opc@<public-ip-of-your-oci-vm>
+  ssh -i /Users/amy/ssh-keys/id_rsa opc@<public-ip-of-your-oci-vm>
 ```
 
 ```
- sudo yum install docker-engine
+  sudo yum install docker-engine
 ```
  
 ```
- sudo systemctl start docker
+  sudo systemctl start docker
 ```
  
 ```
- sudo systemctl enable docker
+  sudo systemctl enable docker
 ```
 
 ```
- sudo docker version
+  sudo docker version
 ```
  
 ```
- sudo usermod -a -G docker opc 
+  sudo usermod -a -G docker opc 
 ```
 
 ```
- logout 
+  logout 
 ```
 
 ```
- Log back in and now you wont need sudo for docker commands.
- Now you can proceed to install Fn CLI
+  Log back in and now you wont need sudo for docker commands:
+  
+  ssh -i /Users/amy/ssh-keys/id_rsa opc@<public-ip-of-your-oci-vm>
+```
+
+
+```  
+  Now you can proceed to install Fn CLI
 ```
 
 
