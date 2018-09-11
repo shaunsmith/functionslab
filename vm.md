@@ -15,7 +15,7 @@ Follow the instructions below for each option.
 
 ## If You use Linux:
 
-* Installation instructions if you use an OCI VM Standard1.1 with Oracle Linux 7.5
+1. Installation instructions if you use an OCI VM Standard1.1 with Oracle Linux 7.5
 
 ```
   ssh -i /Users/amy/ssh-keys/id_rsa opc@<public-ip-of-your-oci-vm>
@@ -58,9 +58,9 @@ Follow the instructions below for each option.
 
 
 
-* [Installation instructions for Oracle Linux 7 with UEK 4](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
+2. [Installation instructions for Oracle Linux 7 with UEK 4](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
 
-* [For other Linux versions](https://www.docker.com/community-edition)
+3. [For other Linux versions](https://www.docker.com/community-edition)
 
 ## If you use Windows, run inside a VirtualBox Virtual Machine
 
