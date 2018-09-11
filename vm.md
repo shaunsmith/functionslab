@@ -15,6 +15,39 @@ Follow the instructions below for each option.
 
 ## If You use Linux:
 
+* Steps to follow if you are using an OCI VM Standard1.1 with Oracle Linux 7.5
+
+```
+ sudo yum install docker-engine
+```
+ 
+```
+ sudo systemctl start docker
+```
+ 
+```
+ sudo systemctl enable docker
+```
+
+```
+ sudo docker version
+```
+ 
+```
+ sudo usermod -a -G docker opc 
+```
+
+```
+ logout 
+```
+
+```
+ Log back in and now you wont need sudo for docker commands.
+ Now you can proceed to install Fn CLI
+```
+
+
+
 * [Installation instructions for Oracle Linux 7 with UEK 4](https://docs.oracle.com/cd/E52668_01/E87205/html/section_install_upgrade_yum_docker.html)
 
 * [For other Linux versions](https://www.docker.com/community-edition)
