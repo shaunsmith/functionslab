@@ -71,7 +71,6 @@ Server version:  ?
 
 ```
 api-url: https://api.test.us-ashburn-1.functions.oci.oraclecloud.com
-call-url: https://call.test.us-ashburn-1.functions.oci.oraclecloud.com
 oracle.compartment-id: ocid1.compartment.oc1..aaaaaaaaokbzj2jn3hf5kwdwqoxl2dq7u54p3tsmxrjd7s3uu7x23tkegiua
 oracle.profile: workshop-devrel-profile
 provider: oracle
