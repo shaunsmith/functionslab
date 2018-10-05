@@ -1,5 +1,5 @@
-api-url: https://api.test.us-ashburn-1.functions.oci.oraclecloud.com
+api-url: https://functions.us-phoenix-1.oraclecloud.com
 oracle.compartment-id: ocid1.compartment.oc1..aaaaaaaaokbzj2jn3hf5kwdwqoxl2dq7u54p3tsmxrjd7s3uu7x23tkegiua
 oracle.profile: workshop-devrel-profile
 provider: oracle
-registry: iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+registry: phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
