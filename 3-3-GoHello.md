@@ -24,14 +24,14 @@ We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-
 
 ![](images/userinput.png)
 >```
-> fn -v deploy --app workshop-<NNN>-app --no-bump
+> fn -v deploy --app ws-<NNN>-app --no-bump
 >```
 
 ## List triggers
 
 ![](images/userinput.png)
 >```
-> fn list triggers workshop-<NNN>-app
+> fn list triggers ws-<NNN>-app
 >```
 
 ## [TEMPORARY SOLUTION] Make the OCIR repo public
@@ -48,7 +48,7 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 
 ![](images/userinput.png)
 >```
-> fn -v invoke workshop-<NNN>-app go-fn
+> fn -v invoke ws-<NNN>-app go-fn
 >
 > {"message":"Hello World"}
 >```
@@ -57,7 +57,7 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke workshop-<NNN>-app go-fn --content-type application/json
+> echo -n '{"name":"EMEA"}' | fn invoke ws-<NNN>-app go-fn --content-type application/json
 >
 > {"message":"Hello EMEA"}
 >```
@@ -72,26 +72,26 @@ First, delete the trigger as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete trigger workshop-<NNN>-app go-fn go-fn-trigger
+> fn delete trigger ws-<NNN>-app go-fn go-fn-trigger
 > 
-> workshop-<NNN>-app go-fn go-fn-trigger deleted
+> ws-<NNN>-app go-fn go-fn-trigger deleted
 >```
 
 Then, delete the function as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete function workshop-<NNN>-app go-fn
+> fn delete function ws-<NNN>-app go-fn
 > 
-> workshop-<NNN>-app go-fn deleted
+> ws-<NNN>-app go-fn deleted
 >```
 
 And finally, delete the app as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete app workshop-<NNN>-app
+> fn delete app ws-<NNN>-app
 > 
-> workshop-<NNN>-app deleted
+> ws-<NNN>-app deleted
 >```
 
