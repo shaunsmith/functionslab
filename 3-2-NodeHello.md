@@ -42,7 +42,7 @@ Example:
 
 ![](images/userinput.png)
 >```
-> fn -v deploy --app workshop-<NNN>-app --no-bump
+> fn -v deploy --app workshop-<NNN>-app --no-bump --no-cache
 >```
 
 ## List triggers
