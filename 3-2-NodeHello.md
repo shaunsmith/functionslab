@@ -14,14 +14,14 @@ Public Subnet xqgA:US-ASHBURN-AD-3	| ocid1.subnet.oc1.iad.aaaaaaaah2hbng6hb4lvna
 
 ![](images/userinput.png)
 >```
-> fn create app workshop-<NNN>-app --annotation oracle.com/oci/subnetIds='["subnet-ocid-use-any-one-from-the-above"]'
+> fn create app ws-<NNN>-app --annotation oracle.com/oci/subnetIds='["subnet-ocid-use-any-one-from-the-above"]'
 >```  
 
 Example:
 
 ![](images/userinput.png)
 >```
-> fn create app workshop-<NNN>-app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.iad.aaaaaaaah2hbng6hb4lvnaqfmenqlejmp677vojolwcablnp4rjbikgrn5ja"]'
+> fn create app ws-<NNN>-app --annotation oracle.com/oci/subnetIds='["ocid1.subnet.oc1.iad.aaaaaaaah2hbng6hb4lvnaqfmenqlejmp677vojolwcablnp4rjbikgrn5ja"]'
 >```  
 
 ## Create a boiler plate Node function with an http trigger
@@ -42,14 +42,14 @@ Example:
 
 ![](images/userinput.png)
 >```
-> fn -v deploy --app workshop-<NNN>-app --no-bump --no-cache
+> fn -v deploy --app ws-<NNN>-app --no-bump --no-cache
 >```
 
 ## List triggers
 
 ![](images/userinput.png)
 >```
-> fn list triggers workshop-<NNN>-app
+> fn list triggers ws-<NNN>-app
 >```
 
 ## [TEMPORARY SOLUTION] Make the OCIR repo public
@@ -66,7 +66,7 @@ Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://githu
 
 ![](images/userinput.png)
 >```
-> fn -v invoke workshop-<NNN>-app node-fn
+> fn -v invoke ws-<NNN>-app node-fn
 > 
 > {"message":"Hello World"}
 >```
@@ -75,7 +75,7 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke workshop-<NNN>-app node-fn --content-type application/json
+> echo -n '{"name":"EMEA"}' | fn invoke ws-<NNN>-app node-fn --content-type application/json
 >
 > {"message":"Hello EMEA"}
 >```
@@ -91,18 +91,18 @@ First, delete the trigger as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete trigger workshop-<NNN>-app node-fn node-fn-trigger
+> fn delete trigger ws-<NNN>-app node-fn node-fn-trigger
 > 
-> workshop-<NNN>-app node-fn node-fn-trigger deleted
+> ws-<NNN>-app node-fn node-fn-trigger deleted
 >```
 
 And then, delete the function as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete function workshop-<NNN>-app node-fn
+> fn delete function ws-<NNN>-app node-fn
 > 
-> workshop-<NNN>-app node-fn deleted
+> ws-<NNN>-app node-fn deleted
 >```
 
 Leave the app as-is since we will reuse it in the next example.
