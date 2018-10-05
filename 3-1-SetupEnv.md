@@ -2,11 +2,11 @@
 
 ## Information needed in subsequent steps
 
-1. OCI Console: https://console.us-ashburn-1.oraclecloud.com
+1. OCI Console: https://console.us-phoenix-1.oraclecloud.com
 
 2. Tenant: oracle-serverless-devrel
 
-3. Region: us-ashburn-1
+3. Region: us-phoenix-1
 
 4. Username and password: Your lab instructor will give you your user name and password
 
@@ -37,7 +37,7 @@ Note: Functions does NOT require you to install the OCI CLI. All you need to do 
 ```
 [workshop-devrel-profile]
 tenancy=ocid1.tenancy.oc1..aaaaaaaaydrjm77otncda2xn7qtv7l3hqnd3zxn2u6siwdhniibwfv4wwhta
-region=us-ashburn-1
+region=us-phoenix-1
 user=<your-user-ocid>
 fingerprint=2c:bd:7b:5c:76:58:ec:77:6d:9b:f8:3b:be:a6:23:2b
 key_file=<full-path-to-your-private-key> e.g. /Users/amy/labs_pri_key.pem
@@ -59,7 +59,7 @@ This above command will install the `fn` CLI on your machine.
 ```
 fn version
 
-Client version: 0.4.153
+Client version: 0.5.15
 Server version:  ?
 ```
 
@@ -70,11 +70,11 @@ Server version:  ?
 *Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
 
 ```
-api-url: https://api.test.us-ashburn-1.functions.oci.oraclecloud.com
+api-url: https://functions.us-phoenix-1.oraclecloud.com
 oracle.compartment-id: ocid1.compartment.oc1..aaaaaaaaokbzj2jn3hf5kwdwqoxl2dq7u54p3tsmxrjd7s3uu7x23tkegiua
 oracle.profile: workshop-devrel-profile
 provider: oracle
-registry: iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+registry: phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
 ```
 
 2. List all `fn contexts` on your machine. Run the following command:
@@ -84,7 +84,7 @@ fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
 ```
 
 3. Use `workshop` context. Run the following command:
@@ -102,7 +102,7 @@ fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-*	workshop			oracle		https://api.test.us-ashburn-1.functions.oci.oraclecloud.com	iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+*	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
 ```
 
 ## Start Docker
@@ -124,7 +124,7 @@ Note: If you forget the Auth Token you can delete this one and repeat the above 
 *Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
 
 ```
-docker login iad.ocir.io
+docker login phx.ocir.io
 Username: oracle-serverless-devrel/workshop-<NNN>
 Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
@@ -153,6 +153,6 @@ docker pull fnproject/ui:latest
 fn list apps
  
 NAME
-workshop-100-app
-workshop-101-app
+ws-100-app
+ws-101-app
 ```
