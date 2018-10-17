@@ -66,9 +66,9 @@ becoming familiar with the basics of Fn, not Go programming.
 
 So let's [create and deploy your first function](http://fnproject.io/tutorials/Introduction).
 
-### Introducing the Java Function Developer Kit
+### Introducing the Java Function Development Kit
 
-Fn provides an FDK (Function Developer Kit) for each of the core supported
+Fn provides an FDK (Function Development Kit) for each of the core supported
 programming languages.  But the Java FDK is the most advanced with support for
 Maven builds, automatic function argument type conversions, and comprehenive
 support for function testing with JUnit.
