@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 if [ -z "$1" ]; then
-  FDK_VERSION=1.0.62
+  FDK_VERSION=1.0.75
 else
   FDK_VERSION=${1}
 fi

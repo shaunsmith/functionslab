@@ -7,7 +7,7 @@ else
 fi
 
 if [ -z "$2" ]; then
-  FDK_VERSION=1.0.62
+  FDK_VERSION=1.0.75
 else
   FDK_VERSION=${2}
 fi
