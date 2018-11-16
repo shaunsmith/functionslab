@@ -1,4 +1,4 @@
-# Hello World - Go (HTTP Triggers)
+# Hello World - Go
 
 *Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
 
@@ -24,7 +24,7 @@ We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-
 
 ![](images/userinput.png)
 >```
-> fn -v deploy --app ws-<NNN>-app --no-bump
+> fn -v deploy --app ws-<NNN>-app --no-bump --no-cache
 >```
 
 ## List triggers
@@ -34,22 +34,13 @@ We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-
 > fn list triggers ws-<NNN>-app
 >```
 
-## [TEMPORARY SOLUTION] Make the OCIR repo public
-
-Refer to [Functions Cheatsheet - Triggers (List, Inspect, Invoke)](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet#triggers-list-inspect-invoke) section.
-
-![](images/userinput.png)
->```
-> On the OCIR console, make your repo (created by Fn deploy) public: 
-> iad.ocir.io/oracle-serverless-devrel/workshop-<NNN>/go-fn
->```
-
 ## Invoke the function using CLI
 
 ![](images/userinput.png)
 >```
-> fn -v invoke ws-<NNN>-app go-fn
+> fn -v invoke ws-<NNN>-app go-fn --display-call-id
 >
+> Call ID: 01CWES47JM1BT0GGRZJ0000MN9
 > {"message":"Hello World"}
 >```
 
@@ -57,8 +48,9 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke ws-<NNN>-app go-fn --content-type application/json
+> echo -n '{"name":"EMEA"}' | fn invoke ws-<NNN>-app go-fn --display-call-id --content-type application/json
 >
+> Call ID: 01CWES1FR11BT0GGRZJ0000MKW
 > {"message":"Hello EMEA"}
 >```
 
