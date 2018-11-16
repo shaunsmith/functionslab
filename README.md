@@ -18,6 +18,12 @@ Note:
 
 2. If you are using virtualbox with the "fnlab.ova" image make sure you run the entire lab inside the "fnlab VM".
 
+
+
+## Clone or download this repo
+
+Use the "Clone or download" button at the top right to clone or download this repo.
+
 ## Section 1 - Setting up a Docker Environment
 
 * [Docker Options](vm.md)
