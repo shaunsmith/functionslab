@@ -20,10 +20,6 @@ Note:
 
 
 
-## Clone or download this repo
-
-Use the "Clone or download" button at the top right to clone or download this repo.
-
 ## Section 1 - Setting up a Docker Environment
 
 * [Docker Options](vm.md)
@@ -68,24 +64,28 @@ Fn Project can run anywhere - on your laptop or in the cloud. With Fn you can de
 locally and deploy to the cloud knowing your functions are running on *exactly* 
 the same underlying platform.
 
-### 1) Setup Local Development Environment
+### 3.1) Clone or download this repo
+
+Use the "Clone or download" button at the top right to clone or download this repo.
+
+### 3.2) Setup Local Development Environment
 
 * [Setup Local Development Environment](3-1-SetupEnv.md)
 
 
-### 2) Functions Commands Cheatsheet
+### 3.3) Functions Commands Cheatsheet
 
 * Use the [Functions Commands Cheatsheet](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet)
 
 * Also see the [fn CLI docs](https://github.com/fnproject/docs/blob/master/cli/README.md)
 
 
-### 3) Your First Function
+### 3.4) Your First Function
 
-* [Hello World - Node (Http Triggers)](3-2-NodeHello.md)
+* [Hello World - Node](3-2-NodeHello.md)
 
 
-### 4) Your Second Function
+### 3.5) Your Second Function
 
 * [Hello World - Go (Http Triggers)](3-3-GoHello.md)
 
@@ -94,21 +94,21 @@ the same underlying platform.
 
 Note: For this section you need the fn server running on your machine. Each lab below has a step to start the fn server.
 
-### 1) Function to Oracle Database
+### 4.1) Troubleshooting
 
-Note: Your lab instructor will share your DB connection details
+TODO - Add DEBUG=1, Common Errors
 
-* [Java Function to Oracle Database](https://github.com/abhirockzz/fn-oracledb-java-workshop)
+* [View your Function logs](https://github.com/abhirockzz/fn-syslog-example)
 
-### 2) Function to OCI Object Store
+### 4.2) Function to OCI Object Store
 
 Note: Your lab instructor will share the object store bucket details
 
 * [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop)
 
-### 3) Troubleshooting
+### 4.3) Function to Oracle Database
 
-TODO - Add DEBUG=1, Common Errors
+Note: Your lab instructor will share your DB connection details
 
-* [View your Function logs](https://github.com/abhirockzz/fn-syslog-example)
+* [Java Function to Oracle Database](https://github.com/abhirockzz/fn-oracledb-java-workshop)
 
