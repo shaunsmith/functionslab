@@ -87,7 +87,7 @@ Use the "Clone or download" button at the top right to clone or download this re
 
 ### 3.5) Your Second Function
 
-* [Hello World - Go (Http Triggers)](3-3-GoHello.md)
+* [Hello World - Go](3-3-GoHello.md)
 
 
 ## Section 4 - Open Source Fn
