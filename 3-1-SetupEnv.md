@@ -103,6 +103,8 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 
 ## Start Docker
 
+Note: If you are using our labs virtual machine (given by your labs instructor) docker is already running.
+
 1. If you haven't already, start Docker. Follow the steps for your OS.
 
 ## Auth Token for OCIR
