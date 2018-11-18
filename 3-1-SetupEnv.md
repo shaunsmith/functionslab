@@ -30,26 +30,21 @@ https://console.us-ashburn-1.oraclecloud.com/
 
 2. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download your public and private keys.
 
-3. Make a note of the full path of your private key file e.g. `/home/demo/functionslab/labs_pri_key.pem`.
+3. Make a note of the full path of your private key file e.g. `/home/demo/functionslab/labs_pri_key.pem`
 
 
 ## OCI CLI Configuration
 
-Note: Functions does NOT require you to install the OCI CLI. All you need to do is to enter your OCI user account details in the `~/.oci/config` file.
+Note: Functions does NOT require you to install the OCI CLI. All you need to do is to enter your OCI user account details in the `~/.oci/config` file as per the steps below.
 
-1. Edit (or create) your `~/.oci/config` file. Copy the contents of the file [workshop-devrel-profile](util/workshop-devrel-profile) shown below and append (paste) to the bottom of your `~/.oci/config` file.
+1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `config` file. This file has a profile called `[workshop-devrel-profile]` which you will use for today's workshop.
 
-*Don't forget to add your user OCID and the full path to your private key file.*
+2. If your machine already has `~/.oci/config` file, edit it. Copy the contents of the downloaded `config` file and append (paste) to the bottom of your `~/.oci/config` file.
 
-```
-[workshop-devrel-profile]
-tenancy=ocid1.tenancy.oc1..aaaaaaaaydrjm77otncda2xn7qtv7l3hqnd3zxn2u6siwdhniibwfv4wwhta
-region=us-phoenix-1
-user=<your-user-ocid>
-fingerprint=2c:bd:7b:5c:76:58:ec:77:6d:9b:f8:3b:be:a6:23:2b
-key_file=<full-path-to-your-private-key> e.g. /Users/amy/labs_pri_key.pem
-pass_phrase=emea
-```
+3. If your machine doesn't have `~/.oci/config` file, create the `~/.oci` folder and move the downloaded `config` file in to the `~/.oci` folder.
+
+4. *Don't forget to add your user OCID and the full path to your private key file.*
+
 
 ## Fn CLI
 
