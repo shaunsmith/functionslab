@@ -80,7 +80,7 @@ fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/workshop<NNN>
+	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/<user-name>
 ```
 
 5. Use `workshop` context. Run the following command:
@@ -98,7 +98,7 @@ fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-*	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/workshop<NNN>
+*	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/<user-name>
 ```
 
 ## Start Docker
