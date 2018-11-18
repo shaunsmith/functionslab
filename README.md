@@ -106,17 +106,11 @@ the same underlying platform.
 
 Note: For this section you need the fn server running on your machine. Each lab below has a step to start the fn server.
 
-### 4.1) Troubleshooting
-
-TODO - Add DEBUG=1, Common Errors
-
-* [View your Function logs](https://github.com/abhirockzz/fn-syslog-example)
-
-### 4.2) Function to OCI Object Store
+### 4.1) Function to OCI Object Store
 
 * [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop/blob/master/README_Fn_OSS.md)
 
-### 4.3) Function to Oracle Database
+### 4.2) Function to Oracle Database
 
 Note: Your lab instructor will share your DB connection details
 
