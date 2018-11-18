@@ -100,26 +100,19 @@ and open a Linux desktop.
 
 ![](images/linux-desktop.jpg)
 
+Note: sudo user=demo and password=demo
+
 1. Double click on `Terminal` to open a terminal.  Do *not* update when prompted, this is not necessary.
 
-2. [sudo] password for demo is demo.
-
-3. This image has the following versions:
-
-```
-fn CLI version = 0.4.113
-fn server version = 0.3.470
-```
-
-4. For this workshop we will use the latest fn cli (v0.4.153 or above) and fn server (v0.3.545 or above).
-
-5. To update the fn cli run the following command
+2. Install (or update) the latest `fn cli` run the following command
 
 ```
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 ```
 
-6. To update the fn server run the following command
+3. When prompted, enter password for `user: demo` is `demo`.
+
+4. To update the fn server run the following command
 
 ```
 fn update sv
