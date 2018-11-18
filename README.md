@@ -112,9 +112,7 @@ TODO - Add DEBUG=1, Common Errors
 
 ### 4.2) Function to OCI Object Store
 
-Note: Your lab instructor will share the object store bucket details
-
-* [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop)
+* [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop/blob/master/README_Fn_OSS.md)
 
 ### 4.3) Function to Oracle Database
 
