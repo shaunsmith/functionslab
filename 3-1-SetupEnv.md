@@ -39,7 +39,7 @@ Note: Functions does NOT require you to install the OCI CLI. All you need to do 
 
 1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `config` file. This file has a profile called `[workshop-devrel-profile]` which you will use for today's workshop.
 
-2. Edit the downloaded `config` file. *Don't forget* add your user-OCID and the-full-path-to-your-private-key-file in the downloaded `config` file.
+2. Edit the downloaded `config` file. **Don't forget to** add your user-OCID and the-full-path-to-your-private-key-file in the downloaded `config` file.
 
 3. If your machine already has `~/.oci/config` file, edit it. Copy the contents of the downloaded `config` file and append (paste) to the bottom of your `~/.oci/config` file.
 
@@ -61,32 +61,26 @@ This above command will install the `fn` CLI on your machine.
 ```
 fn version
 
-Client version: 0.5.15
+Client version: 0.5.29
 Server version:  ?
 ```
 
 ## Fn Context for OCI 
 
-1. Copy the `fn context` file [workshop.yaml](util/workshop.yaml) to the `~/.fn/contexts/` folder. Contents of the file are shown below. 
+1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `fn context` file named `workshop.yaml`. The fn CLI uses this file to connect to the Oracle Functions server.
 
-*Don't forget to replace `<NNN>` with your user number. Your lab instructor will give you your user number.*
+2. **Don't forget to** replace `<NNN>` with your user number. Your lab instructor will give you your user number.
 
-```
-api-url: https://functions.us-phoenix-1.oraclecloud.com
-oracle.compartment-id: ocid1.compartment.oc1..aaaaaaaaokbzj2jn3hf5kwdwqoxl2dq7u54p3tsmxrjd7s3uu7x23tkegiua
-oracle.profile: workshop-devrel-profile
-provider: oracle
-registry: phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
-```
+3. Copy this `workshop.yaml` file to the `~/.fn/contexts/` folder. 
 
-2. List all `fn contexts` on your machine. Run the following command:
+4. List all `fn contexts` on your machine. Run the following command:
 
 ```
 fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/workshop<NNN>
 ```
 
 3. Use `workshop` context. Run the following command:
@@ -104,7 +98,7 @@ fn ls context
 
 CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	default				default		http://localhost:8080/v1
-*	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/oracle-serverless-devrel/workshop-<NNN>
+*	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/workshop<NNN>
 ```
 
 ## Start Docker
@@ -113,7 +107,7 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 
 ## Auth Token for OCIR
 
-1. Go to OCI Console > User settings > Auth tokens and generate a new Auth token. You will need this later to login to OCIR from a terminal window. 
+1. Go to OCI Phoenix Console > User settings > Auth tokens and generate a new Auth token. You will need this later to login to OCIR from a terminal window. 
 
 2. Please make a note of your Auth Token (created above). You won't see it again on the OCI Console.
 
@@ -127,12 +121,12 @@ Note: If you forget the Auth Token you can delete this one and repeat the above 
 
 ```
 docker login phx.ocir.io
-Username: oracle-serverless-devrel/workshop-<NNN>
+Username: <tenant-name>/workshop<NNN>
 Password: <enter-your-Auth-Token-created-above>
 Login Succeeded
 ```
 
-## Update Old Images (if you are using fnlab.ova virtual box image or if you have an OLD Fn setup on your machine)
+## Update Old Images (if you have an OLD Fn setup on your machine)
 
 If you have never played with open source Fn before you can skip this step.
 
@@ -155,6 +149,6 @@ docker pull fnproject/ui:latest
 fn list apps
  
 NAME
-ws-100-app
-ws-101-app
+ws100app
+ws101app
 ```
