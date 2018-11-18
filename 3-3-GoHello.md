@@ -48,10 +48,10 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke ws<NNN>app go-fn --display-call-id --content-type application/json
+> echo -n '{"name":"DOAG"}' | fn invoke ws<NNN>app go-fn --display-call-id --content-type application/json
 >
 > Call ID: 01CWES1FR11BT0GGRZJ0000MKW
-> {"message":"Hello EMEA"}
+> {"message":"Hello DOAG"}
 >```
 
 ## Clean up
