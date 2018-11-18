@@ -153,4 +153,8 @@ fn list apps
 NAME
 ws100app
 ws101app
+
+fn list apps
+NAME		ID								
+ws100app	ocid1.fnapp.oc1.phx.aaaaaaaaahyhix4ezjfro4unq5dqnapigdpdbl4ezjfro4yexts1il564y	
 ```
