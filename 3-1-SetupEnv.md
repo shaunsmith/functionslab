@@ -2,7 +2,7 @@
 
 ## OCI Login - Change Password
 
-1. Username and password: Your lab instructor will give you your `Cloud Tenant`, `User Name` and `Password`
+1. Your lab instructor will give you your `Cloud Tenant`, `User Name` and `Password`
 
 2. Login to OCI Ashburn (home region) Console and change your password during the first login.
 
