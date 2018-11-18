@@ -24,21 +24,21 @@ We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-
 
 ![](images/userinput.png)
 >```
-> fn -v deploy --app ws-<NNN>-app --no-bump --no-cache
+> fn -v deploy --app ws<NNN>app --no-bump --no-cache
 >```
 
 ## List triggers
 
 ![](images/userinput.png)
 >```
-> fn list triggers ws-<NNN>-app
+> fn list triggers ws<NNN>app
 >```
 
 ## Invoke the function using CLI
 
 ![](images/userinput.png)
 >```
-> fn -v invoke ws-<NNN>-app go-fn --display-call-id
+> fn -v invoke ws<NNN>app go-fn --display-call-id
 >
 > Call ID: 01CWES47JM1BT0GGRZJ0000MN9
 > {"message":"Hello World"}
@@ -48,7 +48,7 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke ws-<NNN>-app go-fn --display-call-id --content-type application/json
+> echo -n '{"name":"EMEA"}' | fn invoke ws<NNN>app go-fn --display-call-id --content-type application/json
 >
 > Call ID: 01CWES1FR11BT0GGRZJ0000MKW
 > {"message":"Hello EMEA"}
@@ -64,26 +64,26 @@ First, delete the trigger as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete trigger ws-<NNN>-app go-fn go-fn-trigger
+> fn delete trigger ws<NNN>app go-fn go-fn-trigger
 > 
-> ws-<NNN>-app go-fn go-fn-trigger deleted
+> ws<NNN>app go-fn go-fn-trigger deleted
 >```
 
 Then, delete the function as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete function ws-<NNN>-app go-fn
+> fn delete function ws<NNN>app go-fn
 > 
-> ws-<NNN>-app go-fn deleted
+> ws<NNN>app go-fn deleted
 >```
 
 And finally, delete the app as shown below.
 
 ![](images/userinput.png)
 >```
-> fn delete app ws-<NNN>-app
+> fn delete app ws<NNN>app
 > 
-> ws-<NNN>-app deleted
+> ws<NNN>app deleted
 >```
 
