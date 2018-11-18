@@ -1,5 +1,16 @@
 #  Setup Local Development Environment
 
+## OCI Login - Change Password
+
+1. Username and password: Your lab instructor will give you your `Cloud Tenant`, `User Name` and `Password`
+
+2. Login to OCI Ashburn (home region) Console and change your password during the first login.
+
+https://console.us-ashburn-1.oraclecloud.com/
+
+3. Once you are done, please logout of the console. For the rest of the lab we will use the OCI Phoenix region/Console.
+
+
 ## Information needed in subsequent steps
 
 1. OCI Console: https://console.us-phoenix-1.oraclecloud.com
@@ -11,19 +22,6 @@
 4. User OCID: Please get your user OCID from OCI console > User Settings screen
 
 6. Key files: See next step for keys 
-
-
-## OCI Login - Change Password
-
-1. Username and password: Your lab instructor will give you your user name and a password
-
-2. Tenant: oracle-serverless-devrel
-
-3. Login to OCI Ashburn console and change your password during the first login. Ashburn is the home region for our tenancy for today's workshop.
-
-https://console.us-ashburn-1.oraclecloud.com/
-
-4. Once you are done, please logout of the console.
 
 
 ## API Signing Key 
