@@ -110,7 +110,11 @@ Note: sudo user=demo and password=demo
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 ```
 
-3. When prompted, enter password for `user: demo` is `demo`.
+3. When prompted, enter password as `demo` 
+
+```
+[sudo] password for demo:
+```
 
 4. To update the fn server run the following command
 
