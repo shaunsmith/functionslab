@@ -39,11 +39,11 @@ Note: Functions does NOT require you to install the OCI CLI. All you need to do 
 
 1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `config` file. This file has a profile called `[workshop-devrel-profile]` which you will use for today's workshop.
 
-2. If your machine already has `~/.oci/config` file, edit it. Copy the contents of the downloaded `config` file and append (paste) to the bottom of your `~/.oci/config` file.
+2. Edit the downloaded `config` file. *Don't forget* to add your user OCID and the full path to your private key file.
 
-3. If your machine doesn't have `~/.oci/config` file, create the `~/.oci` folder and move the downloaded `config` file in to the `~/.oci` folder.
+3. If your machine already has `~/.oci/config` file, edit it. Copy the contents of the downloaded `config` file and append (paste) to the bottom of your `~/.oci/config` file.
 
-4. *Don't forget to add your user OCID and the full path to your private key file.*
+4. If your machine doesn't have `~/.oci/config` file, create the `~/.oci` folder and move the downloaded `config` file in to the `~/.oci` folder.
 
 
 ## Fn CLI
