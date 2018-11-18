@@ -65,9 +65,9 @@ And you can pass parameters as shown below:
 
 ![](images/userinput.png)
 >```
-> echo -n '{"name":"EMEA"}' | fn invoke ws<NNN>app node-fn --display-call-id --content-type application/json
+> echo -n '{"name":"DOAG"}' | fn invoke ws<NNN>app node-fn --display-call-id --content-type application/json
 >
-> {"message":"Hello EMEA"}
+> {"message":"Hello DOAG"}
 >```
 
 
