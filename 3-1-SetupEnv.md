@@ -67,9 +67,9 @@ Server version:  ?
 
 ## Fn Context for OCI 
 
-1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `fn context` file named `workshop.yaml`. The fn CLI uses this file to connect to the Oracle Functions server.
+1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `fn context` file named `workshop.yaml`. The fn CLI uses this file to connect to the Oracle Functions server and docker registry.
 
-2. **Don't forget to** replace `<NNN>` with your user number. Your lab instructor will give you your user number.
+2. Edit the downloaded `workshop.yaml` file. **Don't forget to** replace `<NNN>` with your user number. Your lab instructor will give you your user number.
 
 3. Copy this `workshop.yaml` file to the `~/.fn/contexts/` folder. 
 
