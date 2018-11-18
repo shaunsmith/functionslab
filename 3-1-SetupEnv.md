@@ -123,8 +123,8 @@ Note: If you forget the Auth Token you can delete this one and repeat the above 
 
 ```
 docker login phx.ocir.io
-Username: <enter-your-tenant-name>/workshop<NNN>
-Password: <enter-your-Auth-Token-created-above>
+Username: <tenant-name>/<user-name>
+Password: <Auth-Token-created-above>
 Login Succeeded
 ```
 
