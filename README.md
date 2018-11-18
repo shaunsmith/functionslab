@@ -95,6 +95,11 @@ Use the "Clone or download" button at the top right to clone or download this re
 * [Hello World - Go](3-3-GoHello.md)
 
 
+### 3.6) Function to OCI Object Store
+
+* [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop/blob/master/README_Fn_Service.md)
+
+
 ## Section 4 - Open Source Fn
 
 Note: For this section you need the fn server running on your machine. Each lab below has a step to start the fn server.
