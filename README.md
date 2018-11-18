@@ -64,30 +64,32 @@ Fn Project can run anywhere - on your laptop or in the cloud. With Fn you can de
 locally and deploy to the cloud knowing your functions are running on *exactly* 
 the same underlying platform.
 
-### 3.1) Clone or download this repo
-
-Use the "Clone or download" button at the top right to clone or download this repo.
-
-![](images/userinput.png)
->```
-> git clone https://github.com/sachin-pikle/functionslab.git
->```
-
-### 3.2) Setup Local Development Environment
+### 3.1) Setup Local Development Environment
 
 * [Setup Local Development Environment](3-1-SetupEnv.md)
 
 
-### 3.3) Functions Commands Cheatsheet
+### 3.2) Functions Commands Cheatsheet
 
 * Use the [Functions Commands Cheatsheet](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet)
 
 * Also see the [fn CLI docs](https://github.com/fnproject/docs/blob/master/cli/README.md)
 
 
-### 3.4) Your First Function
+### 3.3) Your First Function
 
 * [Hello World - Node](3-2-NodeHello.md)
+
+### 3.4) Troubleshooting Functions
+
+* Get a PaperTrail destination syslog endpoint by following steps 1-5 from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCapture)
+
+* Update your app's syslog-url with the PaperTrail destination
+
+  ![](images/userinput.png)
+  >```
+  > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
+  >```
 
 
 ### 3.5) Your Second Function
