@@ -30,7 +30,7 @@ https://console.us-ashburn-1.oraclecloud.com/
 
 2. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download your public and private keys.
 
-3. Make a note of the full path of your private key file e.g. `/home/demo/functionslab/labs_pri_key.pem`
+3. Make a note of the full path of your private key file e.g. `/home/demo/Downloads/labs_pri_key.pem`
 
 
 ## OCI CLI Configuration
