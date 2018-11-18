@@ -68,9 +68,10 @@ the same underlying platform.
 
 Use the "Clone or download" button at the top right to clone or download this repo.
 
-```
-git clone https://github.com/sachin-pikle/functionslab.git
-```
+![](images/userinput.png)
+>```
+> git clone https://github.com/sachin-pikle/functionslab.git
+>```
 
 ### 3.2) Setup Local Development Environment
 
