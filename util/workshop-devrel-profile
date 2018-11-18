@@ -1,7 +1,0 @@
-[workshop-devrel-profile]
-tenancy=ocid1.tenancy.oc1..aaaaaaaaydrjm77otncda2xn7qtv7l3hqnd3zxn2u6siwdhniibwfv4wwhta
-region=us-phoenix-1
-user=<your-user-ocid>
-fingerprint=2c:bd:7b:5c:76:58:ec:77:6d:9b:f8:3b:be:a6:23:2b
-key_file=<full-path-to-your-private-key> e.g. /Users/amy/labs_pri_key.pem
-pass_phrase=emea
