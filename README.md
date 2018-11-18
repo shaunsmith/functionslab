@@ -80,6 +80,7 @@ the same underlying platform.
 
 * [Hello World - Node](3-2-NodeHello.md)
 
+
 ### 3.4) Troubleshooting Functions
 
 * Get a PaperTrail destination syslog endpoint by following steps 1-5 from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCapture)
@@ -90,6 +91,14 @@ the same underlying platform.
   >```
   > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
   >```
+
+* Add a console.log statement in your node function
+
+* Redeploy the updated function
+
+* Invoke the function
+
+* View the log statement in your PaperTrail Events console
 
 
 ### 3.5) Your Second Function
