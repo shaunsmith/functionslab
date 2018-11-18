@@ -83,7 +83,7 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 	workshop			oracle		https://functions.us-phoenix-1.oraclecloud.com	phx.ocir.io/<tenant-name>/workshop<NNN>
 ```
 
-3. Use `workshop` context. Run the following command:
+5. Use `workshop` context. Run the following command:
 
 ```
 fn use context workshop
@@ -91,7 +91,7 @@ fn use context workshop
 Now using context: workshop
 ```
 
-4. Check if `workshop` is now the current context. Run the following command. An `*` is used to indicate the current context as shown below.
+6. Check if `workshop` is now the current context. Run the following command. An `*` is used to indicate the current context as shown below.
 
 ```
 fn ls context
