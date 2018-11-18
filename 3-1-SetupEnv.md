@@ -28,7 +28,7 @@ https://console.us-ashburn-1.oraclecloud.com/
 
 1. This is your OCI private key, public key and fingerprint. 
 
-2. Login to OCI Phoenix Console > Object Store > select `workshop-100` compartment > Buckets > Go to the `workshop-prereqs` bucket and download your public and private keys. Overwrite empty key files in the [keys](keys) folder with the actual key files you downloaded from the storage bucket.
+2. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download your public and private keys. Overwrite empty key files in the [keys](keys) folder with the actual key files you downloaded from the storage bucket.
 
 2. Make a note of the full path of your private key file.
 
