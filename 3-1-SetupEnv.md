@@ -13,7 +13,7 @@ https://console.us-ashburn-1.oraclecloud.com/
 
 ## Information needed in subsequent steps
 
-1. OCI Console: https://console.us-phoenix-1.oraclecloud.com
+1. OCI Phoenix Console: https://console.us-phoenix-1.oraclecloud.com
 
 2. Tenant: oracle-serverless-devrel
 
@@ -21,7 +21,7 @@ https://console.us-ashburn-1.oraclecloud.com/
 
 4. User OCID: Please get your user OCID from OCI console > User Settings screen
 
-6. Key files: See next step for keys 
+5. Key files: See next step for keys 
 
 
 ## API Signing Key 
