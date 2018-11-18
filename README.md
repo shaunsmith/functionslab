@@ -37,7 +37,7 @@ installed and working. In a terminal, type the following command:
 If Docker is installed and running, you should see output something like:
 
 ```
-Docker version 17.0x.x-ce, build 276fd32
+Docker version 18.03.1-ce, build 9ee9f40
 ```
 
 NOTE: Depending on how you've installed Docker you may need to prefix `docker`
