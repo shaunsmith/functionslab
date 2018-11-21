@@ -4,7 +4,7 @@
 
 ## Reuse your first app
 
-We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-2-NodeHello.md) example. We will add the Go function to the same app.
+We will reuse the app you created in the [Hello World - Node](3-2-NodeHello.md) example. We will add the Go function to the same app.
 
 ## Create a boiler plate Go function with an http trigger
 
@@ -27,11 +27,11 @@ We will reuse the app you created in the [Hello World - Node (HTTP Triggers)](3-
 > fn -v deploy --app ws<NNN>app --no-bump --no-cache
 >```
 
-## List triggers
+## List functions
 
 ![](images/userinput.png)
 >```
-> fn list triggers ws<NNN>app
+> fn list functions ws<NNN>app
 >```
 
 ## Invoke the function using CLI
@@ -54,36 +54,7 @@ And you can pass parameters as shown below:
 > {"message":"Hello DOAG"}
 >```
 
-## Clean up
+## Summary
 
-Congratulations! Now that you have verified your deployed function, you should clean up the trigger, function and app.
-
-Refer to [Delete (Trigger, Function, App)](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet#delete-trigger-function-app) section.
-
-First, delete the trigger as shown below.
-
-![](images/userinput.png)
->```
-> fn delete trigger ws<NNN>app go-fn go-fn-trigger
-> 
-> ws<NNN>app go-fn go-fn-trigger deleted
->```
-
-Then, delete the function as shown below.
-
-![](images/userinput.png)
->```
-> fn delete function ws<NNN>app go-fn
-> 
-> ws<NNN>app go-fn deleted
->```
-
-And finally, delete the app as shown below.
-
-![](images/userinput.png)
->```
-> fn delete app ws<NNN>app
-> 
-> ws<NNN>app deleted
->```
-
+Congratulations! You have successfully created, deployed and invoked your deployed 
+Go function. Leave the app as-is for the next example in this workshop.
