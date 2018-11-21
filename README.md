@@ -171,18 +171,18 @@ from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCap
 
   ![](images/userinput.png)
   >```
-  > fn -v deploy --app ws200app --no-cache
+  > fn -v deploy --app ws<NNN>app --no-cache
   >```
 
 * Invoke the function
 
   ![](images/userinput.png)
   >```
-  > fn invoke ws200app node-fn --display-call-id
+  > fn invoke ws<NNN>app node-fn --display-call-id
   >```
   
   >```
-  > echo -n '{"name":"DOAG"}' | fn invoke ws200app node-fn --display-call-id --content-type application/json
+  > echo -n '{"name":"DOAG"}' | fn invoke ws<NNN>app node-fn --display-call-id --content-type application/json
   >```
 
 * View the log statement in your PaperTrail Events console
