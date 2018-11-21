@@ -15,13 +15,11 @@ https://console.us-ashburn-1.oraclecloud.com/
 
 1. OCI Phoenix Console: https://console.us-phoenix-1.oraclecloud.com
 
-2. Tenant: oracle-serverless-devrel
+2. Region: us-phoenix-1
 
-3. Region: us-phoenix-1
+3. User OCID: Please get your user OCID from OCI console > User Settings screen
 
-4. User OCID: Please get your user OCID from OCI console > User Settings screen
-
-5. Key files: See next step for keys 
+4. Key files: See next step for keys 
 
 
 ## API Signing Key 
@@ -39,16 +37,24 @@ Note: Functions does NOT require you to install the OCI CLI. All you need to do 
 
 1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `config` file. This file has a profile called `[workshop-devrel-profile]` which you will use for today's workshop.
 
-2. Edit the downloaded `config` file. **Don't forget to** add your user-OCID and the-full-path-to-your-private-key-file in the downloaded `config` file.
+2. Edit the downloaded `config` file. **Don't forget to** add your user-OCID (from OCI Phoenix Console > User Settings) and the-full-path-to-your-private-key-file in the downloaded `config` file.
 
 3. If your machine already has `~/.oci/config` file, edit it. Copy the contents of the downloaded `config` file and append (paste) to the bottom of your `~/.oci/config` file.
 
 4. If your machine doesn't have `~/.oci/config` file, create the `~/.oci` folder and move the downloaded `config` file in to the `~/.oci` folder.
 
+``` 
+mkdir ~/.oci
+
+mv /home/demo/Downloads/config ~/.oci/config
+``` 
+
 
 ## Fn CLI
 
-1. Run the following command to install (or update) the `fn` CLI. This is documented in the `install` section of the [fn CLI readme](https://github.com/fnproject/cli/blob/master/README.md#install). 
+1. In case you don't have the Fn CLI installed, run the following command to 
+install (or update) the `fn` CLI. This is documented in the `install` section of 
+the [fn CLI readme](https://github.com/fnproject/cli/blob/master/README.md#install). 
 
 ``` 
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
@@ -65,13 +71,25 @@ Client version: 0.5.29
 Server version:  ?
 ```
 
+3. Note if the fn server is running you will see `Server version: 0.3.622` or higher. 
+You should stop the fn server since in this section we will connect to Oracle Functions service
+and not your local server. To stop the local fn server use the following command:
+
+```
+fn stop
+```
+
 ## Fn Context for OCI 
 
 1. Login to OCI Phoenix Console > Object Store > Select `workshop` compartment > Buckets > Go to the `workshop-prereqs` bucket and download the `fn context` file named `workshop.yaml`. The fn CLI uses this file to connect to the Oracle Functions server and docker registry.
 
 2. Edit the downloaded `workshop.yaml` file. **Don't forget to** replace `<NNN>` with your user number. Your lab instructor will give you your user number.
 
-3. Copy this `workshop.yaml` file to the `~/.fn/contexts/` folder. 
+3. Move this `workshop.yaml` file to the `~/.fn/contexts/` folder. 
+
+```
+mv /home/demo/Downloads/workshop.yaml ~/.fn/contexts/
+```
 
 4. List all `fn contexts` on your machine. Run the following command:
 
@@ -103,7 +121,7 @@ CURRENT	NAME				PROVIDER	API URL			REGISTRY
 
 ## Start Docker
 
-Note: If you are using our labs virtual machine (given by your labs instructor) docker is already running.
+Note: If you are using our labs virtual machine (given by your labs instructor) docker is already running. You can skip this step.
 
 1. If you haven't already, start Docker. Follow the steps for your OS.
 
