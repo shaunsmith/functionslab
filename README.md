@@ -22,11 +22,11 @@ Note:
 
 ## Section 1 - Setting up a Docker Environment
 
-### Install Docker
+### 1.1) Install Docker
 
 * [Docker Options](vm.md)
 
-### Verify your Docker Installation
+### 1.2) Verify your Docker Installation
 
 Before we get started with functions we're going to verify that Docker is
 installed and working. In a terminal, type the following command:
