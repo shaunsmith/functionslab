@@ -4,13 +4,6 @@
 
 *Don't forget to add your user OCID and the full path to your private key file.*
 
-```
-	# workshop-NNN -in- oracle-serverless-devrel
-        local tenancyId="ocid1.tenancy.oc1..aaaaaaaaydrjm77otncda2xn7qtv7l3hqnd3zxn2u6siwdhniibwfv4wwhta";
-	local authUserId="<your-user-ocid>";
-	local keyFingerprint="2c:bd:7b:5c:76:58:ec:77:6d:9b:f8:3b:be:a6:23:2b";
-	local privateKeyPath="<full-path-to-your-private-key> e.g. /Users/john/labs_pri_key.pem";
-```
 
 ## Invoke the HelloWorld Node function using oci-curl
 
