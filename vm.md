@@ -118,9 +118,3 @@ fn version 0.5.29
 ```
 
 4. Confirm the version of the CLI should be at least `0.5.29`
-
-5. To update the fn server run the following command
-
-```
-fn update sv
-```
