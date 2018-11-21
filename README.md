@@ -152,16 +152,38 @@ from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCap
   > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
   >```
 
+* Inspect your app and confirm the syslog-url shown matches what you provided
+
+  ![](images/userinput.png)
+  >```
+  > fn inspect app ws<NNN>app
+  >```
+
 * Add a console.log statement in your node function
 
   ![](images/userinput.png)
   >```
-  > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
+  >   // Add a console.log statement before the return statement
+  >   console.log("Inside helloworld node function. Name=", name);
   >```
 
 * Redeploy the updated function
 
+  ![](images/userinput.png)
+  >```
+  > fn -v deploy --app ws200app --no-cache
+  >```
+
 * Invoke the function
+
+  ![](images/userinput.png)
+  >```
+  > fn invoke ws200app node-fn --display-call-id
+  >```
+  
+  >```
+  > echo -n '{"name":"DOAG"}' | fn invoke ws200app node-fn --display-call-id --content-type application/json
+  >```
 
 * View the log statement in your PaperTrail Events console
 
