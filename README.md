@@ -105,15 +105,6 @@ existing code, utilities, or use a programming language not yet supported by
 Fn.  Try the [Containers as Functions](http://fnproject.io/tutorials/ContainerAsFunction/)
 tutorial to see how easy it is.
 
-### 2.6) Applications
-
-In some of the tutorials you've tried so far we've breezed over the concept
-of an 'application'. In Fn, functions must belong to an application. They
-function as a namespace, a place to set configuration common across functions,
-and can be used as a deployment unit.  The
-[Applications](http://fnproject.io/tutorials/Apps) tutorial shows how you can
-use an application to organize and deploy functions.
-
 
 ## Section 3 - Oracle Functions
 
@@ -201,10 +192,3 @@ from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCap
 ### 3.6) Function to OCI Object Store
 
 * [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop/blob/master/README_Fn_Service.md)
-
-
-  ![](images/userinput.png)
-  >```
-  > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
-  >```
-
