@@ -93,28 +93,6 @@ Use your preferred editor to browse the contents of `node-fn` folder. It has the
 Note: If you are using the lab virtual machine, editors Visual Studio Code and Eclipse are pre-installed.
 
 
-## Clean up
+## Summary
 
-Congratulations! Now that you have verified your deployed function, you may clean up the trigger and function. Leave the app as-is since we will reuse it in the next example.
-
-Refer to [Delete (Trigger, Function, App)](https://github.com/sachin-pikle/functionslab/wiki/Functions-Commands-Cheatsheet#delete-trigger-function-app) section.
-
-First, delete the trigger as shown below.
-
-![](images/userinput.png)
->```
-> fn delete trigger ws<NNN>app node-fn node-fn-trigger
-> 
-> ws<NNN>app node-fn node-fn-trigger deleted
->```
-
-And then, delete the function as shown below.
-
-![](images/userinput.png)
->```
-> fn delete function ws<NNN>app node-fn
-> 
-> ws<NNN>app node-fn deleted
->```
-
-Leave the app as-is since we will reuse it in the next example.
+Congratulations! You have created, deployed and invoked your first function using Oracle Functions! Leave the app as-is since we will reuse it in the next few examples in this workshop.
