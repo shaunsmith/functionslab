@@ -187,6 +187,11 @@ from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCap
 
 * View the log statement in your PaperTrail Events console
 
+  >```
+  > Nov 21 22:08:34 linuxkit-000017025c24 app_id=ocid1.fnapp.oc1.phx.aaaaaaaaagyg7suol3nt3oo24ka3i4uzt7bjf: Inside helloworld node function. Name= World
+  > Nov 21 22:10:07 linuxkit-000017025c24 app_id=ocid1.fnapp.oc1.phx.aaaaaaaaagyg7suol3nt3oo24ka3i4uzt7bjf: Inside helloworld node function. Name= DOAG
+  >```
+
 
 ### 3.5) Your Second Function
 
