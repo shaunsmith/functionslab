@@ -22,9 +22,11 @@ Note:
 
 ## Section 1 - Setting up a Docker Environment
 
+### Install Docker
+
 * [Docker Options](vm.md)
 
-## Section 2 - Verifying your Docker Install
+### Verify your Docker Installation
 
 Before we get started with functions we're going to verify that Docker is
 installed and working. In a terminal, type the following command:
@@ -48,21 +50,78 @@ commands with `sudo` in which case you would have to type:
 > sudo docker --version
 >```
 
-## Section 3 - Functions
 
-Note: For this section you do NOT need the fn server on your machine. Your CLI will connect to the Functions cloud service.
+## Section 2 - Open Source Fn
 
 With Docker successfully installed it's time to move on to functions.
 Functions as a Service (FaaS) platforms provide a way to deploy code to
 the cloud without having to worry about provisioning or managing any compute
-infrastructure. 
+infrastructure. The goal of the open source Fn project is to provide a functions
+platform that you can run anywhere--on your laptop or in the cloud. And Fn will
+also be the basis of a fully serverless FaaS platform.  With Fn you can develop
+locally and deploy to the cloud knowing your functions are running on *exactly*
+the same underlying platform.
+
+### 2.1) Installing Fn
+
+You've got Docker installed so the principal Fn prerequisite is satisfied. So
+let's start by [Installing Fn](http://fnproject.io/tutorials/install).
+
+### 2.2) Your First Function
+
+Now that the Fn server and CLI are installed we can dig into the creation and
+running of functions.  In this tutorial you'll create, run locally, and deploy
+a Go function.  If you aren't a Go programmer don't panic! All the code is
+provided and is pretty easy to understand.  The focus of this tutorial is on
+becoming familiar with the basics of Fn, not Go programming.
+
+So let's [create and deploy your first function](http://fnproject.io/tutorials/Introduction).
+
+### 2.3) Introducing the Java Function Development Kit
+
+Fn provides an FDK (Function Development Kit) for each of the core supported
+programming languages.  But the Java FDK is the most advanced with support for
+Maven builds, automatic function argument type conversions, and comprehenive
+support for function testing with JUnit.
+
+The [Introduction to Java Functions](http://fnproject.io/tutorials/JavaFDKIntroduction)
+tutorial covers all these topics and more.
+
+### 2.4) Troubleshooting
+
+If you've been following the instructions in the tutorials carefully you
+shouldn't have run into any unexpected failures--hopefully!!  But in real life
+when you're writing code things go wrong--builds fail, exceptions are thrown,
+etc.  Fortunately the [Troubleshooting](http://fnproject.io/tutorials/Troubleshooting)
+tutorial introduces techniques you can use to track down the source of a
+failure.
+
+### 2.5) Containers as Functions
+
+One of the coolest features of Fn is that while it's easy to write functions
+in various programming languages, you can also deploy Docker images as
+functions. This opens up entire world's of opportunity as you can package
+existing code, utilities, or use a programming language not yet supported by
+Fn.  Try the [Containers as Functions](http://fnproject.io/tutorials/ContainerAsFunction/)
+tutorial to see how easy it is.
+
+### 2.6) Applications
+
+In some of the tutorials you've tried so far we've breezed over the concept
+of an 'application'. In Fn, functions must belong to an application. They
+function as a namespace, a place to set configuration common across functions,
+and can be used as a deployment unit.  The
+[Applications](http://fnproject.io/tutorials/Apps) tutorial shows how you can
+use an application to organize and deploy functions.
+
+
+## Section 3 - Oracle Functions
+
+Note: For this section you do NOT need the fn server on your machine. Your CLI will 
+connect to the OracleFunctions cloud service.
 
 Oracle Functions is a fully managed serverless FaaS platform running in Oracle 
 Cloud. Functions uses open source Fn Project as it's underlying FaaS platform.
-
-Fn Project can run anywhere - on your laptop or in the cloud. With Fn you can develop
-locally and deploy to the cloud knowing your functions are running on *exactly* 
-the same underlying platform.
 
 ### 3.1) Setup Local Development Environment
 
@@ -83,7 +142,8 @@ the same underlying platform.
 
 ### 3.4) Troubleshooting Functions
 
-* Get a PaperTrail destination syslog endpoint by following steps 1-5 from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCapture)
+* If you haven't already, get a PaperTrail destination syslog endpoint by following steps 1-5 
+from [Troubleshooting Fn](https://fnproject.io/tutorials/Troubleshooting/#LogCapture)
 
 * Update your app's syslog-url with the PaperTrail destination
 
@@ -93,6 +153,11 @@ the same underlying platform.
   >```
 
 * Add a console.log statement in your node function
+
+  ![](images/userinput.png)
+  >```
+  > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
+  >```
 
 * Redeploy the updated function
 
@@ -111,17 +176,8 @@ the same underlying platform.
 * [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop/blob/master/README_Fn_Service.md)
 
 
-## Section 4 - Open Source Fn
-
-Note: For this section you need the fn server running on your machine. Each lab below has a step to start the fn server.
-
-### 4.1) Function to OCI Object Store
-
-* [Java Function to OCI Object Store](https://github.com/abhirockzz/fn-oci-object-store-workshop/blob/master/README_Fn_OSS.md)
-
-### 4.2) Function to Oracle Database
-
-Note: Your lab instructor will share your DB connection details
-
-* [Java Function to Oracle Database](https://github.com/abhirockzz/fn-oracledb-java-workshop)
+  ![](images/userinput.png)
+  >```
+  > fn update app ws<NNN>app --syslog-url tcp://<your-Papertrail-destination>
+  >```
 
