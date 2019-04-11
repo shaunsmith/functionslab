@@ -53,14 +53,11 @@ tutorial to see how easy it is.
 
 Functions can be invoked over HTTP using their "invoke endpoint".  You can
 either invoke the endpoint directly or use the OCI SDK to both manage and invoke
-functions.  In the [Functions Clients](7-Functions-Clients.md) lab we'll explore
-both direct use of HTTP as well as invocation using the OCI SDK for Functions.
+functions.  We'll explore invoking a function via the
+[`oci-curl`](7-Functions-Clients.md) utility as well as invocation using the
+[OCI SDK for Functions](8-Functions-Clients-SDK.md).
 
-## OCI Services
+## Functions CI/CD
 
-Functions frequently interact with and use other cloud services.  Oracle OCI
-provides a rich set of cloud service for building cloud native applications
-including Object Storage, Caching, and Database.  In the [OCI
-Services](8-OCI-Services.md) lab you'll see how a function can use the OCI SDK
-to read and write data to Object Storage.  While the lab uses Object Storage as
-an example, the approach is similar across all OCI services.
+In this lab we'll see how we can build and deploy functions using [Developer
+Cloud Service](9-Functions-CICD.md).

@@ -221,5 +221,5 @@ how to attach a binary payload to an `InvokeFunctionRequest`.
 
 
 
-NEXT: , UP: [*Function Clients*](7-Function-Clients.md), HOME:
-[*Index*](README.md)
+NEXT: [*Functions CICD*](9-Functions-CICD.md), UP: [*Labs*](1-Labs.md), HOME:
+[*INDEX*](README.md)

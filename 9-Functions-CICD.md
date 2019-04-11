@@ -1,4 +1,5 @@
-# Interacting with OCI Services
+# Functions CICD with Developer Cloud Service
 
-NEXT: [*Next Steps*](9-Next-Steps.md), UP: [*Labs*](1-Labs.md), HOME:
-[*INDEX*](README.md)
+Your instructor will provide you with a link to this lab.
+
+UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
