@@ -24,7 +24,6 @@ The required steps our client code will need to perform are:
 4. Pass the `InvokeFunctionRequest` to the `FunctionsInvokeClient`to call the function
 5. Extract the result from an `InvokeFunctionResponse`
 
-
 ## Install preview OCI Java SDK
 
 As this example uses Maven and the OCI SDK is not yet available in Maven Central
@@ -55,7 +54,6 @@ Functions support.
 >-Dversion=1.4.1-preview1-20190222.223049-5 -Dpackaging=jar
 >```
 
-
 ## A Tour of the Code
 
 The entire functions client class is [InvokeById](functions-sdk/src/main/java/com/example/fn/InvokeById.java) but the core functionality is in the following lines:
@@ -76,7 +74,7 @@ The entire functions client class is [InvokeById](functions-sdk/src/main/java/co
 
 The first line creates an instance of `ConfigFileAuthenticationDetailsProvider`
 which will read the `~/.oci/config` file and attempt to authenticate with OCI.
-In this case it uses the "DEFAULT" profile but it can be configured to read
+In this case it uses the "workshop" profile but it can be configured to read
 any declared profile.
 
 ```java
@@ -135,12 +133,12 @@ an `InvokeFunctionResponse` in return.
     `ConfigFileAuthenticationDetailsProvider`, which reads user properties from
     the OCI config file located in `~/.oci/config`. This class can be instructed
     to read an optionally specified user profile.  But out of the box, the
-    example uses the DEFAULT profile.
+    example uses the workshop profile.
 
     You're `~/.oci/config` file was pre-populated with all of the right values
     for your tenancy, compartment, user id, etc.  So it's ready to go!  There's
-    only one "profile" defined with the (default) name "DEFAULT", but you can
-    have many profiles for use with different tenancies or compartments.
+    only one "profile" defined, but you can have many profiles for use with
+    different tenancies or compartments.
     
     Review your `~/.oci/config` file to become familiar with its contents and
     structure.  In a terminal type:
@@ -159,12 +157,17 @@ example is:
 
 `java -jar target/<jar-name>.jar <functions regional endpoint> <functionid> [<payload string>]`
 
-Unlike the `oci-curl` example, the OCI SDK support invoking a function by its
-id, not directly using its invoke endpoint.  It first builds a 
+Unlike the `oci-curl` example, the OCI SDK supports invoking a function by its
+id, not directly using its invoke endpoint. But we need to find the Orace
+Functions invoke service endpoint and the function id.  We can do this by
+inspecting the function you want to invoke using the Fn CLI, e.g.,:
 
-However we're going to To find the Orace Functions invoke endpoint for your function, inspect the
-function you want to invoke using the Fn CLI, e.g.,: `fn inspect sdktest
-helloj`. The result will be a JSON structure similar to the following:
+![user input](images/userinput.png)
+>```
+> fn inspect labapp-NNN nodefn
+>```
+
+The result will be a JSON structure similar to the following:
 
 ```JSON
 {
@@ -176,15 +179,19 @@ helloj`. The result will be a JSON structure similar to the following:
 	"created_at": "2019-02-26T21:28:04.866Z",
 	"id": "ocid1.fnfunc.oc1.phx.abcdefghijk",
 	"idle_timeout": 30,
-	"image": "phx.ocir.io/oracle-serverless-devrel/shaunsmith/helloj:0.0.4",
+	"image": "phx.ocir.io/oracle-serverless-devrel/shaunsmith/nodefn:0.0.4",
 	"memory": 128,
-	"name": "helloj",
+	"name": "nodefn",
 	"timeout": 30,
 	"updated_at": "2019-02-26T21:28:04.866Z"
 }
 ```
 
-The invoke endpoint you need to pass to the example can be extracted from the value of the `fnproject.io/fn/invokeEndpoint` property.  You just need the protcol and name of the host.  For the example above that would be: `https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com`.  The `id` property contains the function id.
+The invoke endpoint you need to pass to the example can be extracted from the
+value of the `fnproject.io/fn/invokeEndpoint` property.  You just need the
+protcol and name of the host.  For the example above that would be:
+`https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com`.  The `id`
+property contains the function id.
 
 > NOTE: Payload is optional. If your function doesn't expect any input you
 > can omit it.
@@ -199,12 +206,13 @@ e.g., with payload:
 
 ## What if my function needs input in binary form?
 
-See the [Invoke by Function name](https://github.com/abhirockzz/fn-java-sdk-invoke) example for details on
+See the [Invoke by Function
+name](https://github.com/abhirockzz/fn-java-sdk-invoke) example for details on
 how to attach a binary payload to an `InvokeFunctionRequest`.
 
 ## Troubleshooting
 
-1. If you fail to provide a DEFAULT profile in the OCI `config` file you'll get
+1. If you fail to provide a "workshop" profile in the OCI `config` file you'll get
    the following exception:
 
    Exception in thread "main" java.lang.NullPointerException: missing fingerprint in config
@@ -219,7 +227,12 @@ how to attach a binary payload to an `InvokeFunctionRequest`.
 
    Exception in thread "main" com.oracle.bmc.model.BmcException: (401, Unknown, false) Unexpected Content-Type: application/json;charset=utf-8 instead of application/json. Response body: {"code":"NotAuthenticated","message":"Not authenticated"} (opc-request-id: 3FD3E66DF81F4BB490A6424530/01D5427GTX1BT1D68ZJ0003Z9E/01D5427GTX1BT1D68ZJ0003Z9F)
 
+## Wrapping Up
 
+In this lab you've got a taste of what it's like to use the OCI SDK for
+Functions to invoke a function.  The OCI SDK provides support for the entire
+Functions API so you can both invoke and manage functions and applications.
+Please refer to the SDK docs for more details.
 
 NEXT: [*Functions CICD*](9-Functions-CICD.md), UP: [*Labs*](1-Labs.md), HOME:
 [*INDEX*](README.md)
