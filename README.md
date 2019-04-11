@@ -20,16 +20,11 @@ and then guide you a series of labs focusing on different topics including:
 2. Java Functions and Unit testing
 3. Troubleshooting Functions
 4. Customizing the function execution environment
-5. Functions clients including the OCI SDK
-6. CI/CD for functions with Developer Cloud Service
+5. Calling functions using oci-curl
+6. Functions clients including the OCI SDK
+7. CI/CD for functions with Developer Cloud Service
 
-You will be directed to specific GitHub repositories for each section.   It is
-important that when you finish each major section, you return to *this* document
-for the next section.
-
-As you make your way through the tutorials, look out for this icon.
-[](images/userinput.png) Whenever you see it, it's time for you to
-perform an action.
+Step one is getting your environment setup.
 
 NEXT: [*Setup*](0-Setup.md)
 
