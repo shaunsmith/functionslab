@@ -54,7 +54,7 @@ tutorial to see how easy it is.
 Functions can be invoked over HTTP using their "invoke endpoint".  You can
 either invoke the endpoint directly or use the OCI SDK to both manage and invoke
 functions.  We'll explore invoking a function via the
-[`oci-curl`](7-Functions-Clients.md) utility as well as invocation using the
+[`oci-curl` utility](7-Functions-Clients.md) as well as invocation using the
 [OCI SDK for Functions](8-Functions-Clients-SDK.md).
 
 ## Functions CI/CD
