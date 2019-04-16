@@ -107,10 +107,35 @@ NAME        ID
 labapp-NNN  ocid1.fnapp.oc1.us-phoenix-1.aaaaaaaaag4h7xotdzz27sp7z23ci6z4jqj4raq43ui6ouae5k2kl7irx34a
 ```
 
+## Login to OCIR
+
+In each of the labs you'll be building functions and packaging them as
+Docker container images which you'll push to the OCIR Docker container registry.
+But before you can push container images you'll have to login.  The login command
+has this structure `docker login <region-code>.ocir.io`.  In a terminal type
+the following to login to OCIR in the Phoenix region:
+
+![user input](images/userinput.png)
+>```sh
+>docker login phx.ocir.io
+>```
+
+When prompted, enter your OCIR identity using this format
+`<tenancy-name>/<username>`.  For example `cloudnative-devrel/workshopNNN`.
+
+The password is the **auth token** you were provided with, **NOT** the password
+for your OCI account.
+
+If all goes well you should see a success message:
+
+```sh
+Login Succeeded
+```
+
 ## Clone the Workshop Repo
 
 Before we actually get started let's clone the git repo for this workshop so
-that you have all of the necessary materials.  Open a terminal and, in your
+that you have all of the necessary materials.  Open a terminal and in your
 home directory (i.e., /home/demo) type:
 
 ![user input](images/userinput.png)
@@ -119,7 +144,7 @@ home directory (i.e., /home/demo) type:
 >```
 
 In the `functionslab` folder you'll find the sources for this workshop along
-with materials for some of the labs you'll be doing. 
+with materials for some of the labs you'll be doing.
 
 ## All Set!
 

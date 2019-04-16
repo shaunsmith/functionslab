@@ -285,7 +285,7 @@ account. Papertrail is a cloud log management service. To get setup:
    select 'Plain Text' ![Create Dialog](images/createdialog.jpg)
 4. Click 'Create'
 5. You'll see the address of your log destination displayed at the top of the
-   page looking something like `logs7.papertrailapp.com:<PORT>`. Copy this value
+   page looking something like `logs.papertrailapp.com:<PORT>`. Copy this value
    to your clipboard for use in a minute. ![Log
    Destination](images/logdestination.jpg)
 
@@ -323,7 +323,7 @@ Which will return JSON looking something like:
 	"created_at": "2019-04-02T21:46:14.988Z",
 	"id": "ocid1.fnapp.oc1.us-phoenix-1.aaaaaaaaag4h7xotdzz27sp7z23ci6z4jqj4raq43ui6ouae5k2kl7irx34a",
 	"name": "labapp-NNN",
-	"syslog_url": "tcp://logs7.papertrailapp.com:25129",
+	"syslog_url": "tcp://mylog.papertrailapp.com:999",
 	"updated_at": "2019-04-04T15:48:24.605Z"
 }
 ```
@@ -379,7 +379,7 @@ Content-Type: application/json
 Date: Thu, 04 Apr 2019 15:57:19 GMT
 Opc-Request-Id: /01D7MH36ZX1BT12G00000070ET/01D7MH36ZX1BT12G00000070EV
 
-{"items":[{"id":"ocid1.fnapp.oc1.us-phoenix-1.aaaaaaaaag4h7xotdzz27sp7z23ci6z4jqj4raq43ui6ouae5k2kl7irx34a","name":"labapp-NNN","annotations":{"oracle.com/oci/appCode":"k2kl7irx34a","oracle.com/oci/compartmentId":"ocid1.compartment.oc1..aaaaaaaaon25g3kisxyv4k54vvtrxadpbj2bbpetrpcacwax72uhmzpflyua","oracle.com/oci/subnetIds":["ocid1.subnet.oc1.phx.aaaaaaaajedmpudrrbstjsowuzcvzwugcoepj6zjxn6fohrf74z45zrv5hdq"]},"syslog_url":"tcp://logs7.papertrailapp.com:25129","created_at":"2019-04-02T21:46:14.988Z","updated_at":"2019-04-04T15:48:24.605Z"}]}
+{"items":[{"id":"ocid1.fnapp.oc1.us-phoenix-1.aaaaaaaaag4h7xotdzz27sp7z23ci6z4jqj4raq43ui6ouae5k2kl7irx34a","name":"labapp-NNN","annotations":{"oracle.com/oci/appCode":"k2kl7irx34a","oracle.com/oci/compartmentId":"ocid1.compartment.oc1..aaaaaaaaon25g3kisxyv4k54vvtrxadpbj2bbpetrpcacwax72uhmzpflyua","oracle.com/oci/subnetIds":["ocid1.subnet.oc1.phx.aaaaaaaajedmpudrrbstjsowuzcvzwugcoepj6zjxn6fohrf74z45zrv5hdq"]},"syslog_url":"tcp://mylog.papertrailapp.com:999","created_at":"2019-04-02T21:46:14.988Z","updated_at":"2019-04-04T15:48:24.605Z"}]}
 
 NAME		ID
 labapp-NNN	ocid1.fnapp.oc1.us-phoenix-1.aaaaaaaaag4h7xotdzz27sp7z23ci6z4jqj4raq43ui6ouae5k2kl7irx34a
