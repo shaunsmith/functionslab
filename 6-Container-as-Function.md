@@ -24,7 +24,7 @@ perform an action.
 
 One of the most common reasons for writing a custom Dockerfile for a function
 is to install a Linux package that your function needs.  In our example we're
-going to use the the ever popular [ImageMagick](https://www.imagemagick.org) to
+going to use the the ever-popular [ImageMagick](https://www.imagemagick.org) to
 do some image processing in our function and while there is a Node.js module for
 ImageMagick, it's just a wrapper on the underlying native libary.  So we'll
 have to install the native library in addition to adding the Node module to our
@@ -75,8 +75,8 @@ have to declare what you expect.
 
 There are lots of interesting elements to this function (other than the typical
 Node "callback hell") but the key one for us is the use of the "imagemagick"
-Node module for image processing.  To use it we need to include it in our
-dependencies in the `package.json` along with the other dependencies.
+Node module for image processing.  To use it we need to include it along with
+our other dependencies in our`package.json` file.
 
 ![](images/userinput.png)
 > In same folder as the `func.js` file, create a `package.json` file and
@@ -98,7 +98,7 @@ copy/paste the following as its content:
 }
 ```
 
-Like all Node.js functions using the Fn Node FDK we include it as a dependency
+Like with all Node.js functions, we include the Fn Node FDK as a dependency
 along with the "tmp" module for temporary file utilities and "imagemagick" for
 image processing.  
 
@@ -122,7 +122,9 @@ This is a typical `func.yaml` for a Node.js function except that instead of
 declaring the **runtime** as "node" we've specified "**docker**".  If you were
 to type `fn build` right now you'd get the error:
 
+> ```
 > Fn: Dockerfile does not exist for 'docker' runtime
+> ```
 
 This is because when you set the runtime type to "docker" `fn build` defers to
 your Dockerfile to build the function container image--and you haven't defined
@@ -190,10 +192,10 @@ COPY --from=build-stage /function/node_modules/ /function/node_modules/
 ENTRYPOINT ["node", "func.js"]
 ```
 
-With this Dockerfile, the Node.js function, it's dependencies
-(including the "imagemagick" wrapper), and the "imagemagick" Alpine package
-will be included in an image derived from the base `fnproject/node` image. We
-should be good to go!
+With this Dockerfile the Node.js function, its dependencies (including the
+"imagemagick" Node wrapper), and the "imagemagick" Alpine package will be
+included in an image derived from the base `fnproject/node` image. We should be
+good to go!
 
 ## Building and Deploying
 
@@ -208,8 +210,8 @@ your function.  Give it a try:
 You should see output similar to:
 
 ```shell
-Building image phx.ocir.io/cloudnative-devrel/shsmith/imagedims:0.0.1
-FN_REGISTRY:  phx.ocir.io/cloudnative-devrel/shsmith
+Building image phx.ocir.io/mytenancy/myuser/imagedims:0.0.1
+FN_REGISTRY:  phx.ocir.io/mytenancy/myuser
 Current Context:  workshop
 Sending build context to Docker daemon  39.94kB
 Step 1/10 : FROM fnproject/node:dev as build-stage
@@ -220,9 +222,9 @@ Step 6/10 : RUN apk add --no-cache imagemagick
  ---> f86803cfbf80
 ...
 Successfully built 1565a9a99aec
-Successfully tagged phx.ocir.io/cloudnative-devrel/shsmith/imagedims:0.0.1
+Successfully tagged phx.ocir.io/mytenancy/myuser/imagedims:0.0.1
 
-Function phx.ocir.io/cloudnative-devrel/shsmith/imagedims:0.0.1 built successfully.
+Function phx.ocir.io/mytenancy/myuser/imagedims:0.0.1 built successfully.
 ```
 
 Just like with a default build, the output is a container image.  From this
@@ -244,14 +246,14 @@ functions in the "tutorial" application:
 > fn list functions labapp-NNN
 >```
 
-**Pro tip**: The fn cli let's you abbreviate most of the keywords so you can
-also say `fn ls f labapp-NNN`!
+**Pro tip**: The fn cli lets you abbreviate most of the keywords so you can
+also type `fn ls f labapp-NNN`
 
 You should see output similar to:
 
 ```shell
 NAME        IMAGE                                                   ID
-imagedims   phx.ocir.io/cloudnative-devrel/shsmith/imagedims:0.0.2  ocid1.fnfunc.oc1.us-phoenix-1.aaaaaaaaacw6cjiagzwc64hhacuj3ssd7c4e37y4kdsdnjbcmduczrcuywfq
+imagedims   phx.ocir.io/mytenancy/myuser/imagedims:0.0.2  ocid1.fnfunc.oc1.us-phoenix-1.aaaaaaaaacw6cjiagzwc64hhacuj3ssd7c4e37y4kdsdnjbcmduczrcuywfq
 ```
 
 ## Invoking the Function
@@ -259,7 +261,8 @@ imagedims   phx.ocir.io/cloudnative-devrel/shsmith/imagedims:0.0.2  ocid1.fnfunc
 With the function deployed let's invoke it to make sure it's working as
 expected. You'll need a jpeg or png file so either find one on your machine
 or download one.  If you've cloned this lab's Git repo you can use the
-`3x3.jpg` image that has a height and width of 3 pixels.
+`3x3.jpg` image that has a height and width of 3 pixels, or you can download
+it from the `images` folder in github.
 
 ![](images/userinput.png)
 >```
@@ -276,7 +279,7 @@ this input file you should see the following output:
 # Conclusion
 
 One of the most powerful features of Fn and Oracle Functions is the ability to
-use custom defined Docker container images as functions. This feature makes it
+use custom-defined Docker container images as functions. This feature makes it
 possible to customize your function's runtime environment including letting you
 install any Linux libraries or utilities that your function might need. And
 thanks to the Fn CLI's support for Dockerfiles it's the same user experience as
@@ -285,5 +288,4 @@ when developing any function.
 Having completed this lab you've successfully built a function using
 a custom Dockerfile. Congratulations!
 
-NEXT: [*Function Curl Client*](7-Functions-Clients-oci-curl.md), UP:
-[*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
+NEXT: [*Functions Clients-oci curl*](7-Functions-Clients-oci-curl.md), UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)

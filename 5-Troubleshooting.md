@@ -2,9 +2,9 @@
 
 Even if you've got excellent unit tests (e.g., using the [Fn Java JUnit
 support](https://github.com/fnproject/fdk-java/blob/master/docs/TestingFunctions.md))
-things can still go wrong.  Your function may throw an exception, or you may be
-getting back unexpected results? So what can you do to troubleshoot your
-functions?  In this tutorial we'll look at a number of techniques and Fn
+things can still go wrong.  Perhaps your function is throwing an exception or
+returning unexpected results. So what can you do to troubleshoot your
+function?  In this tutorial we'll look at a number of techniques and Fn
 features you can use to get to the root cause of your problem.
 
 As you make your way through this tutorial, look out for this icon.
@@ -37,20 +37,22 @@ techniques rather than keeping the tests up to date.
 > rm -rf src/test
 >```
 
-__If__ you have the `tree` utility installed you can verify that your structure
-looks like this:
+Use the `find` command verify that your directory structure looks like this:
+
+![user input](images/userinput.png)
+>`find .`
 
 ```sh
 .
-├── func.yaml
-├── pom.xml
-└── src
-    └── main
-        └── java
-            └── com
-                └── example
-                    └── fn
-                        └── HelloFunction.java
+./func.yaml
+./pom.xml
+./src
+./src/main
+./src/main/java
+./src/main/java/com
+./src/main/java/com/example
+./src/main/java/com/example/fn
+./src/main/java/com/example/fn/HelloFunction.java
 ```
 
 Ok, we're ready to begin!
@@ -58,8 +60,8 @@ Ok, we're ready to begin!
 ## Verbose Mode
 
 When you run commands like `fn build` or `fn deploy` you typically see "progress
-dots" (i.e., `...`) that let's you know some action is taking place.  Let's
-build our function and observe the output.
+dots" (i.e., `...`) that let you know some action is taking place.  Let's build
+our function and observe the output.
 
 ![user input](images/userinput.png)
 >```sh
@@ -69,8 +71,8 @@ build our function and observe the output.
 You should see something like:
 
 ```sh
-Building image phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.1 .........................
-Function phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.1 built successfully.
+Building image phx.ocir.io/mytenancy/myuser/trouble:0.0.1 .........................
+Function phx.ocir.io/mytenancy/myuser/trouble:0.0.1 built successfully.
 ```
 
 Perfect!  But if your code can't be built successfully, either not compiling or
@@ -97,7 +99,7 @@ public class HelloFunction {
 }
 ```
 
-Let's build again and checkout the error message.
+Let's build again and check out the error message.
 
 ![user input](images/userinput.png)
 >```sh
@@ -106,8 +108,8 @@ Let's build again and checkout the error message.
 
 Results in:
 
-```sh
-Building image phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.1 .........
+```
+Building image phx.ocir.io/mytenancy/myuser/trouble:0.0.1 .........
 Error during build. Run with `--verbose` flag to see what went wrong. eg: `fn --verbose CMD`
 
 Fn: error running docker build: exit status 1
@@ -116,7 +118,7 @@ See 'fn <command> --help' for more information. Client version: 0.5.63
 ```
 
 Now let's try the build with the `--verbose` flag, which you need to put 
-*immediately* after `fn`:
+*immediately* after `fn` (i.e. `fn build --verbose` will *not* work):
 
 ![user input](images/userinput.png)
 >```sh
@@ -126,8 +128,8 @@ Now let's try the build with the `--verbose` flag, which you need to put
 Now we see details of the build and the failure (output abbreviated):
 
 ```sh
-Building image phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.1
-FN_REGISTRY:  phx.ocir.io/cloudnative-devrel/shsmith
+Building image phx.ocir.io/mytenancy/myuser/trouble:0.0.1
+FN_REGISTRY:  phx.ocir.io/mytenancy/myuser
 Current Context:  workshop
 Sending build context to Docker daemon  24.06kB
 Step 1/11 : FROM fnproject/fn-java-fdk-build:jdk11-1.0.87 as build-stage
@@ -139,33 +141,10 @@ Step 1/11 : FROM fnproject/fn-java-fdk-build:jdk11-1.0.87 as build-stage
 [INFO] 1 error
 ...
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.3:compile (default-compile) on project hello: Compilation failure
-[ERROR] /function/src/main/java/com/example/fn/HelloFunction.java:[9,5] missing return 
+[ERROR] /function/src/main/java/com/example/fn/HelloFunction.java:[9,5] missing return
 ...
 The command 'mvn package' returned a non-zero code: 1
 ...
-```
-
-```sh
-Building image trouble:0.0.1
-Sending build context to Docker daemon  10.24kB
-Step 1/11 : FROM fnproject/fn-java-fdk-build:jdk9-1.0.56 as build-stage
- ---> dbeadad33cac
-...
-[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ hello ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 1 source file to /function/target/classes
-[INFO] -------------------------------------------------------------
-[ERROR] COMPILATION ERROR :
-[INFO] -------------------------------------------------------------
-[ERROR] /function/src/main/java/com/example/fn/HelloFunction.java:[13,5] missing return statement
-[INFO] 1 error
-...
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.3:compile (default-compile) on project hello: Compilation failure
-[ERROR] /function/src/main/java/com/example/fn/HelloFunction.java:[13,5] missing return statement
-...
-The command 'mvn package' returned a non-zero code: 1
-...
-ERROR: error running docker build: exit status 1
 ```
 
 With verbose output we see the entirety of the Maven build which includes an
@@ -178,7 +157,7 @@ enable to diagnose the issue.
 
 When calling a deployed function, Fn captures all standard error output and
 sends it to a syslog server, if configured. So if you have a function throwing
-an exception and the stack trace is being written to standard error it's
+an exception and the stack trace is being written to standard error, it's
 straightforward to get that stack trace via syslog.
 
 Let's update our HelloFunction so that it throws an exception in the
@@ -203,15 +182,15 @@ With this change let's deploy the function and invoke it.
 ![user input](images/userinput.png)
 >```sh
 > fn deploy --app labapp-NNN
-```
+>```
 
 ```sh
 Deploying trouble to app: labapp-NNN
 Bumped to version 0.0.2
-Building image phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.2 ......
+Building image phx.ocir.io/mytenancy/myuser/trouble:0.0.2 ......
 ...
-Updating function trouble using image phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.2...
-Successfully created function: trouble with phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.2
+Updating function trouble using image phx.ocir.io/mytenancy/myuser/trouble:0.0.2...
+Successfully created function: trouble with phx.ocir.io/mytenancy/myuser/trouble:0.0.2
 ```
 
 You can verify the function is deployed successfully by listing
@@ -220,22 +199,22 @@ the functions of the 'labapp-NNN' app:
 ![user input](images/userinput.png)
 >```sh
 > fn ls functions labapp-NNN
-```
+>```
 
 Or the slightly more economical:
 
 ![user input](images/userinput.png)
 >```sh
 > fn ls f labapp-NNN
-```
+>```
 
 ```sh
 NAME      IMAGE                                                 ID
-trouble   phx.ocir.io/cloudnative-devrel/shsmith/trouble:0.0.2  ocid1.fnfunc.oc1.us-phoenix-1.aaaaaaaaabjdjzulxszlmvflzqs6d3yycw3foro7xbf7wenkhn3mvvldag7q
+trouble   phx.ocir.io/mytenancy/myuser/trouble:0.0.2  ocid1.fnfunc.oc1.us-phoenix-1.aaaaaaaaabjdjzulxszlmvflzqs6d3yycw3foro7xbf7wenkhn3mvvldag7q
 ...
 ```
 
-With the function defined let's invoke it and see what happens when if fails:
+With the function defined let's invoke it and see what happens when it fails:
 
 ![user input](images/userinput.png)
 >```sh
@@ -243,7 +222,7 @@ With the function defined let's invoke it and see what happens when if fails:
 >```
 
 ```sh
-"code":"StatusBadGateway","message":"function failed"}
+{"code":"StatusBadGateway","message":"function failed"}
 Fn: Error calling function: status 502
 
 See 'fn <command> --help' for more information. Client version: 0.5.63
@@ -254,14 +233,14 @@ we need to do is look at the logs!
 
 ### Log Capture
 
-> NOTE: When GA, Oracle Functions will be integrated with the OCI Logging
-> Service.  Until then, the "syslog" functionality provided by open source Fn is
-> the only option.
+> NOTE: In the future, Oracle Functions will be integrated with the OCI Logging
+> Service.  Until then, logs can be captured and viewed via the "syslog"
+> functionality provided by open source Fn.
 
-To see the logs we're going to have to capture them so that we can see what
-happens when the function fails.  To capture logs you need to configure the
-`labapp-NNN` application with the URL of a syslog server.  You can do this
-either when you create an app or after it's been created.  
+To see what's happening when the function fails, we're going to have to capture
+its logs.  To do so, we need to configure the `labapp-NNN` application with the
+URL of a syslog server.  You can do this when you create an app, or you can
+update an existing app.
 
 When creating a new app using the `fn` CLI you can specify the URL using the
 `--syslog-url` option as in:
@@ -270,11 +249,11 @@ When creating a new app using the `fn` CLI you can specify the URL using the
 fn create app labapp-NNN --syslog-url tcp://mysyslogserver.com
 ```
 
-Since we've already created the 'labapp-NNN' app, we'll have to update it using
-`fn update app`.  But before we do that we'll need
-a syslog server ready to receive log data.  For the purposes of this
-tutorial we'll setup and use a free [Papertrail](https://papertrailapp.com/)
-account. Papertrail is a cloud log management service. To get setup:
+However, since we've already created the 'labapp-NNN' app, we'll have to update
+it using `fn update app`.  But first we'll need a syslog server ready to
+receive log data.  For the purposes of this tutorial we'll set up and use a free
+[Papertrail](https://papertrailapp.com/) account. Papertrail is a cloud log
+management service. To get set up:
 
 1. Sign up for a [free Papertrail
    account](https://papertrailapp.com/signup?plan=free)
@@ -283,8 +262,8 @@ account. Papertrail is a cloud log management service. To get setup:
    Dialog](images/settings.jpg)
 3. In the create dialog, under TCP unselect 'TLS' and under both TCP and UDP
    select 'Plain Text' ![Create Dialog](images/createdialog.jpg)
-4. Click 'Create'
-5. You'll see the address of your log destination displayed at the top of the
+4. Click 'Create' or 'Update'
+5. You'll see the address of your log destination displayed on the the
    page looking something like `logs.papertrailapp.com:<PORT>`. Copy this value
    to your clipboard for use in a minute. ![Log
    Destination](images/logdestination.jpg)
@@ -362,7 +341,7 @@ example try the following:
 > DEBUG=1 fn ls apps
 >```
 
-Which, with debugging turn on, returns the following:
+Which, with debugging turn on, prints the following:
 
 ```sh
 GET /v2/apps HTTP/1.1

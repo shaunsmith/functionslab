@@ -2,7 +2,7 @@
 
 In this lab you will explore serverless computing using Oracle Functions.
 
-## Oracle Functions or Fn?
+## Oracle Functions and Fn
 
 Oracle Functions is built on the open source Fn Project and so much of the
 development experience is exactly the same so any experience you have with Fn
@@ -13,8 +13,9 @@ Oracle Cloud Infrastructure (OCI) IAM and networking.
 
 ## Overview
 
-This document will show you how to setup your functions development environment
-and then guide you a series of labs focusing on different topics including:
+This tutorial will show you how to setup your functions development environment
+and then guide you through a series of labs focusing on different topics
+including:
 
 1. Function Basics
 2. Java Functions and Unit testing
@@ -22,7 +23,6 @@ and then guide you a series of labs focusing on different topics including:
 4. Customizing the function execution environment
 5. Calling functions using oci-curl
 6. Functions clients including the OCI SDK
-7. CI/CD for functions with Developer Cloud Service
 
 Step one is getting your environment setup.
 

@@ -138,5 +138,5 @@ Hello, Functions
 You've successfully invoked a function using a signed HTTP request using curl!
 Next we'll look how we can call functions from client code using the OCI SDK.
 
-NEXT: [*Function SDK Clients*](8-Functions-Clients-SDK.md), UP:
+NEXT: [*Functions Clients-OCI SDK*](8-Functions-Clients-SDK.md), UP:
 [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)

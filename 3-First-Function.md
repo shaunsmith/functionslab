@@ -37,7 +37,7 @@ The `fn init` command creates a simple function with a bit of boilerplate to get
 you started. The `--runtime` option is used to indicate that the function we're
 going to develop will be written in Node. A number of other runtimes are also
 supported.  Fn creates the simple function along with several supporting files
-in the `/nodefn` directory.
+in the `nodefn` directory.
 
 ### Review your Function File
 
@@ -114,7 +114,7 @@ declares a number of properties including:
 * entrypoint--the name of the executable to invoke when your function is called,
   in this case `node func.js`.
 
-There are other user specifiable properties but these will suffice for this
+There are other user-specifiable properties but these will suffice for this
 example.  Note that if not specified, the name of your function will be taken
 from the containing folder name. 
 
@@ -131,20 +131,20 @@ With the `nodefn` directory containing `func.js` and `func.yaml` you've got
 everything you need to deploy the function to Oracle Functions.
 
 Make sure your context is set to point to Oracle Functions. Use the `fn list
-context` command to check.
+contexts` command to check.
 
 ![user input](images/userinput.png)
 >```sh
 > fn list contexts
 >```
 
-The `API URL` and `REGISTRY` values of the `*`d row should be pointing to Oracle
-Functions and OCIR, respectively:
+The `API URL` and `REGISTRY` values of the row with the `*` should be pointing
+to Oracle Functions and OCIR, respectively:
 
 ```shell
 CURRENT    NAME        PROVIDER    API URL                                           REGISTRY
            default     default                                                       shaunsmith
-*          workshop    oracle      https://functions.us-phoenix-1.oraclecloud.com    phx.ocir.io/cloudnative-devrel/shsmith
+*          workshop    oracle      https://functions.us-phoenix-1.oraclecloud.com    phx.ocir.io/mytenancy/myuser
 ```
 
 If your context *is not* configured correctly, please return to the
@@ -152,27 +152,30 @@ If your context *is not* configured correctly, please return to the
 
 ## Deploying your First Function
 
-Deploying your function is how you publish your function and make it accessible
+Deploying your function is how you publish the function and make it accessible
 to other users and systems. To see the details of what is happening during a
 function deploy,  use the `-v / --verbose` switch.  The first time you build a
-function of a particular language it takes longer as the `fn` CLI downloads the
-necessary Docker images. The `--verbose` option allows you to see this process.
+function of a particular language it takes longer as the `fn` CLI must download
+the necessary Docker images. The `--verbose` option allows you to see this
+process.
 
 ### Creating an Application
 
 Before you can deploy a function you'll need to create an application.  You can
-do this using the `fn` CLI or in the Oracle Functions console.  We'll use the
+do this using the `fn` CLI or in the Oracle Functions web console.  We'll use the
 console as it's somewhat simpler to click on options than to copy/paste network
-OCID for use on the command line.
+IDs for use on the command line.
 
-Point your browser to the Oracle Functions console in the Phoenix region and
-login. Functions is not yet available in the left hand navigation menu so you'll
-have to directly enter the URL:
+Open your browser to the Oracle Functions console and
+login:
 
-https://console.us-phoenix-1.oraclecloud.com/functions/
+![user input](images/userinput.png) https://console.us-ashburn-1.oraclecloud.com/functions
 
-Ensure the `workshop` compartment is selected.  You should also be in the
-`us-phoenix-1` region.
+![user input](images/userinput.png) Once you've logged in, select the Phoenix (us-phoenix-1) region:
+
+![Region Selection](images/region-selection.png)
+
+![user input](images/userinput.png) Navigate down the compartment hierarchy on the left hand dropdown to the compartment your instructor will provide.
 
 ![Applications List](images/applications-compartment.png)
 
@@ -222,8 +225,8 @@ You should see output similar to:
 ```shell
 Deploying nodefn to app: labapp-NNN
 Bumped to version 0.0.2
-Building image phx.ocir.io/cloudnative-devrel/shsmith/nodefn:0.0.2
-FN_REGISTRY:  phx.ocir.io/cloudnative-devrel/shsmith
+Building image phx.ocir.io/mytenancy/myuser/nodefn:0.0.2
+FN_REGISTRY:  phx.ocir.io/mytenancy/myuser
 Current Context:  workshop
 Sending build context to Docker daemon   5.12kB
 Step 1/9 : FROM fnproject/node:dev as build-stage
@@ -251,10 +254,10 @@ Step 9/9 : ENTRYPOINT ["node", "func.js"]
 Removing intermediate container 78424021a8ee
  ---> 5c0b79de04e8
 Successfully built 5c0b79de04e8
-Successfully tagged phx.ocir.io/cloudnative-devrel/shsmith/nodefn:0.0.2
+Successfully tagged phx.ocir.io/mytenancy/myuser/nodefn:0.0.2
 
-Parts:  [phx.ocir.io cloudnative-devrel shsmith nodefn:0.0.2]
-Pushing phx.ocir.io/cloudnative-devrel/shsmith/nodefn:0.0.2 to docker registry...The push refers to repository [phx.ocir.io/cloudnative-devrel/shsmith/nodefn]
+Parts:  [phx.ocir.io mytenancy myuser nodefn:0.0.2]
+Pushing phx.ocir.io/mytenancy/myuser/nodefn:0.0.2 to docker registry...The push refers to repository [phx.ocir.io/mytenancy/myuser/nodefn]
 ffc0648dc97f: Pushed
 d85ee6e79290: Pushed
 0677ac33d692: Pushed
@@ -262,12 +265,12 @@ d85ee6e79290: Pushed
 ad77849d4540: Pushed
 5bef08742407: Pushed
 0.0.2: digest: sha256:6a15a46ca32ec1bdfe7f49ba5e3ac705adbe15658e795747adb661e46ba73c7f size: 1571
-Updating function nodefn using image phx.ocir.io/cloudnative-devrel/shsmith/nodefn:0.0.2...
-Successfully created function: nodefn with phx.ocir.io/cloudnative-devrel/shsmith/nodefn:0.0.2
+Updating function nodefn using image phx.ocir.io/mytenancy/myuser/nodefn:0.0.2...
+Successfully created function: nodefn with phx.ocir.io/mytenancy/myuser/nodefn:0.0.2
 ```
 
 Since we turned on verbose mode, the steps to build the Docker container image
-are displayed. Normally you deploy an application without the `--verbose`
+are displayed. Normally you deploy an application without the `-v/--verbose`
 option. If you rerun the command a new image and version is created, pushed to
 OCIR, and deployed.
 
@@ -294,14 +297,15 @@ which results in:
 {"message":"Hello World"}
 ```
 
-The first time you call a function in a new application you may incur what is
-commonly called a "cold start" cost. When you invoked "labapp-NNN nodefn"
-the Oracle Functions looked up the "labapp-NNN" application and then looked
-for the Docker container image bound to the "nodefn" function and executed the
-code. The necessary compute infrastructure was also allocated.  If you invoke
-the function a second time you'll notice it's much faster.
+The first time you call a function in a new application you may encounter what
+is commonly called a "cold start," which results in the function call taking
+longer than usual. When you invoked "labapp-NNN nodefn," Oracle Functions looked
+up the "labapp-NNN" application and then looked for the Docker container image
+bound to the "nodefn" function and executed the code. The necessary compute
+infrastructure was also allocated.  If you invoke the function a second time
+you'll notice it's much faster.
 
-You can also pass data to the run command, for example:
+You can also pass data to the invoke command, for example:
 
 ![user input](images/userinput.png)
 >```sh
@@ -313,7 +317,7 @@ You can also pass data to the run command, for example:
 ```
 
 The JSON data was parsed and since `name` was set to "Bob", that value is passed
-in the output.
+in the function response.
 
 ### Understand fn deploy
 
@@ -326,10 +330,10 @@ function and building a container image.
 > __NOTE__: two images are actually being used.  The first contains the language
 > compiler and all the necessary build tools. The second image packages all
 > dependencies and any necessary language runtime components. Using this
-> strategy, the final function image size can be kept as small as possible.
-> Smaller Docker images are naturally faster to push and pull from a registry
-> which improves overall performance.  For more details on this technique see
-> [Multi-Stage Docker Builds for Creating Tiny Go
+> strategy, the final function image size can be kept as small and secure as
+> possible. Smaller Docker images are naturally faster to push and pull from a
+> registry which improves overall performance.  For more details on this
+> technique see [Multi-Stage Docker Builds for Creating Tiny Go
 > Images](https://medium.com/travis-on-docker/multi-stage-docker-builds-for-creating-tiny-go-images-e0e1867efe5a).
 
 As the `fn` CLI is built on Docker you can use the `docker` command to see the local
@@ -344,13 +348,13 @@ use the following command to see only versions of nodefn:
 You should see something like:
 
 ```sh
-phx.ocir.io/cloudnative-devrel/shsmith/nodefn   0.0.2    5c0b79de04e8   15 minutes ago  66.3MB
-phx.ocir.io/cloudnative-devrel/shsmith/nodefn   0.0.1    4936dbed0df6   40 minutes ago  66.3MB
+phx.ocir.io/mytenancy/myuser/nodefn   0.0.2    5c0b79de04e8   15 minutes ago  66.3MB
+phx.ocir.io/mytenancy/myuser/nodefn   0.0.1    4936dbed0df6   40 minutes ago  66.3MB
 ```
 
 ### Explore your Application
 
-The fn CLI provides a couple of commands to let us see what we've deployed
+The fn CLI provides a couple of commands to let us see what we've deployed.
 `fn list apps` returns a list of all of the defined applications.
 
 ![user input](images/userinput.png)
@@ -376,7 +380,7 @@ functions included in "labapp-NNN" we can type:
 
 ```sh
 NAME    IMAGE                                                  ID
-nodefn  phx.ocir.io/cloudnative-devrel/shsmith/nodefn:0.0.2    ocid1.fnfunc.oc1.us-phoenix-1.aaaaaaaaacm4u6futn2q34fh4hbkirwsxdffss42kvd3kl6xxakkful5yehq
+nodefn  phx.ocir.io/mytenancy/myuser/nodefn:0.0.2    ocid1.fnfunc.oc1.us-phoenix-1.aaaaaaaaacm4u6futn2q34fh4hbkirwsxdffss42kvd3kl6xxakkful5yehq
 ```
 
 ## Wrap Up

@@ -34,31 +34,29 @@ get you started. The `--runtime` option is used to indicate that the function
 we're going to develop will be written in Java 11, the default version as of
 this writing. A number of other runtimes are also supported.  
 
-__If__ you have the `tree` utility installed
-you can see the directory structure that the `init` command has created.
+Use the `find` command to see the directory structure and files that the
+`init` command has created.
 
 ![user input](images/userinput.png)
->`tree`
+>`find .`
 
 ```sh
 .
-├── func.yaml
-├── pom.xml
-└── src
-    ├── main
-    │   └── java
-    │       └── com
-    │           └── example
-    │               └── fn
-    │                   └── HelloFunction.java
-    └── test
-        └── java
-            └── com
-                └── example
-                    └── fn
-                        └── HelloFunctionTest.java
-
-11 directories, 4 files
+./func.yaml
+./pom.xml
+./src
+./src/test
+./src/test/java
+./src/test/java/com
+./src/test/java/com/example
+./src/test/java/com/example/fn
+./src/test/java/com/example/fn/HelloFunctionTest.java
+./src/main
+./src/main/java
+./src/main/java/com
+./src/main/java/com/example
+./src/main/java/com/example/fn
+./src/main/java/com/example/fn/HelloFunction.java
 ```
 
 As usual, the init command has created a `func.yaml` file for your
@@ -85,14 +83,14 @@ cmd: com.example.fn.HelloFunction::handleRequest
 The generated `func.yaml` file contains metadata about your function and
 declares a number of properties including:
 
-* schema_version--identifies the version of the schema for this function file. 
-* version--the version of the function.
-* runtime--the language used for this function.
-* build_image--the image used to build your function's image.
-* run_image--the image your function runs in.
+* schema_version--identifies the version of the schema for this function file
+* version--the version of the function
+* runtime--the language used for this function
+* build_image--the image used to build your function's image
+* run_image--the image your function runs in
 * cmd--the `cmd` property is set to the fully qualified name of the Java
   class and method that should be invoked when your `javafn` function is
-  called.
+  called
 
 The Java function init also generates a Maven `pom.xml` file to build and test
 your function.  The pom includes the Fn Java FDK runtime and the test libraries
@@ -113,8 +111,8 @@ where `NNN` is your lap participant number.
 
 ```yaml
 Deploying javafn to app: labapp-NNN
-Building image phx.ocir.io/cloudnative-devrel/shsmith/javafn:0.0.2
-FN_REGISTRY:  phx.ocir.io/cloudnative-devrel/shsmith
+Building image phx.ocir.io/mytenancy/myuser/javafn:0.0.2
+FN_REGISTRY:  phx.ocir.io/mytenancy/myuser
 Current Context:  workshop
 Sending build context to Docker daemon  14.34kB
 Step 1/11 : FROM fnproject/fn-java-fdk-build:jdk11-1.0.86 as build-stage
@@ -149,18 +147,18 @@ Step 11/11 : CMD ["com.example.fn.HelloFunction::handleRequest"]
  ---> Using cache
  ---> 10586c295622
 Successfully built 10586c295622
-Successfully tagged phx.ocir.io/cloudnative-devrel/shsmith/javafn:0.0.2
+Successfully tagged phx.ocir.io/mytenancy/myuser/javafn:0.0.2
 
-Parts:  [phx.ocir.io cloudnative-devrel shsmith javafn:0.0.2]
-Pushing phx.ocir.io/cloudnative-devrel/shsmith/javafn:0.0.2 to docker registry...The push refers to repository [phx.ocir.io/cloudnative-devrel/shsmith/javafn]
+Parts:  [phx.ocir.io mytenancy myuser javafn:0.0.2]
+Pushing phx.ocir.io/mytenancy/myuser/javafn:0.0.2 to docker registry...The push refers to repository [phx.ocir.io/mytenancy/myuser/javafn]
 ...
-Updating function javafn using image phx.ocir.io/cloudnative-devrel/shsmith/javafn:0.0.2...
+Updating function javafn using image phx.ocir.io/mytenancy/myuser/javafn:0.0.2...
 ```
 
 The output message
-`Updating function javafn using image phx.ocir.io/cloudnative-devrel/shsmith/javafn:0.0.2...`
+`Updating function javafn using image phx.ocir.io/mytenancy/myuser/javafn:0.0.2...`
 let's us know that the function is packaged in the image
-"phx.ocir.io/cloudnative-devrel/shsmith/javafn:0.0.2".
+"phx.ocir.io/mytenancy/myuser/javafn:0.0.2".
 
 ## Invoke your Deployed Function
 
@@ -199,8 +197,8 @@ output.
 ## Exploring the Code
 
 We've generated, compiled, deployed, and invoked the Java function so let's take
-a look at the code.  You may want to open the code in your favorite IDE or
-editor.
+a look at the code.  You may want to open the code in one of the IDEs available
+in the lab environment.
 
 Below is the generated `com.example.fn.HelloFunction` class.  As you can
 see the function is just a method on a POJO that takes a string value
@@ -236,7 +234,8 @@ The `fn init` command also generated a JUnit test for the function which uses
 the Java FDK's function test framework.  With this framework you can setup test
 fixtures with various function input values and verify the results.
 
-The generated test confirms that when no input is provided the function returns "Hello, world!".
+The generated test confirms that when no input is provided the function returns
+"Hello, world!".
 
 ```java
 package com.example.fn;
@@ -283,8 +282,9 @@ provided we get the expected result.
 You can see the `withBody()` method used to specify the value of the
 function input.
 
-You can run the tests by building your function with `fn build`.  This
-will cause Maven to compile and run the updated test class.  You can also invoke your tests directly from Maven using `mvn test` or from your IDE.
+You can run the tests by building your function with `fn build`.  This will
+cause Maven to compile and run the updated test class.  You can also invoke your
+tests directly from Maven using `mvn test` or from your IDE.
 
 ![user input](images/userinput.png)
 >`fn build`
@@ -381,9 +381,9 @@ Tests run: 2, Failures: 0, Errors: 2, Skipped: 0
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project hello: There are test failures.
 ```
 
-Oops! as we can see this function build has failed due to test failures--we
+*Oops!* as we can see this function build has failed due to test failures--we
 changed the code significantly but didn't update our tests!  We really
-should be doing test driven development and updating the test first but
+should be doing test driven development and updating the test first, but
 at least our bad behavior has been caught.  Let's update the tests
 to reflect our new expected results.  
 

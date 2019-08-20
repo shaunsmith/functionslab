@@ -234,5 +234,4 @@ Functions to invoke a function.  The OCI SDK provides support for the entire
 Functions API so you can both invoke and manage functions and applications.
 Please refer to the SDK docs for more details.
 
-NEXT: [*Functions CICD*](9-Functions-CICD.md), UP: [*Labs*](1-Labs.md), HOME:
-[*INDEX*](README.md)
+UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
