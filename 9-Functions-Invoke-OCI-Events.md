@@ -24,8 +24,22 @@ Let's head back to our local terminal to create a function:
 > fn init --runtime java cloud-events-demo-fn
 >```
 
-We'll add two dependencies to the pom.xml file. One for the cloudevents-api, and 
-another for metadata-extractor so we can extract the image metadata later on:
+The output will be:
+
+>```
+> Creating function at: ./cloud-events-demo-fn
+> Function boilerplate generated.
+> func.yaml created.
+>```
+
+![user input](images/userinput.png)
+>```
+> cd cloud-events-demo-fn
+>```
+
+Now we will add two dependencies to the pom.xml file. One for the cloudevents-api, 
+and another for metadata-extractor so we can extract the image metadata later on. 
+Edit the pom.xml file:
 
 ![user input](images/userinput.png)
 >```
@@ -41,4 +55,50 @@ another for metadata-extractor so we can extract the image metadata later on:
 > </dependency>
 >```
 
+Next, lets implement the function to handle the incoming cloud event. Since OCI Cloud 
+Events conform to the CNCF Cloud Events specifiation, we can safely type our incoming 
+parameter as a CloudEvent and the FDK will handle properly serializing the parameter 
+when the function is triggered. Once we have our CloudEvent data we can construct a URL 
+that points to our image (a public image in this case) and open that URL as a stream that 
+can be passed to the metadata extractor.
+
+![user input](images/userinput.png)
+>```
+> package com.example.fn;
+> 
+> import com.drew.imaging.ImageMetadataReader;
+> import com.drew.imaging.ImageProcessingException;
+> import com.drew.metadata.Metadata;
+> import com.fasterxml.jackson.databind.ObjectMapper;
+> import io.cloudevents.CloudEvent;
+> 
+> import java.io.IOException;
+> import java.io.InputStream;
+> import java.net.URL;
+> import java.util.Map;
+> 
+> public class HelloFunction {
+> 
+>     public Metadata handleRequest(CloudEvent event) throws IOException, ImageProcessingException {
+>         ObjectMapper objectMapper = new ObjectMapper();
+>         Map data = objectMapper.convertValue(event.getData().get(), Map.class);
+>         Map additionalDetails = objectMapper.convertValue(data.get("additionalDetails"), Map.class);
+> 
+>         String imageUrl = "https://objectstorage.us-phoenix-1.oraclecloud.com/n/" +
+>                 additionalDetails.get("namespace") +
+>                 "/b/" +
+>                 additionalDetails.get("bucketName") +
+>                 "/o/" +
+>                 data.get("resourceName");
+>         System.out.println("imageUrl: " + imageUrl);
+> 
+>         InputStream imageStream = new URL(imageUrl).openStream();
+>         Metadata metadata = ImageMetadataReader.readMetadata(imageStream);
+>         System.out.println(objectMapper.writeValueAsString(metadata));
+> 
+>         return metadata;
+>     }
+> 
+> }
+>```
 
