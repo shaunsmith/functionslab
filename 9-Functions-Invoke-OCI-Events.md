@@ -15,6 +15,27 @@ CloudEvents for seamless interoperability with the cloud native ecosystem.
 
 ![OCI Events Service](images/oci-events-service.jpg)
 
+## Create an Object Storage bucket
+
+
+
+## Create an OCI Event rule
+
+To create a new cloud event rule, click on Application Integration -> Events Service in the sidebar menu:
+
+nav menu > oci events
+
+Click on 'Create Rule' and populate the form:
+
+
+
+Note the conditions above. I've selected 'Object Storage' as the 'Service Name' and 'Object Storage - Create Object' as the 'Event Type'. I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
+
+
+
+
+
+
 ## Create a function
 
 Let's head back to our local terminal to create a function:
@@ -100,4 +121,43 @@ can be passed to the metadata extractor.
 > 
 > }
 >```
+
+## Test your function
+
+At this point our test will pass and we can deploy the function to our application with:
+
+
+
+
+## Deploy your function
+
+At this point our test will pass and we can deploy the function to our application with:
+
+fn deploy --app cloud-events-demo
+
+We can manually invoke this by passing our event JSON string:
+echo "[event JSON string]" | fn invoke cloud-events-demo cloud-events-demo-fn
+
+And we'll see that our function works as expected. Now let's create the cloud event rule! 
+
+
+## Update the OCI Event rule
+
+To create a new cloud event rule, click on Application Integration -> Events Service in the sidebar menu:
+
+nav menu > oci events
+
+Click on 'Create Rule' and populate the form:
+
+Note the conditions above. I've selected 'Object Storage' as the 'Service Name' and 'Object Storage - Create Object' as the 'Event Type'. I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
+
+Here we are able to specify the action we would like taken when this cloud event is fired. In this case, we want to call our serverless function, but we could also publish to an Oracle Stream or invoke a notification. Click 'Create Rule' and the rule will be immediately available for use.
+
+Summary
+
+In this lab we created a serverless function to extract image metadata that is automatically triggered upon an image being uploaded to a given object storage bucket. We learned that cloud event rules can be tied to various actions within our OCI tenancy such as Database and Object Storage activities and can automatically trigger serverless functions, notifications or publish items to an Oracle Stream.
+
+
+
+
 
