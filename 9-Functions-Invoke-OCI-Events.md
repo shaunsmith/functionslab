@@ -39,9 +39,8 @@ The output will be:
 
 Now we will add two dependencies to the pom.xml file. One for the cloudevents-api, 
 and another for metadata-extractor so we can extract the image metadata later on. 
-Edit the pom.xml file:
 
-![user input](images/userinput.png)
+![user input](images/userinput.png) Edit the pom.xml file and add the following dependencies:
 >```
 > <dependency>
 >     <groupId>io.cloudevents</groupId>
@@ -62,7 +61,7 @@ when the function is triggered. Once we have our CloudEvent data we can construc
 that points to our image (a public image in this case) and open that URL as a stream that 
 can be passed to the metadata extractor.
 
-![user input](images/userinput.png)
+![user input](images/userinput.png) Replace the definition of HelloFunction with the following:
 >```
 > package com.example.fn;
 > 
