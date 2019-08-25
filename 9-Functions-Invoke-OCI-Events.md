@@ -21,9 +21,10 @@ CloudEvents for seamless interoperability with the cloud native ecosystem.
 
 ## Create an OCI Event rule
 
-To create a new cloud event rule, click on Application Integration -> Events Service in the sidebar menu:
+To create a new OCI Event rule, click on Application Integration -> Events Service in 
+the sidebar menu:
 
-nav menu > oci events
+![OCI Nav Menu > Events](images/oci-events-nav-menu.jpg)
 
 Click on 'Create Rule' and populate the form:
 
