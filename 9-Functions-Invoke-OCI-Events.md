@@ -13,3 +13,4 @@ OCI resources and respond to them using Oracle Functions, Notifications, and Str
 services. OCI Events service is compliant with Cloud Native Computing Foundation (CNCF) 
 CloudEvents for seamless interoperability with the cloud native ecosystem.
 
+![OCI Events Service](images/oci-events-service.jpg)
