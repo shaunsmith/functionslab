@@ -23,6 +23,7 @@ including:
 4. Customizing the function execution environment
 5. Calling functions using oci-curl
 6. Functions clients including the OCI SDK
+7. Invoking functions automatically with OCI Events
 
 Step one is getting your environment setup.
 
