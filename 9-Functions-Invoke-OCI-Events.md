@@ -14,3 +14,31 @@ services. OCI Events service is compliant with Cloud Native Computing Foundation
 CloudEvents for seamless interoperability with the cloud native ecosystem.
 
 ![OCI Events Service](images/oci-events-service.jpg)
+
+## Create a function
+
+Let's head back to our local terminal to create a function:
+
+![user input](images/userinput.png)
+>```
+> fn init --runtime java cloud-events-demo-fn
+>```
+
+We'll add two dependencies to the pom.xml file. One for the cloudevents-api, and 
+another for metadata-extractor so we can extract the image metadata later on:
+
+![user input](images/userinput.png)
+>```
+> <dependency>
+>     <groupId>io.cloudevents</groupId>
+>     <artifactId>cloudevents-api</artifactId>
+>     <version>0.2.1</version>
+> </dependency>
+> <dependency>
+>     <groupId>com.drewnoakes</groupId>
+>     <artifactId>metadata-extractor</artifactId>
+>     <version>2.12.0</version>
+> </dependency>
+>```
+
+
