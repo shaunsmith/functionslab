@@ -41,6 +41,9 @@ the sidebar menu:
 
 Click on 'Create Rule' and populate the form:
 
+![Create rule event](images/create-rule-event.jpg)
+
+![Create rule action](images/create-rule-action.jpg)
 
 
 Note the conditions above. I've selected 'Object Storage' as the 'Service Name' and 'Object Storage - Create Object' as the 'Event Type'. I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
