@@ -17,7 +17,20 @@ CloudEvents for seamless interoperability with the cloud native ecosystem.
 
 ## Create an Object Storage bucket
 
+![Create an Object Store bucket](images/create-bucket.png)
 
+## Create an OCI Notifications Topic and Email Subscription
+
+![OCI Nav Menu > ONS](images/notifications-nav-menu.jpg)
+
+![Create an ONS Topic](images/create-topic.jpg)
+
+![Create an ONS Email Subscription](images/create-email-subscription.jpg)
+
+
+Check your email. You will receive an email with the subject "Oracle Cloud Infrastructure Notifications Service Subscription Confirmation". Confirm the subscription by clicking on the link provided in the email. And you will see a "Subscription confirmed" message in the browser. Now this subscription will be in the "Active" state in the OCI console. 
+
+You can test the subscription by clicking on the "Publish Message" button on the topic screen in the OCI console. 
 
 ## Create an OCI Event rule
 
