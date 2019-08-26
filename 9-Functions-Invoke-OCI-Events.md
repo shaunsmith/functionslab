@@ -120,7 +120,7 @@ Under Actions, select the ONS topic created above.
 ![Create rule action](images/create-rule-action.jpg)
 
 
-## Create an Object Storage bucket and upload an image
+## Create a public Object Storage bucket and upload an image
 
 Next, we will create an Object Storage bucket and upload an image to trigger an email 
 notification.
