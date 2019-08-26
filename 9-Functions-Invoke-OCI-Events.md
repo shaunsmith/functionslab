@@ -135,7 +135,7 @@ Create an Object Storage bucket:
 
 ![Create bucket](images/create-bucket.png)
 
-Once the bucket is created, we change make it "public".
+Once the bucket is created, we change its visibility to make it "public".
 
 ![user input](images/userinput.png)
 Click on "Edit Visibility" and select "Public":
