@@ -210,18 +210,18 @@ and another for metadata-extractor so we can extract the image metadata later on
 ![user input](images/userinput.png) 
 Edit the pom.xml file and add the following dependencies:
 
->```
-> <dependency>
->     <groupId>io.cloudevents</groupId>
->     <artifactId>cloudevents-api</artifactId>
->     <version>0.2.1</version>
-> </dependency>
-> <dependency>
->     <groupId>com.drewnoakes</groupId>
->     <artifactId>metadata-extractor</artifactId>
->     <version>2.12.0</version>
-> </dependency>
->```
+```xml
+<dependency>
+    <groupId>io.cloudevents</groupId>
+    <artifactId>cloudevents-api</artifactId>
+    <version>0.2.1</version>
+</dependency>
+<dependency>
+    <groupId>com.drewnoakes</groupId>
+    <artifactId>metadata-extractor</artifactId>
+    <version>2.12.0</version>
+</dependency>
+```
 
 Next, lets implement a function to handle the incoming cloud event. Since OCI Cloud 
 Events conform to the CNCF Cloud Events specifiation, we can safely type our incoming 
@@ -279,47 +279,47 @@ Before we run an end-to-end test, let us write a simple unit test for our functi
 ![user input](images/userinput.png) 
 Replace the definition of HelloFunctionTest with the following:
 
->```
-> package com.example.fn;
-> 
-> import com.fnproject.fn.testing.*;
-> import org.junit.*;
-> 
-> import static org.junit.Assert.*;
-> 
-> public class HelloFunctionTest {
-> 
->     @Rule
->     public final FnTestingRule testing = FnTestingRule.createDefault();
-> 
->     @Test
->     public void shouldReturnGreeting() {
->         String event = "<your test image event JSON>";
->         testing.givenEvent().withBody(event).enqueue();
->         testing.thenRun(HelloFunction.class, "handleRequest");
-> 
->         FnResult result = testing.getOnlyResult();
->         assertTrue(result.isSuccess());
->     }
-> 
-> }
->```
+```java
+package com.example.fn;
+
+import com.fnproject.fn.testing.*;
+import org.junit.*;
+
+import static org.junit.Assert.*;
+
+public class HelloFunctionTest {
+
+    @Rule
+    public final FnTestingRule testing = FnTestingRule.createDefault();
+
+    @Test
+    public void shouldReturnGreeting() {
+        String event = "<your test image event JSON>";
+        testing.givenEvent().withBody(event).enqueue();
+        testing.thenRun(HelloFunction.class, "handleRequest");
+
+        FnResult result = testing.getOnlyResult();
+        assertTrue(result.isSuccess());
+    }
+
+}
+```
 
 ![user input](images/userinput.png)
 Generate a string representation of the Object Created cloud event JSON using a 
 JSON-to-string conversion tool like https://tools.knowledgewalls.com/jsontostring
 
->```
-> "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
->```
+```json
+"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
+```
 
 ![user input](images/userinput.png)
 In HelloFunctionTest.java, replace the test event "your test image event JSON" with the 
 generated string representation of the cloud event JSON:
 
->```
->         String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
->```
+```java
+        String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
+```
 
 Now our unit test class is ready for use. Let's proceed to build/deploy your function.
 
