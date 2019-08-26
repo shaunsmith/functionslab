@@ -35,39 +35,80 @@ Click on Application Integration -> Notifications in the left navigation menu:
 ![user input](images/userinput.png)
 Click on "Create Topic":
 
+**IMPORTANT NOTE**: All lab participants are working in the same OCI tenancy and
+compartment. So to avoid confusion you need to name your OCI resources with your
+participant number. Wherever you see `NNN` in the lab instructions, please
+substitute it with your participant number.
+
+>```
+> Name: topic-NNN
+>```
+
 ![Create an ONS Topic](images/create-topic.jpg)
 
 
 ![user input](images/userinput.png)
-Click on "Create Subscription" and provide your email address:
+Click on "Create Subscription", select "Email" and enter your email address:
+
+>```
+> Protocol: Email
+> Email address: <enter your email address>
+>```
 
 ![Create an ONS Email Subscription](images/create-email-subscription.jpg)
 
 
+Next, you need to activate your email subscription.
+
+![user input](images/userinput.png)
 Check your email. You will receive an email with the subject "Oracle Cloud 
 Infrastructure Notifications Service Subscription Confirmation". Confirm the 
 subscription by clicking on the link provided in the email. You will see a 
 "Subscription confirmed" message in the browser. Now this subscription will be in the 
 "Active" state in the OCI console. 
 
+Next, let us test the email subscription with a test message.
+
+![user input](images/userinput.png)
 You can test the subscription by clicking the "Publish Message" button on the topic 
 screen in the OCI console. Confirm that you receive the test message in your inbox.
 
+
 ## Create an OCI Event rule
 
-To create a new OCI Event rule, click on Application Integration -> Events Service in 
-the sidebar menu:
+Now, let us create an Event rule using the above ONS topic and email subscription.
+
+![user input](images/userinput.png)
+Click on Application Integration -> Events Service in the left navigation menu:
 
 ![OCI Nav Menu > Events](images/oci-events-nav-menu.jpg)
 
-Click on 'Create Rule' and populate the form:
+
+![user input](images/userinput.png)
+Click on 'Create Rule' and populate the form as below:
+
+>```
+> Name: cloud-events-NNN
+> 
+> Select "Event Type"
+> Service Name: Object Storage
+> Event Type: Object Storage - Create Object
+> 
+> Add Condition and select "Attribute"
+> Attribute Name: bucketName
+> Attribute Value: object-upload-NNN
+>```
 
 ![Create rule event](images/create-rule-event.jpg)
+
+
+![user input](images/userinput.png)
+
 
 ![Create rule action](images/create-rule-action.jpg)
 
 
-Note the conditions above. I've selected 'Object Storage' as the 'Service Name' and 'Object Storage - Create Object' as the 'Event Type'. I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
+Note the conditions above.  I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
 
 
 
