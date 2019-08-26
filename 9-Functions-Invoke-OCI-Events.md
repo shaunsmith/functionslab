@@ -530,4 +530,12 @@ learned that cloud event rules can be tied to various actions within our OCI ten
 Object Storage (and Database) activities and can automatically trigger serverless Functions, 
 send Notifications or publish items to an Oracle Stream. 
 
+Before you go, don't forget to mark your bucket as "Private" again!
+
+![user input](images/userinput.png)
+Click on "Edit Visibility" and select "Privaye":
+
+![Make bucket public](images/make-bucket-private.jpg)
+
+
 UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
