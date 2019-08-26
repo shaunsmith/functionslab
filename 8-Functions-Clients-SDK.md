@@ -24,61 +24,34 @@ The required steps our client code will need to perform are:
 4. Pass the `InvokeFunctionRequest` to the `FunctionsInvokeClient`to call the function
 5. Extract the result from an `InvokeFunctionResponse`
 
-## Install preview OCI Java SDK
+## OCI Java SDK
 
-As this example uses Maven and the OCI SDK is not yet available in Maven Central
-you'll need to download and install it into your local Maven repository. Your
-lab instructor will provide you with a link to the preview version that includes
-Functions support.
-
-1. Download and unzip the preview version of the OCI Java SDK
-
-![user input](images/userinput.png)
->```
->unzip -d oci-sdk oci-java-sdk-dist-1.4.1-preview1-20190222.223049-5.zip
->```
-
-2. Change into the lib directory
-
-![user input](images/userinput.png)
->```
->cd oci-sdk/lib
->```
-
-3. Install the SDK Jar into your local Maven repo
-
-![user input](images/userinput.png)
->```
->mvn install:install-file -Dfile=oci-java-sdk-full-1.4.1-preview1-SNAPSHOT.jar \
->-DgroupId=com.oracle.oci.sdk -DartifactId=oci-java-sdk \
->-Dversion=1.4.1-preview1-20190222.223049-5 -Dpackaging=jar
->```
+This example uses the latest OCI Java SDK. The SDK is available in Maven Central.
 
 ## A Tour of the Code
 
 The entire functions client class is [InvokeById](functions-sdk/src/main/java/com/example/fn/InvokeById.java) but the core functionality is in the following lines:
 
 ```java
-      AuthenticationDetailsProvider authProvider = new ConfigFileAuthenticationDetailsProvider(PROFILE_NAME);
+        AuthenticationDetailsProvider authProvider = new ConfigFileAuthenticationDetailsProvider(ociProfile);
         try (FunctionsInvokeClient fnInvokeClient = new FunctionsInvokeClient(authProvider)) {
             fnInvokeClient.setEndpoint(invokeEndpointURL);
 
             InvokeFunctionRequest ifr = InvokeFunctionRequest.builder().functionId(functionId)
                     .invokeFunctionBody(StreamUtils.createByteArrayInputStream(payload.getBytes())).build();
 
-            System.err.println("Invoking function endpoint - " + invokeEndpointURL + " with payload " + payload);
+            System.out.println("Invoking function endpoint - " + invokeEndpointURL + " with payload [" + payload + "]");
             InvokeFunctionResponse resp = fnInvokeClient.invokeFunction(ifr);
             System.out.println(IOUtils.toString(resp.getInputStream(), StandardCharsets.UTF_8));
-        }
+         }
 ```
 
 The first line creates an instance of `ConfigFileAuthenticationDetailsProvider`
 which will read the `~/.oci/config` file and attempt to authenticate with OCI.
-In this case it uses the "workshop" profile but it can be configured to read
-any declared profile.
+In this case, we will pass the OCI profile as the first argument while running this program.
 
 ```java
-AuthenticationDetailsProvider authProvider = new ConfigFileAuthenticationDetailsProvider(PROFILE_NAME);
+AuthenticationDetailsProvider authProvider = new ConfigFileAuthenticationDetailsProvider(ociProfile);
 ```
 
 The next two lines instantiate a `FunctionsInvokeClient` using the config file
@@ -103,10 +76,6 @@ InvokeFunctionRequest ifr = InvokeFunctionRequest.builder().functionId(functionI
 Finally we use the invoke client to call the function we constructed, getting
 an `InvokeFunctionResponse` in return.
 
-
-
-
-
 ## Build the Client app and configure your environment
 
 1. Since you've previously cloned the workshop git repo into your home
@@ -116,14 +85,14 @@ an `InvokeFunctionResponse` in return.
     ![user input](images/userinput.png)
     >```
     >cd ~/functionslab/functions-sdk
-    >``
+    >```
 
 2. Build the Functions client using Maven
 
-![user input](images/userinput.png)
->```
->mvn clean package
->```
+    ![user input](images/userinput.png)
+    >```
+    >mvn clean package
+    >```
 
 3. Define OCI authentication properties
 
@@ -132,12 +101,12 @@ an `InvokeFunctionResponse` in return.
     calls. There are a few ways to authenticate. This example uses an
     `ConfigFileAuthenticationDetailsProvider`, which reads user properties from
     the OCI config file located in `~/.oci/config`. This class can be instructed
-    to read an optionally specified user profile.  But out of the box, the
-    example uses the workshop profile.
+    to read an optionally specified OCI profile. For this lab let's use
+    the "workshop" profile.
 
     You're `~/.oci/config` file was pre-populated with all of the right values
     for your tenancy, compartment, user id, etc.  So it's ready to go!  There's
-    only one "profile" defined, but you can have many profiles for use with
+    only one profile defined, but you can have many profiles for use with
     different tenancies or compartments.
     
     Review your `~/.oci/config` file to become familiar with its contents and
@@ -152,19 +121,19 @@ an `InvokeFunctionResponse` in return.
 
 Before we take a look at the client code, let's run it.
 
-The Maven build produces a jar in the target folder.  The syntax to run the
+The Maven build produces a jar in the target folder. The syntax to run the
 example is:
 
-`java -jar target/<jar-name>.jar <functions regional endpoint> <functionid> [<payload string>]`
+`java -jar target/<jar-name>.jar <oci-profile> <function-invoke-endpoint> <function-id> [<payload-string>]`
 
 Unlike the `oci-curl` example, the OCI SDK supports invoking a function by its
 id, not directly using its invoke endpoint. But we need to find the Orace
-Functions invoke service endpoint and the function id.  We can do this by
+Functions invoke endpoint (protocol + host) and the function id.  We can do this by
 inspecting the function you want to invoke using the Fn CLI, e.g.,:
 
 ![user input](images/userinput.png)
 >```
-> fn inspect labapp-NNN nodefn
+> fn inspect fn labapp-NNN nodefn
 >```
 
 The result will be a JSON structure similar to the following:
@@ -172,25 +141,25 @@ The result will be a JSON structure similar to the following:
 ```JSON
 {
 	"annotations": {
-		"fnproject.io/fn/invokeEndpoint": "https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com/invoke/ocid1.fnfunc.oc1.phx.abcdefghijk",
+		"fnproject.io/fn/invokeEndpoint": "https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com/20181201/functions/ocid1.fnfunc.oc1.phx.abcdefg..hijk/actions/invoke",
 		"oracle.com/oci/compartmentId": "ocid1.compartment.oc1..abcdefg"
 	},
-	"app_id": "ocid1.fnapp.oc1.phx.abcdfg",
-	"created_at": "2019-02-26T21:28:04.866Z",
-	"id": "ocid1.fnfunc.oc1.phx.abcdefghijk",
+	"app_id": "ocid1.fnapp.oc1.phx.abcd..fg",
+	"created_at": "2019-08-26T21:28:04.866Z",
+	"id": "ocid1.fnfunc.oc1.phx.abcdefg..hijk",
 	"idle_timeout": 30,
-	"image": "phx.ocir.io/oracle-serverless-devrel/shaunsmith/nodefn:0.0.4",
+	"image": "phx.ocir.io/oracle/shs/nodefn:0.0.4",
 	"memory": 128,
 	"name": "nodefn",
 	"timeout": 30,
-	"updated_at": "2019-02-26T21:28:04.866Z"
+	"updated_at": "2019-08-26T21:28:04.866Z"
 }
 ```
 
 The invoke endpoint you need to pass to the example can be extracted from the
-value of the `fnproject.io/fn/invokeEndpoint` property.  You just need the
-protcol and name of the host.  For the example above that would be:
-`https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com`.  The `id`
+value of the `fnproject.io/fn/invokeEndpoint` property. You just need the
+protcol and name of the host. For the example above that would be:
+`https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com`. The `id`
 property contains the function id.
 
 > NOTE: Payload is optional. If your function doesn't expect any input you
@@ -198,11 +167,11 @@ property contains the function id.
 
 e.g., without payload:
 
-`java -jar target/fn-java-sdk-invokebyid-1.0-SNAPSHOT.jar https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com ocid1.fnfunc.oc1.phx.abcdefghijk`
+`java -jar target/fn-java-sdk-invokebyid-1.0-SNAPSHOT.jar workshop https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com ocid1.fnfunc.oc1.phx.abcdefg..hijk`
 
 e.g., with payload:
 
-`java -jar target/fn-java-sdk-invokebyid-1.0-SNAPSHOT.jar https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com ocid1.fnfunc.oc1.phx.abcdefghijk '{"name":"foobar"}'`
+`java -jar target/fn-java-sdk-invokebyid-1.0-SNAPSHOT.jar workshop https://toyh4yqssuq.us-phoenix-1.functions.oci.oraclecloud.com ocid1.fnfunc.oc1.phx.abcdefg..hijk '{"name":"foobar"}'`
 
 ## What if my function needs input in binary form?
 
