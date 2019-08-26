@@ -510,6 +510,12 @@ automatically by OCI Events service!
 
 ![user input](images/userinput.png)
 Go to your bucket details page in the OCI Object Storage console and upload an image. 
+Note: If you wish to upload the same image [sachin-in.jpg](/oci-event-triggers/sachin-in.jpg) 
+again, make sure you delete the existing image from your bucket and then upload the same 
+image again. 
+
+
+![user input](images/userinput.png)
 In about 1-2 minutes, check your function logs in PaperTrail! You should see the 
 following:
 
@@ -521,7 +527,7 @@ following:
 Congratulations! In this lab we created a serverless function (to extract image metadata) that 
 is automatically triggered when an image is uploaded to a given OCI Object Storage bucket. We 
 learned that cloud event rules can be tied to various actions within our OCI tenancy such as 
-Object Storage and Database activities and can automatically trigger serverless Functions, 
-Notifications or publish items to an Oracle Stream. 
+Object Storage (and Database) activities and can automatically trigger serverless Functions, 
+send Notifications or publish items to an Oracle Stream. 
 
 UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
