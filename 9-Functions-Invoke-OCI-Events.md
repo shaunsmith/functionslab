@@ -1,10 +1,11 @@
 # Invoke Oracle Functions Using OCI Events service
 
 This lab walks you through how to invoke a function deployed to Oracle Functions
-automatically using the Oracle Cloud Infrastructure (OCI) Events service. We will 
-trigger a function when an object is uploaded to an OCI Object Storage bucket. We 
-will use OCI Events service to call our function which will retrieve metadata from 
-the image.
+automatically using another serverless service - Oracle Cloud Infrastructure (OCI)
+Events service. We will trigger a function when an object is uploaded to an OCI 
+Object Storage bucket. We will use OCI Events service to automatically invoke our 
+function which will retrieve metadata from the image. All this without having to
+provision, manage and scale servers!
 
 ## OCI Events service
 
@@ -13,24 +14,44 @@ OCI resources and respond to them using Oracle Functions, Notifications, and Str
 services. OCI Events service is compliant with Cloud Native Computing Foundation (CNCF) 
 CloudEvents for seamless interoperability with the cloud native ecosystem.
 
+You can build event-driven, cloud native, serverless applications using Oracle Functions
+and OCI Events. 
+
 ![OCI Events Service](images/oci-events-service.jpg)
 
-## Create an Object Storage bucket
+For more information about the OCI Events service please see the [service documentation](https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsoverview.htm).
+Before we dive in to our function, let us start with a simple test using OCI Notifications
+service. Let us create a topic with an email subscription and configure an Event rule to
+route the event to your email address.
 
-![Create an Object Store bucket](images/create-bucket.png)
+## Create an OCI Notifications Service (ONS) Topic and Email Subscription
 
-## Create an OCI Notifications Topic and Email Subscription
+![user input](images/userinput.png)
+Click on Application Integration -> Notifications in the left navigation menu:
 
 ![OCI Nav Menu > ONS](images/notifications-nav-menu.jpg)
 
+
+![user input](images/userinput.png)
+Click on "Create Topic":
+
 ![Create an ONS Topic](images/create-topic.jpg)
+
+
+![user input](images/userinput.png)
+Click on "Create Subscription" and provide your email address:
 
 ![Create an ONS Email Subscription](images/create-email-subscription.jpg)
 
 
-Check your email. You will receive an email with the subject "Oracle Cloud Infrastructure Notifications Service Subscription Confirmation". Confirm the subscription by clicking on the link provided in the email. And you will see a "Subscription confirmed" message in the browser. Now this subscription will be in the "Active" state in the OCI console. 
+Check your email. You will receive an email with the subject "Oracle Cloud 
+Infrastructure Notifications Service Subscription Confirmation". Confirm the 
+subscription by clicking on the link provided in the email. You will see a 
+"Subscription confirmed" message in the browser. Now this subscription will be in the 
+"Active" state in the OCI console. 
 
-You can test the subscription by clicking on the "Publish Message" button on the topic screen in the OCI console. 
+You can test the subscription by clicking the "Publish Message" button on the topic 
+screen in the OCI console. Confirm that you receive the test message in your inbox.
 
 ## Create an OCI Event rule
 
