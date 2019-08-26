@@ -135,7 +135,12 @@ Create an Object Storage bucket:
 
 ![Create bucket](images/create-bucket.png)
 
-Once the bucket is created, we can upload an image file.
+![user input](images/userinput.png)
+Click on "Edit Visibility" and select "Public":
+
+![Make bucket public](images/make-bucket-public.jpg)
+
+Once the bucket is created and made public, we can upload an image file.
 
 ![user input](images/userinput.png)
 Upload an image in to the bucket. For convenience, we have included an image file in
@@ -277,7 +282,7 @@ public class HelloFunction {
 }
 ```
 
-## Unit test your function
+## Unit test class for your function
 
 Before we run an end-to-end test, let us write a simple unit test for our function.
 
