@@ -138,7 +138,11 @@ Create an Object Storage bucket:
 Once the bucket is created, we can upload an image file.
 
 ![user input](images/userinput.png)
-Upload an image in to the bucket.
+Upload an image in to the bucket. For convenience we have included an image file in
+/oci-events-triggers/sachin-in.jpg
+
+![Upload image to bucket](images/upload-image-to-bucket.jpg)
+
 
 This will generate an Object Created event, which in turn will trigger an email 
 notification. In about 60 seconds, you should see an email in your inbox with the cloud 
