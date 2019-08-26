@@ -176,12 +176,17 @@ event JSON (similar to the JSON shown below):
 > }
 >```
 
+Congratulations! We have confirmed the event gets generated, and triggers the event rule
+to send an email notification. Now let us proceed to trigger a function in response to 
+the event.
 
 ## Create a function
 
-Let's head back to our local terminal to create a function:
+Now, let us create a function to process the cloud event. 
 
 ![user input](images/userinput.png)
+Create a boilerplate Java function using the fn CLI:
+
 >```
 > fn init --runtime java cloud-events-demo-fn
 >```
@@ -202,7 +207,9 @@ The output will be:
 Now we will add two dependencies to the pom.xml file. One for the cloudevents-api, 
 and another for metadata-extractor so we can extract the image metadata later on. 
 
-![user input](images/userinput.png) Edit the pom.xml file and add the following dependencies:
+![user input](images/userinput.png) 
+Edit the pom.xml file and add the following dependencies:
+
 >```
 > <dependency>
 >     <groupId>io.cloudevents</groupId>
@@ -216,14 +223,16 @@ and another for metadata-extractor so we can extract the image metadata later on
 > </dependency>
 >```
 
-Next, lets implement the function to handle the incoming cloud event. Since OCI Cloud 
+Next, lets implement a function to handle the incoming cloud event. Since OCI Cloud 
 Events conform to the CNCF Cloud Events specifiation, we can safely type our incoming 
 parameter as a CloudEvent and the FDK will handle properly serializing the parameter 
 when the function is triggered. Once we have our CloudEvent data we can construct a URL 
 that points to our image (a public image in this case) and open that URL as a stream that 
 can be passed to the metadata extractor.
 
-![user input](images/userinput.png) Replace the definition of HelloFunction with the following:
+![user input](images/userinput.png) 
+Replace the definition of HelloFunction with the following:
+
 >```
 > package com.example.fn;
 > 
@@ -263,10 +272,38 @@ can be passed to the metadata extractor.
 > }
 >```
 
-## Test your function
+## Unit test your function
 
-At this point our test will pass and we can deploy the function to our application with:
+Before we run an end-to-end test, let us write a simple unit test for our function.
 
+![user input](images/userinput.png) 
+Replace the definition of HelloFunctionTest with the following:
+
+>```
+> package com.example.fn;
+> 
+> import com.fnproject.fn.testing.*;
+> import org.junit.*;
+> 
+> import static org.junit.Assert.*;
+> 
+> public class HelloFunctionTest {
+> 
+>     @Rule
+>     public final FnTestingRule testing = FnTestingRule.createDefault();
+> 
+>     @Test
+>     public void shouldReturnGreeting() {
+>         String event = "[your test image event JSON]";
+>         testing.givenEvent().withBody(event).enqueue();
+>         testing.thenRun(HelloFunction.class, "handleRequest");
+> 
+>         FnResult result = testing.getOnlyResult();
+>         assertTrue(result.isSuccess());
+>     }
+> 
+> }
+>```
 
 
 
