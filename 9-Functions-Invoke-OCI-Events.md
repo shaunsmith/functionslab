@@ -76,7 +76,8 @@ screen in the OCI console. Confirm that you receive the test message in your inb
 
 ## Create an OCI Event rule
 
-Now, let us create an Event rule using the above ONS topic and email subscription.
+Now, let us create an Event rule to route Object Storage object created events to the
+above ONS topic/email subscription.
 
 ![user input](images/userinput.png)
 Click on Application Integration -> Events Service in the left navigation menu:
@@ -84,8 +85,13 @@ Click on Application Integration -> Events Service in the left navigation menu:
 ![OCI Nav Menu > Events](images/oci-events-nav-menu.jpg)
 
 
+You can listen to specific events using a filter criteria. In this case, we are only 
+interested in uploads to our specific Object Storage bucket. So let us use the "Object 
+Storage - Create Object" event with "bucketName" as the filter criteria. Refer to the 
+service documentation for more information on the event types and filters.
+
 ![user input](images/userinput.png)
-Click on 'Create Rule' and populate the form as below:
+Click on 'Create Rule' and populate the form with the following values. 
 
 >```
 > Name: cloud-events-NNN
@@ -103,12 +109,18 @@ Click on 'Create Rule' and populate the form as below:
 
 
 ![user input](images/userinput.png)
+Under Actions, select the ONS topic created above.
 
+>```
+> Action Type: Notifications
+> Compartment: workshop
+> Topic: topic-NNN
+>```
 
 ![Create rule action](images/create-rule-action.jpg)
 
 
-Note the conditions above.  I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
+
 
 
 
