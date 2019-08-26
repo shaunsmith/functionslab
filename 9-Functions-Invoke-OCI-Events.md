@@ -506,14 +506,15 @@ Go to your bucket details page in the OCI Object Storage console and upload an i
 In about 1-2 minutes, check your function logs in PaperTrail! You should see the 
 following:
 
+![Check function logs](images/function-logs.jpg)
 
 
+## Wrap Up
 
-Summary
+Congratulations! In this lab we created a serverless function (to extract image metadata) that 
+is automatically triggered when an image is uploaded to a given OCI Object Storage bucket. We 
+learned that cloud event rules can be tied to various actions within our OCI tenancy such as 
+Object Storage and Database activities and can automatically trigger serverless Functions, 
+Notifications or publish items to an Oracle Stream. 
 
-In this lab we created a serverless function to extract image metadata that is automatically triggered upon an image being uploaded to a given object storage bucket. We learned that cloud event rules can be tied to various actions within our OCI tenancy such as Database and Object Storage activities and can automatically trigger serverless functions, notifications or publish items to an Oracle Stream.
-
-
-
-
-
+UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
