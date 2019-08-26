@@ -120,11 +120,61 @@ Under Actions, select the ONS topic created above.
 ![Create rule action](images/create-rule-action.jpg)
 
 
+## Create an Object Storage bucket and upload an image
 
+Next, we will create an Object Storage bucket and upload an image to trigger an email 
+notification.
 
+![user input](images/userinput.png)
+Create an Object Storage bucket:
 
+>```
+> Bucket name: object-upload-NNN
+> Compartment: workshop
+>```
 
+![Create rule action](images/create-bucket.png)
 
+Once the bucket is created, we can upload an image file.
+
+![user input](images/userinput.png)
+Upload an image in to the bucket.
+
+This will generate an Object Created event, which in turn will trigger an email 
+notification. In about 60 seconds, you should see an email in your inbox with the cloud 
+event JSON (similar to the JSON shown below):
+
+>```
+> {
+>     "cloudEventsVersion": "0.1",
+>     "eventID": "aa00367d-8281-476a-b918-0e821f1e2f6d",
+>     "eventType": "com.oraclecloud.objectstorage.createobject",
+>     "source": "objectstorage",
+>     "eventTypeVersion": "1.0",
+>     "eventTime": "2019-08-25T14:01:46Z",
+>     "schemaURL": null,
+>     "contentType": "application/json",
+>     "extensions": {
+>         "compartmentId": "<your-compartment-ocid>"
+>     },
+>     "data": {
+>         "compartmentId": "<your-compartment-ocid>",
+>         "compartmentName": "workshop",
+>         "resourceName": "sachin-in.jpg",
+>         "resourceId": "",
+>         "availabilityDomain": null,
+>         "freeFormTags": {},
+>         "definedTags": {},
+>         "additionalDetails": {
+>             "eTag": "65efdaae-9464-45e8-b564-4df86f11198a",
+>             "namespace": "<your-tenant-namespace>",
+>             "archivalState": "Available",
+>             "bucketName": "object-upload",
+>             "bucketId": "<your-buckte-ocid>"
+>         }
+>     }
+> }
+>```
 
 
 ## Create a function
