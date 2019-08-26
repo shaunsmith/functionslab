@@ -294,7 +294,7 @@ Replace the definition of HelloFunctionTest with the following:
 > 
 >     @Test
 >     public void shouldReturnGreeting() {
->         String event = "[your test image event JSON]";
+>         String event = "<your test image event JSON>";
 >         testing.givenEvent().withBody(event).enqueue();
 >         testing.thenRun(HelloFunction.class, "handleRequest");
 > 
@@ -305,6 +305,12 @@ Replace the definition of HelloFunctionTest with the following:
 > }
 >```
 
+![user input](images/userinput.png)
+Replace the test event "your test image event JSON" with the following:
+
+>```
+> "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaabq46pw5n2asee5tl424jhup2wajcuuvzevr6vfdk5it4wuti2jia\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaabq46pw5n2asee5tl424jhup2wajcuuvzevr6vfdk5it4wuti2jia\",\"compartmentName\":\"sachin-pikle\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"oracle-serverless-devrel\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaaaaaaaslzbprps47mtqrlkhwsegarwgp62eyehw2asrp7bxiijbmwuav2q\"}}}"
+>```
 
 
 ## Deploy your function
