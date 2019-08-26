@@ -122,7 +122,7 @@ Under Actions, select the ONS topic created above.
 
 ## Create a public Object Storage bucket and upload an image
 
-Next, we will create an Object Storage bucket and upload an image to trigger an email 
+Next, we will create a public Object Storage bucket and upload an image to trigger an email 
 notification.
 
 ![user input](images/userinput.png)
@@ -135,12 +135,14 @@ Create an Object Storage bucket:
 
 ![Create bucket](images/create-bucket.png)
 
+Once the bucket is created, we change make it "public".
+
 ![user input](images/userinput.png)
 Click on "Edit Visibility" and select "Public":
 
 ![Make bucket public](images/make-bucket-public.jpg)
 
-Once the bucket is created and made public, we can upload an image file.
+Now that our bucket is created and made public, we can upload an image file.
 
 ![user input](images/userinput.png)
 Upload an image in to the bucket. For convenience, we have included an image file in
