@@ -133,7 +133,7 @@ Create an Object Storage bucket:
 > Compartment: workshop
 >```
 
-![Create rule action](images/create-bucket.png)
+![Create bucket](images/create-bucket.png)
 
 Once the bucket is created, we can upload an image file.
 
@@ -437,21 +437,57 @@ be4626a574d8: Layer already exists
 Updating function cloud-events-demo-fn using image iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8...
 ```
 
-We can manually invoke this by passing our event JSON string:
-echo "[event JSON string]" | fn invoke cloud-events-demo cloud-events-demo-fn
-
-And we'll see that our function works as expected. Now let's create the cloud event rule! 
+Congratulations! You have successfully built, unit tested and deployed your function.
+Before we run the end-to-end test, let us try and invoke the deployed function manually. 
 
 
-## Update the OCI Event rule
+## Manually invoke your function
 
-To create a new cloud event rule, click on Application Integration -> Events Service in the sidebar menu:
+We can manually invoke our function by passing the above cloud event string.
 
-nav menu > oci events
+![user input](images/userinput.png)
+Run the fn invoke command:
 
-Click on 'Create Rule' and populate the form:
+>```
+> echo "[event JSON string]" | fn invoke labapp-NNN cloud-events-demo-fn
+>```
 
-Note the conditions above. I've selected 'Object Storage' as the 'Service Name' and 'Object Storage - Create Object' as the 'Event Type'. I'm also able to filter the events by attributes - in this case, I'm only interested in uploads to my specific bucket. There are a number of event types and filter possibilities that you can choose from. Refer to the service documentation for more information on the event types and filters. The rest of the form looks like this:
+Here's the same command showing a sample cloud event string:
+
+>```
+> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
+>```
+
+You should see the following output:
+
+```shell
+imageUrl: https://objectstorage.us-phoenix-1.oraclecloud.com/n/tenant-namespace/b/object-upload-NNN/o/sachin-in.jpg
+{"directories":[{"name":"JPEG","imageWidth":500,"imageHeight":324,"numberOfComponents":3,"empty":false,"parent":null,"tagCount":8,"errorCount":0,"tags":[{"directoryName":"JPEG","description":"Baseline","tagName":"Compression Type","tagType":-3,"tagTypeHex":"0xfffffffd"},{"directoryName":"JPEG","description":"8 bits","tagName":"Data Precision","tagType":0,"tagTypeHex":"0x0000"},{"directoryName":"JPEG","description":"324 pixels","tagName":"Image Height","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"JPEG","description":"500 pixels","tagName":"Image Width","tagType":3,"tagTypeHex":"0x0003"},{"directoryName":"JPEG","description":"3","tagName":"Number of Components","tagType":5,"tagTypeHex":"0x0005"},{"directoryName":"JPEG","description":"Y component: Quantization table 0, Sampling factors 1 horiz/1 vert","tagName":"Component 1","tagType":6,"tagTypeHex":"0x0006"},{"directoryName":"JPEG","description":"Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 2","tagType":7,"tagTypeHex":"0x0007"},{"directoryName":"JPEG","description":"Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 3","tagType":8,"tagTypeHex":"0x0008"}],"errors":[]},{"name":"JFIF","version":258,"resUnits":0,"resY":100,"resX":100,"imageWidth":100,"imageHeight":100,"empty":false,"parent":null,"tagCount":6,"errorCount":0,"tags":[{"directoryName":"JFIF","description":"1.2","tagName":"Version","tagType":5,"tagTypeHex":"0x0005"},{"directoryName":"JFIF","description":"none","tagName":"Resolution Units","tagType":7,"tagTypeHex":"0x0007"},{"directoryName":"JFIF","description":"100 dots","tagName":"X Resolution","tagType":8,"tagTypeHex":"0x0008"},{"directoryName":"JFIF","description":"100 dots","tagName":"Y Resolution","tagType":10,"tagTypeHex":"0x000a"},{"directoryName":"JFIF","description":"0","tagName":"Thumbnail Width Pixels","tagType":12,"tagTypeHex":"0x000c"},{"directoryName":"JFIF","description":"0","tagName":"Thumbnail Height Pixels","tagType":13,"tagTypeHex":"0x000d"}],"errors":[]},{"name":"Ducky","empty":false,"parent":null,"tagCount":2,"errorCount":0,"tags":[{"directoryName":"Ducky","description":"64","tagName":"Quality","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"Ducky","description":"Oct 1989:  Portrait of Sachin Tendulkar of India in Lahore, Pakistan. \\ Mandatory Credit: Ben  Radford/Allsport","tagName":"Comment","tagType":2,"tagTypeHex":"0x0002"}],"errors":[]},{"name":"Adobe JPEG","empty":false,"parent":null,"tagCount":4,"errorCount":0,"tags":[{"directoryName":"Adobe JPEG","description":"25600","tagName":"DCT Encode Version","tagType":0,"tagTypeHex":"0x0000"},{"directoryName":"Adobe JPEG","description":"192","tagName":"Flags 0","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"Adobe JPEG","description":"0","tagName":"Flags 1","tagType":2,"tagTypeHex":"0x0002"},{"directoryName":"Adobe JPEG","description":"YCbCr","tagName":"Color Transform","tagType":3,"tagTypeHex":"0x0003"}],"errors":[]},{"name":"Huffman","numberOfTables":4,"typical":false,"optimized":true,"empty":false,"parent":null,"tagCount":1,"errorCount":0,"tags":[{"directoryName":"Huffman","description":"4 Huffman tables","tagName":"Number of Tables","tagType":1,"tagTypeHex":"0x0001"}],"errors":[]},{"name":"File Type","empty":false,"parent":null,"tagCount":4,"errorCount":0,"tags":[{"directoryName":"File Type","description":"JPEG","tagName":"Detected File Type Name","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"File Type","description":"Joint Photographic Experts Group","tagName":"Detected File Type Long Name","tagType":2,"tagTypeHex":"0x0002"},{"directoryName":"File Type","description":"image/jpeg","tagName":"Detected MIME Type","tagType":3,"tagTypeHex":"0x0003"},{"directoryName":"File Type","description":"jpg","tagName":"Expected File Name Extension","tagType":4,"tagTypeHex":"0x0004"}],"errors":[]}],"directoryCount":6}
+```
+
+And we see that our function works as expected. Now let's use a cloud event rule to trigger
+the function! 
+
+
+## Update the OCI Event rule action
+
+Let's go back to OCI Events service console, edit our rule and add a new action. In this 
+case, we want to call our serverless function.
+
+![user input](images/userinput.png)
+Under Actions, click "Add Action" and select the function created above.
+
+>```
+> Add Action
+>
+> Action Type: Functions
+> Compartment: workshop
+> Application: labapp-NNN
+> Function: cloud-events-demo-fn
+>```
+
+![Create rule action](images/edit-rule-action.jpg)
+
 
 Here we are able to specify the action we would like taken when this cloud event is fired. In this case, we want to call our serverless function, but we could also publish to an Oracle Stream or invoke a notification. Click 'Create Rule' and the rule will be immediately available for use.
 
