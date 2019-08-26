@@ -138,8 +138,9 @@ Create an Object Storage bucket:
 Once the bucket is created, we can upload an image file.
 
 ![user input](images/userinput.png)
-Upload an image in to the bucket. For convenience we have included an image file in
-/oci-events-triggers/sachin-in.jpg
+Upload an image in to the bucket. For convenience, we have included an image file in
+[/oci-event-triggers/sachin-in.jpg](/oci-event-triggers/sachin-in.jpg) which you can use
+to upload to your bucket.
 
 ![Upload image to bucket](images/upload-image-to-bucket.jpg)
 
@@ -490,10 +491,23 @@ Under Actions, click "Add Action" and select the function created above.
 > Function: cloud-events-demo-fn
 >```
 
-![Create rule action](images/edit-rule-action.jpg)
+![Edit rule action](images/edit-rule-action.jpg)
+
+Now that we have set up the rule to trigger your function when your upload an image to
+your Object Storage bucket, let's try an end-to-end test.
+
+## End-to-end test
+
+Let's upload an image file to your Object Storage bucket and see your function triggered
+automatically by OCI Events service!
+
+![user input](images/userinput.png)
+Go to your bucket details page in the OCI Object Storage console and upload an image. 
+In about 1-2 minutes, check your function logs in PaperTrail! You should see the 
+following:
 
 
-Here we are able to specify the action we would like taken when this cloud event is fired. In this case, we want to call our serverless function, but we could also publish to an Oracle Stream or invoke a notification. Click 'Create Rule' and the rule will be immediately available for use.
+
 
 Summary
 
