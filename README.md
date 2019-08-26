@@ -9,7 +9,8 @@ development experience is exactly the same so any experience you have with Fn
 will be 100% applicable. The key differences are that Oracle Functions is a
 managed service so there's no need to start and manage an Fn server (it's truly
 serverless!) and being a cloud service Oracle Functions is integrated with the
-Oracle Cloud Infrastructure (OCI) IAM and networking.
+Oracle Cloud Infrastructure (OCI) Idenity and Acess Management (IAM), 
+Networking, Events and other services.
 
 ## Overview
 
@@ -23,6 +24,7 @@ including:
 4. Customizing the function execution environment
 5. Calling functions using oci-curl
 6. Functions clients including the OCI SDK
+7. Invoking functions automatically with OCI Events
 
 Step one is getting your environment setup.
 
