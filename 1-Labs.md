@@ -56,3 +56,11 @@ either invoke the endpoint directly or use the OCI SDK to both manage and invoke
 functions.  We'll explore invoking a function via the
 [`oci-curl` utility](7-Functions-Clients-oci-curl.md) as well as invocation using the
 [OCI SDK for Functions](8-Functions-Clients-SDK.md).
+
+## Automatically invoke Functions using OCI Events service
+
+OCI Events service lets you monitor OCI resource changes and send notifications and/or trigger 
+a function automatically in response to that change. We'll explore sending email notifications,
+and invoking a function via the OCI Events when an image is uploaded to an OCI Object Storage
+bucket in [Automatically invoke Functions using OCI Events](9-Functions-Invoke-OCI-Events.md).
+
