@@ -203,4 +203,6 @@ Functions to invoke a function.  The OCI SDK provides support for the entire
 Functions API so you can both invoke and manage functions and applications.
 Please refer to the SDK docs for more details.
 
+NEXT: [*Automatically invoke Functions using OCI Events*](9-Functions-Invoke-OCI-Events.md), 
 UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
+
