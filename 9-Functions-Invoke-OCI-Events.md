@@ -36,7 +36,7 @@ Click on Application Integration -> Notifications in the left navigation menu:
 Click on "Create Topic":
 
 **IMPORTANT NOTE**: All lab participants are working in the same OCI tenancy and
-compartment. So to avoid confusion you need to name your OCI resources with your
+compartment. So, to avoid confusion you need to name your OCI resources with your
 participant number. Wherever you see `NNN` in the lab instructions, please
 substitute it with your participant number.
 
@@ -85,10 +85,11 @@ Click on Application Integration -> Events Service in the left navigation menu:
 ![OCI Nav Menu > Events](images/oci-events-nav-menu.jpg)
 
 
-You can listen to specific events using a filter criteria. In this case, we are only 
-interested in uploads to our specific Object Storage bucket. So let us use the "Object 
-Storage - Create Object" event with "bucketName" as the filter criteria. Refer to the 
-service documentation for more information on the event types and filters.
+You can listen to specific events using filter criteria. In this case, we are only 
+interested in uploads to our specific Object Storage bucket. So, let us use the 
+"Object Storage - Create Object" event with "bucketName" as the filter criteria. 
+Refer to the service documentation for more information on the event types and 
+filters.
 
 ![user input](images/userinput.png)
 Select your-lab-compartment. Click on 'Create Rule' and populate the form with the 
@@ -188,7 +189,7 @@ event JSON (similar to the JSON shown below):
 }
 ```
 
-Congratulations! We have confirmed the event gets generated, and triggers the event rule
+Congratulations! We have confirmed the event gets generated and triggers the event rule
 to send an email notification. Now let us proceed to trigger a function in response to 
 the event.
 
@@ -236,7 +237,7 @@ Edit the pom.xml file and add the following dependencies:
 ```
 
 Next, lets implement a function to handle the incoming cloud event. Since OCI Cloud 
-Events conform to the CNCF Cloud Events specifiation, we can safely type our incoming 
+Events conform to the CNCF Cloud Events specification, we can safely type our incoming 
 parameter as a CloudEvent and the FDK will handle properly serializing the parameter 
 when the function is triggered. Once we have our CloudEvent data we can construct a 
 URL that points to our image (a public image in this case) and open that URL as a 
