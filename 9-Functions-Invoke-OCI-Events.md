@@ -91,7 +91,8 @@ Storage - Create Object" event with "bucketName" as the filter criteria. Refer t
 service documentation for more information on the event types and filters.
 
 ![user input](images/userinput.png)
-Click on 'Create Rule' and populate the form with the following values. 
+Select your-lab-compartment. Click on 'Create Rule' and populate the form with the 
+following values:
 
 >```
 > Name: cloud-events-NNN
@@ -113,7 +114,7 @@ Under Actions, select the ONS topic created above.
 
 >```
 > Action Type: Notifications
-> Compartment: workshop
+> Compartment: select-your-lab-compartment
 > Topic: topic-NNN
 >```
 
@@ -126,11 +127,10 @@ Next, we will create a public Object Storage bucket and upload an image to trigg
 notification.
 
 ![user input](images/userinput.png)
-Create an Object Storage bucket:
+Select your-lab-compartment. Create an Object Storage bucket:
 
 >```
 > Bucket name: object-upload-NNN
-> Compartment: workshop
 >```
 
 ![Create bucket](images/create-bucket.png)
@@ -171,7 +171,7 @@ event JSON (similar to the JSON shown below):
     },
     "data": {
         "compartmentId": "<your-compartment-ocid>",
-        "compartmentName": "workshop",
+        "compartmentName": "<your-compartment-name>",
         "resourceName": "sachin-in.jpg",
         "resourceId": "",
         "availabilityDomain": null,
@@ -238,9 +238,9 @@ Edit the pom.xml file and add the following dependencies:
 Next, lets implement a function to handle the incoming cloud event. Since OCI Cloud 
 Events conform to the CNCF Cloud Events specifiation, we can safely type our incoming 
 parameter as a CloudEvent and the FDK will handle properly serializing the parameter 
-when the function is triggered. Once we have our CloudEvent data we can construct a URL 
-that points to our image (a public image in this case) and open that URL as a stream that 
-can be passed to the metadata extractor.
+when the function is triggered. Once we have our CloudEvent data we can construct a 
+URL that points to our image (a public image in this case) and open that URL as a 
+stream that can be passed to the metadata extractor.
 
 ![user input](images/userinput.png) 
 Replace the definition of HelloFunction with the following:
@@ -322,7 +322,7 @@ Generate a string representation of the Object Created cloud event JSON using a
 JSON-to-string conversion tool like https://tools.knowledgewalls.com/jsontostring
 
 ```json
-"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
+"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
 ```
 
 ![user input](images/userinput.png)
@@ -330,7 +330,7 @@ In HelloFunctionTest.java, replace the test event "your test image event JSON" w
 generated string representation of the cloud event JSON:
 
 ```java
-String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}";
+String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}";
 ```
 
 Now our unit test class is ready for use. Let's proceed to build/deploy your function.
@@ -467,10 +467,16 @@ Run the fn invoke command:
 Here's the same command showing a sample cloud event string:
 
 >```
-> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"workshop\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
+> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
 >```
 
-You should see the following output:
+You should see the following output on the screen:
+
+```shell
+{"directories":[{"name":"JPEG","imageWidth":500,"imageHeight":324,"numberOfComponents":3,"empty":false,"parent":null,"tagCount":8,"errorCount":0,"tags":[{"directoryName":"JPEG","description":"Baseline","tagName":"Compression Type","tagType":-3,"tagTypeHex":"0xfffffffd"},{"directoryName":"JPEG","description":"8 bits","tagName":"Data Precision","tagType":0,"tagTypeHex":"0x0000"},{"directoryName":"JPEG","description":"324 pixels","tagName":"Image Height","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"JPEG","description":"500 pixels","tagName":"Image Width","tagType":3,"tagTypeHex":"0x0003"},{"directoryName":"JPEG","description":"3","tagName":"Number of Components","tagType":5,"tagTypeHex":"0x0005"},{"directoryName":"JPEG","description":"Y component: Quantization table 0, Sampling factors 1 horiz/1 vert","tagName":"Component 1","tagType":6,"tagTypeHex":"0x0006"},{"directoryName":"JPEG","description":"Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 2","tagType":7,"tagTypeHex":"0x0007"},{"directoryName":"JPEG","description":"Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 3","tagType":8,"tagTypeHex":"0x0008"}],"errors":[]},{"name":"JFIF","version":258,"resUnits":0,"resY":100,"resX":100,"imageWidth":100,"imageHeight":100,"empty":false,"parent":null,"tagCount":6,"errorCount":0,"tags":[{"directoryName":"JFIF","description":"1.2","tagName":"Version","tagType":5,"tagTypeHex":"0x0005"},{"directoryName":"JFIF","description":"none","tagName":"Resolution Units","tagType":7,"tagTypeHex":"0x0007"},{"directoryName":"JFIF","description":"100 dots","tagName":"X Resolution","tagType":8,"tagTypeHex":"0x0008"},{"directoryName":"JFIF","description":"100 dots","tagName":"Y Resolution","tagType":10,"tagTypeHex":"0x000a"},{"directoryName":"JFIF","description":"0","tagName":"Thumbnail Width Pixels","tagType":12,"tagTypeHex":"0x000c"},{"directoryName":"JFIF","description":"0","tagName":"Thumbnail Height Pixels","tagType":13,"tagTypeHex":"0x000d"}],"errors":[]},{"name":"Ducky","empty":false,"parent":null,"tagCount":2,"errorCount":0,"tags":[{"directoryName":"Ducky","description":"64","tagName":"Quality","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"Ducky","description":"Oct 1989:  Portrait of Sachin Tendulkar of India in Lahore, Pakistan. \\ Mandatory Credit: Ben  Radford/Allsport","tagName":"Comment","tagType":2,"tagTypeHex":"0x0002"}],"errors":[]},{"name":"Adobe JPEG","empty":false,"parent":null,"tagCount":4,"errorCount":0,"tags":[{"directoryName":"Adobe JPEG","description":"25600","tagName":"DCT Encode Version","tagType":0,"tagTypeHex":"0x0000"},{"directoryName":"Adobe JPEG","description":"192","tagName":"Flags 0","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"Adobe JPEG","description":"0","tagName":"Flags 1","tagType":2,"tagTypeHex":"0x0002"},{"directoryName":"Adobe JPEG","description":"YCbCr","tagName":"Color Transform","tagType":3,"tagTypeHex":"0x0003"}],"errors":[]},{"name":"Huffman","numberOfTables":4,"typical":false,"optimized":true,"empty":false,"parent":null,"tagCount":1,"errorCount":0,"tags":[{"directoryName":"Huffman","description":"4 Huffman tables","tagName":"Number of Tables","tagType":1,"tagTypeHex":"0x0001"}],"errors":[]},{"name":"File Type","empty":false,"parent":null,"tagCount":4,"errorCount":0,"tags":[{"directoryName":"File Type","description":"JPEG","tagName":"Detected File Type Name","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"File Type","description":"Joint Photographic Experts Group","tagName":"Detected File Type Long Name","tagType":2,"tagTypeHex":"0x0002"},{"directoryName":"File Type","description":"image/jpeg","tagName":"Detected MIME Type","tagType":3,"tagTypeHex":"0x0003"},{"directoryName":"File Type","description":"jpg","tagName":"Expected File Name Extension","tagType":4,"tagTypeHex":"0x0004"}],"errors":[]}],"directoryCount":6}
+```
+
+Also, you should see the following output in the logs:
 
 ```shell
 imageUrl: https://objectstorage.us-phoenix-1.oraclecloud.com/n/tenant-namespace/b/object-upload-NNN/o/sachin-in.jpg
@@ -493,7 +499,7 @@ Under Actions, click "Add Action" and select the function created above.
 > Add Action
 >
 > Action Type: Functions
-> Compartment: workshop
+> Compartment: select-your-lab-compartment
 > Application: labapp-NNN
 > Function: cloud-events-demo-fn
 >```
@@ -527,8 +533,8 @@ following:
 Congratulations! In this lab we created a serverless function (to extract image metadata) that 
 is automatically triggered when an image is uploaded to a given OCI Object Storage bucket. We 
 learned that cloud event rules can be tied to various actions within our OCI tenancy such as 
-Object Storage (and Database) activities and can automatically trigger serverless Functions, 
-send Notifications or publish items to an Oracle Stream. 
+Object Storage activities and can automatically trigger serverless Functions, and send 
+Notifications.  
 
 Before you go, don't forget to mark your bucket (object-upload-NNN) as "Private" again!
 
