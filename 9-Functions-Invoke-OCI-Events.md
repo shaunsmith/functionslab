@@ -573,4 +573,5 @@ Click on "Edit Visibility" and select "Private":
 ![Make bucket public](images/make-bucket-private.jpg)
 
 
-UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
+NEXT: [*Functions Clients-OCI SDK*](8-Functions-Clients-SDK.md), UP:
+[*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)

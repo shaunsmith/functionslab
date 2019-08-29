@@ -72,6 +72,13 @@ Enter the provided VNC password to complete your login.
 
 ![vnc login](images/vnc-login.jpg)
 
+> TIP: How to use copy/paste inside your VNC session:
+> * Copy text from Firefox browser: Ctrl+C
+> * Paste text in to terminal: Shift+Ctrl+V
+> * Copy text from terminal: Shift+Ctrl+C
+> * Other than the terminal, Ctrl+C/V should work
+> * When in doubt, check the application's Edit menu for shortcut keys
+
 Open a terminal and type the following command to ensure you are using the
 `workshop` context that points to Oracle Functions:
 
