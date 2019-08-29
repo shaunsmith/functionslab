@@ -157,9 +157,9 @@ Click on "Edit Visibility" in the item menu and select "Public":
 Now that our bucket is created and made public, we can upload an image file.
 
 ![user input](images/userinput.png)
-Upload an image in to the bucket. For convenience, we have included an image
-file in [/oci-event-triggers/sachin-in.jpg](/oci-event-triggers/sachin-in.jpg)
-which you can use to upload to your bucket.
+Upload the image `sachin-in.jpg` from this location
+[/oci-event-triggers/sachin-in.jpg](/oci-event-triggers/sachin-in.jpg)
+to your bucket.
 
 ![Upload image to bucket](images/upload-image-to-bucket.jpg)
 
@@ -298,10 +298,13 @@ public class HelloFunction {
 }
 ```
 
-## Unit test class for your function
+## Test class for your function
 
-Before we run an end-to-end test, let us write a simple unit test for our
+Before we run an end-to-end test, let us write a simple test for our
 function.
+
+**Note: This test assumes the image `sachin-in.jpg` has been uploaded to 
+your `public` bucket `object-upload-NNN` in the above step**
 
 ![user input](images/userinput.png)
 Replace the definition of HelloFunctionTest with the following:
@@ -337,24 +340,28 @@ Generate a string representation of the Object Created cloud event JSON using a
 JSON-to-string conversion tool like
 https://tools.knowledgewalls.com/jsontostring
 
+**Note: In the string representation, look for `application\/json` and remove 
+the backslash `\` so that it looks like `application/json`**
+ 
+
 ```json
-"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
+"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
 ```
 
 ![user input](images/userinput.png)
-In HelloFunctionTest.java, replace the test event "your test image event JSON" with the 
-generated string representation of the cloud event JSON:
+In HelloFunctionTest.java, replace the test event "your test image event 
+JSON" with the generated string representation of the cloud event JSON:
 
 ```java
-String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}";
+String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}";
 ```
 
-Now our unit test class is ready for use. Let's proceed to build/deploy your
+Now our test class is ready for use. Let's proceed to build/deploy your
 function.
 
-## Build, unit test and deploy your function
+## Build, test and deploy your function
 
-At this point we have everything we need to build, unit test and deploy our
+At this point we have everything we need to build, test and deploy our
 function.
 
 ![user input](images/userinput.png)
@@ -467,13 +474,17 @@ be4626a574d8: Layer already exists
 Updating function cloud-events-demo-fn using image iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8...
 ```
 
-Congratulations! You have successfully built, unit tested and deployed your function.
-Before we run the end-to-end test, let us try and invoke the deployed function manually. 
+Congratulations! You have successfully built,  tested and deployed your function.
+Before we run the end-to-end test, let us try and invoke the deployed function 
+manually. 
 
 
 ## Manually invoke your function
 
 We can manually invoke our function by passing the above cloud event string.
+
+**Note: This test assumes the image `sachin-in.jpg` has been uploaded to 
+your `public` bucket `object-upload-NNN` in the above step**
 
 ![user input](images/userinput.png)
 Run the fn invoke command:
@@ -485,7 +496,7 @@ Run the fn invoke command:
 Here's the same command showing a sample cloud event string:
 
 >```
-> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
+> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
 >```
 
 You should see the following output on the screen:
