@@ -1,28 +1,30 @@
 # Invoke Oracle Functions Using OCI Events service
 
 This lab walks you through how to invoke a function deployed to Oracle Functions
-automatically using another serverless service - Oracle Cloud Infrastructure (OCI)
-Events service. We will trigger a function when an object is uploaded to an OCI 
-Object Storage bucket. We will use OCI Events service to automatically invoke our 
-function which will retrieve metadata from the image. All this without having to
-provision, manage and scale servers!
+automatically using another serverless service - Oracle Cloud Infrastructure
+(OCI) Events service. We will trigger a function when an object is uploaded to
+an OCI Object Storage bucket. We will use OCI Events service to automatically
+invoke our function which will retrieve metadata from the image. All this
+without having to provision, manage and scale servers!
 
 ## OCI Events service
 
-OCI Events service is a fully managed service that lets you track changes in your 
-OCI resources and respond to them using Oracle Functions, Notifications, and Streaming 
-services. OCI Events service is compliant with Cloud Native Computing Foundation (CNCF) 
-CloudEvents for seamless interoperability with the cloud native ecosystem.
+OCI Events service is a fully managed service that lets you track changes in
+your OCI resources and respond to them using Oracle Functions, Notifications,
+and Streaming services. OCI Events service is compliant with Cloud Native
+Computing Foundation (CNCF) CloudEvents for seamless interoperability with the
+cloud native ecosystem.
 
 You can build event-driven, cloud native, serverless applications using Oracle Functions
 and OCI Events. 
 
 ![OCI Events Service](images/oci-events-service.jpg)
 
-For more information about the OCI Events service please see the [service documentation](https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsoverview.htm).
-Before we dive in to our function, let us start with a simple test using OCI Notifications
-service. Let us create a topic with an email subscription and configure an Event rule to
-route the event to your email address.
+For more information about the OCI Events service please see the [service
+documentation](https://docs.cloud.oracle.com/iaas/Content/Events/Concepts/eventsoverview.htm).
+Before we dive in to our function, let us start with a simple test using OCI
+Notifications service. Let us create a topic with an email subscription and
+configure an Event rule to route the event to your email address.
 
 ## Create an OCI Notifications Service (ONS) Topic and Email Subscription
 
@@ -48,7 +50,8 @@ substitute it with your participant number.
 
 
 ![user input](images/userinput.png)
-Click on "Create Subscription", select "Email" and enter your email address:
+Navigate into the Topic Details page, Click on "Create Subscription", select
+"Email", and enter your email address:
 
 >```
 > Protocol: Email
@@ -61,23 +64,24 @@ Click on "Create Subscription", select "Email" and enter your email address:
 Next, you need to activate your email subscription.
 
 ![user input](images/userinput.png)
-Check your email. You will receive an email with the subject "Oracle Cloud 
-Infrastructure Notifications Service Subscription Confirmation". Confirm the 
-subscription by clicking on the link provided in the email. You will see a 
-"Subscription confirmed" message in the browser. Now this subscription will be in the 
-"Active" state in the OCI console. 
+Check your email. You will receive an email with the subject "Oracle Cloud
+Infrastructure Notifications Service Subscription Confirmation". Confirm the
+subscription by clicking on the link provided in the email. You will see a
+"Subscription confirmed" message in the browser. Now this subscription will be
+in the "Active" state in the OCI console.
 
 Next, let us test the email subscription with a test message.
 
 ![user input](images/userinput.png)
-You can test the subscription by clicking the "Publish Message" button on the topic 
-screen in the OCI console. Confirm that you receive the test message in your inbox.
+You can test the subscription by clicking the "Publish Message" button on the
+topic screen in the OCI console. Confirm that you receive the test message in
+your inbox.
 
 
 ## Create an OCI Event rule
 
-Now, let us create an Event rule to route Object Storage object created events to the
-above ONS topic/email subscription.
+Now, let us create an Event rule to route Object Storage object created events
+to the above ONS topic/email subscription.
 
 ![user input](images/userinput.png)
 Click on Application Integration -> Events Service in the left navigation menu:
@@ -85,15 +89,15 @@ Click on Application Integration -> Events Service in the left navigation menu:
 ![OCI Nav Menu > Events](images/oci-events-nav-menu.jpg)
 
 
-You can listen to specific events using filter criteria. In this case, we are only 
-interested in uploads to our specific Object Storage bucket. So, let us use the 
-"Object Storage - Create Object" event with "bucketName" as the filter criteria. 
-Refer to the service documentation for more information on the event types and 
-filters.
+You can listen to specific events using filter criteria. In this case, we are
+only interested in uploads to our specific Object Storage bucket. So, let us use
+the "Object Storage - Create Object" event with "bucketName" as the filter
+criteria. Refer to the service documentation for more information on the event
+types and filters.
 
 ![user input](images/userinput.png)
-Select your-lab-compartment. Click on 'Create Rule' and populate the form with the 
-following values:
+Select your-lab-compartment. Click on 'Create Rule' and populate the form with
+the following values:
 
 >```
 > Name: cloud-events-NNN
@@ -121,11 +125,18 @@ Under Actions, select the ONS topic created above.
 
 ![Create rule action](images/create-rule-action.jpg)
 
+![user input](images/userinput.png)
+Click Create Rule
 
 ## Create a public Object Storage bucket and upload an image
 
-Next, we will create a public Object Storage bucket and upload an image to trigger an email 
-notification.
+Next, we will create a public Object Storage bucket and upload an image to
+trigger an email notification.
+
+![user input](images/userinput.png)
+Navigate to the Object Storage console.
+
+![Object Storage Menu](images/object-storage-menu.png)
 
 ![user input](images/userinput.png)
 Select your-lab-compartment. Create an Object Storage bucket:
@@ -136,26 +147,26 @@ Select your-lab-compartment. Create an Object Storage bucket:
 
 ![Create bucket](images/create-bucket.png)
 
-Once the bucket is created, we change its visibility to make it "public".
+Once the bucket is created, we change its visibility to make it public.
 
 ![user input](images/userinput.png)
-Click on "Edit Visibility" and select "Public":
+Click on "Edit Visibility" in the item menu and select "Public":
 
 ![Make bucket public](images/make-bucket-public.jpg)
 
 Now that our bucket is created and made public, we can upload an image file.
 
 ![user input](images/userinput.png)
-Upload an image in to the bucket. For convenience, we have included an image file in
-[/oci-event-triggers/sachin-in.jpg](/oci-event-triggers/sachin-in.jpg) which you can use
-to upload to your bucket.
+Upload the image `sachin-in.jpg` from this location
+[/oci-event-triggers/sachin-in.jpg](/oci-event-triggers/sachin-in.jpg)
+to your bucket.
 
 ![Upload image to bucket](images/upload-image-to-bucket.jpg)
 
 
-This will generate an Object Created event, which in turn will trigger an email 
-notification. In about 60 seconds, you should see an email in your inbox with the cloud 
-event JSON (similar to the JSON shown below):
+This will generate an Object Created event, which in turn will trigger an email
+notification. In about 60 seconds, you should see an email in your inbox with
+the cloud event JSON (similar to the JSON shown below):
 
 ```json
 {
@@ -189,9 +200,9 @@ event JSON (similar to the JSON shown below):
 }
 ```
 
-Congratulations! We have confirmed the event gets generated and triggers the event rule
-to send an email notification. Now let us proceed to trigger a function in response to 
-the event.
+Congratulations! We have confirmed the event gets generated and triggers the
+event rule to send an email notification. Now let us proceed to trigger a
+function in response to the event.
 
 ## Create a function
 
@@ -217,8 +228,9 @@ func.yaml created.
 > cd cloud-events-demo-fn
 >```
 
-Now we will add two dependencies to the pom.xml file. One for the cloudevents-api, 
-and another for metadata-extractor so we can extract the image metadata later on. 
+Now we will add two dependencies to the pom.xml file. One for the
+cloudevents-api, and another for metadata-extractor so we can extract the image
+metadata later on. 
 
 ![user input](images/userinput.png) 
 Edit the pom.xml file and add the following dependencies:
@@ -236,12 +248,13 @@ Edit the pom.xml file and add the following dependencies:
 </dependency>
 ```
 
-Next, lets implement a function to handle the incoming cloud event. Since OCI Cloud 
-Events conform to the CNCF Cloud Events specification, we can safely type our incoming 
-parameter as a CloudEvent and the FDK will handle properly serializing the parameter 
-when the function is triggered. Once we have our CloudEvent data we can construct a 
-URL that points to our image (a public image in this case) and open that URL as a 
-stream that can be passed to the metadata extractor.
+Next, lets implement a function to handle the incoming cloud event. Since OCI
+Cloud Events conform to the CNCF Cloud Events specification, we can safely type
+our incoming parameter as a CloudEvent and the FDK will handle properly
+serializing the parameter when the function is triggered. Once we have our
+CloudEvent data we can construct a URL that points to our image (a public image
+in this case) and open that URL as a stream that can be passed to the metadata
+extractor.
 
 ![user input](images/userinput.png) 
 Replace the definition of HelloFunction with the following:
@@ -285,11 +298,15 @@ public class HelloFunction {
 }
 ```
 
-## Unit test class for your function
+## Test class for your function
 
-Before we run an end-to-end test, let us write a simple unit test for our function.
+Before we run an end-to-end test, let us write a simple test for our
+function.
 
-![user input](images/userinput.png) 
+**Note: This test assumes the image `sachin-in.jpg` has been uploaded to 
+your `public` bucket `object-upload-NNN` in the above step**
+
+![user input](images/userinput.png)
 Replace the definition of HelloFunctionTest with the following:
 
 ```java
@@ -319,26 +336,33 @@ public class HelloFunctionTest {
 ```
 
 ![user input](images/userinput.png)
-Generate a string representation of the Object Created cloud event JSON using a 
-JSON-to-string conversion tool like https://tools.knowledgewalls.com/jsontostring
+Generate a string representation of the Object Created cloud event JSON using a
+JSON-to-string conversion tool like
+https://tools.knowledgewalls.com/jsontostring
+
+**Note: In the string representation, look for `application\/json` and remove 
+the backslash `\` so that it looks like `application/json`**
+ 
 
 ```json
-"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
+"{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
 ```
 
 ![user input](images/userinput.png)
-In HelloFunctionTest.java, replace the test event "your test image event JSON" with the 
-generated string representation of the cloud event JSON:
+In HelloFunctionTest.java, replace the test event "your test image event 
+JSON" with the generated string representation of the cloud event JSON:
 
 ```java
-String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}";
+String event = "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}";
 ```
 
-Now our unit test class is ready for use. Let's proceed to build/deploy your function.
+Now our test class is ready for use. Let's proceed to build/deploy your
+function.
 
-## Build, unit test and deploy your function
+## Build, test and deploy your function
 
-At this point we have everything we need to build, unit test and deploy our function.
+At this point we have everything we need to build, test and deploy our
+function.
 
 ![user input](images/userinput.png)
 Run the fn deploy command:
@@ -450,13 +474,17 @@ be4626a574d8: Layer already exists
 Updating function cloud-events-demo-fn using image iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8...
 ```
 
-Congratulations! You have successfully built, unit tested and deployed your function.
-Before we run the end-to-end test, let us try and invoke the deployed function manually. 
+Congratulations! You have successfully built,  tested and deployed your function.
+Before we run the end-to-end test, let us try and invoke the deployed function 
+manually. 
 
 
 ## Manually invoke your function
 
 We can manually invoke our function by passing the above cloud event string.
+
+**Note: This test assumes the image `sachin-in.jpg` has been uploaded to 
+your `public` bucket `object-upload-NNN` in the above step**
 
 ![user input](images/userinput.png)
 Run the fn invoke command:
@@ -468,7 +496,7 @@ Run the fn invoke command:
 Here's the same command showing a sample cloud event string:
 
 >```
-> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application\/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
+> echo "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"tenant-namespace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}" | fn invoke labapp-NNN cloud-events-demo-fn
 >```
 
 You should see the following output on the screen:
@@ -484,14 +512,14 @@ imageUrl: https://objectstorage.us-phoenix-1.oraclecloud.com/n/tenant-namespace/
 {"directories":[{"name":"JPEG","imageWidth":500,"imageHeight":324,"numberOfComponents":3,"empty":false,"parent":null,"tagCount":8,"errorCount":0,"tags":[{"directoryName":"JPEG","description":"Baseline","tagName":"Compression Type","tagType":-3,"tagTypeHex":"0xfffffffd"},{"directoryName":"JPEG","description":"8 bits","tagName":"Data Precision","tagType":0,"tagTypeHex":"0x0000"},{"directoryName":"JPEG","description":"324 pixels","tagName":"Image Height","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"JPEG","description":"500 pixels","tagName":"Image Width","tagType":3,"tagTypeHex":"0x0003"},{"directoryName":"JPEG","description":"3","tagName":"Number of Components","tagType":5,"tagTypeHex":"0x0005"},{"directoryName":"JPEG","description":"Y component: Quantization table 0, Sampling factors 1 horiz/1 vert","tagName":"Component 1","tagType":6,"tagTypeHex":"0x0006"},{"directoryName":"JPEG","description":"Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 2","tagType":7,"tagTypeHex":"0x0007"},{"directoryName":"JPEG","description":"Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 3","tagType":8,"tagTypeHex":"0x0008"}],"errors":[]},{"name":"JFIF","version":258,"resUnits":0,"resY":100,"resX":100,"imageWidth":100,"imageHeight":100,"empty":false,"parent":null,"tagCount":6,"errorCount":0,"tags":[{"directoryName":"JFIF","description":"1.2","tagName":"Version","tagType":5,"tagTypeHex":"0x0005"},{"directoryName":"JFIF","description":"none","tagName":"Resolution Units","tagType":7,"tagTypeHex":"0x0007"},{"directoryName":"JFIF","description":"100 dots","tagName":"X Resolution","tagType":8,"tagTypeHex":"0x0008"},{"directoryName":"JFIF","description":"100 dots","tagName":"Y Resolution","tagType":10,"tagTypeHex":"0x000a"},{"directoryName":"JFIF","description":"0","tagName":"Thumbnail Width Pixels","tagType":12,"tagTypeHex":"0x000c"},{"directoryName":"JFIF","description":"0","tagName":"Thumbnail Height Pixels","tagType":13,"tagTypeHex":"0x000d"}],"errors":[]},{"name":"Ducky","empty":false,"parent":null,"tagCount":2,"errorCount":0,"tags":[{"directoryName":"Ducky","description":"64","tagName":"Quality","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"Ducky","description":"Oct 1989:  Portrait of Sachin Tendulkar of India in Lahore, Pakistan. \\ Mandatory Credit: Ben  Radford/Allsport","tagName":"Comment","tagType":2,"tagTypeHex":"0x0002"}],"errors":[]},{"name":"Adobe JPEG","empty":false,"parent":null,"tagCount":4,"errorCount":0,"tags":[{"directoryName":"Adobe JPEG","description":"25600","tagName":"DCT Encode Version","tagType":0,"tagTypeHex":"0x0000"},{"directoryName":"Adobe JPEG","description":"192","tagName":"Flags 0","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"Adobe JPEG","description":"0","tagName":"Flags 1","tagType":2,"tagTypeHex":"0x0002"},{"directoryName":"Adobe JPEG","description":"YCbCr","tagName":"Color Transform","tagType":3,"tagTypeHex":"0x0003"}],"errors":[]},{"name":"Huffman","numberOfTables":4,"typical":false,"optimized":true,"empty":false,"parent":null,"tagCount":1,"errorCount":0,"tags":[{"directoryName":"Huffman","description":"4 Huffman tables","tagName":"Number of Tables","tagType":1,"tagTypeHex":"0x0001"}],"errors":[]},{"name":"File Type","empty":false,"parent":null,"tagCount":4,"errorCount":0,"tags":[{"directoryName":"File Type","description":"JPEG","tagName":"Detected File Type Name","tagType":1,"tagTypeHex":"0x0001"},{"directoryName":"File Type","description":"Joint Photographic Experts Group","tagName":"Detected File Type Long Name","tagType":2,"tagTypeHex":"0x0002"},{"directoryName":"File Type","description":"image/jpeg","tagName":"Detected MIME Type","tagType":3,"tagTypeHex":"0x0003"},{"directoryName":"File Type","description":"jpg","tagName":"Expected File Name Extension","tagType":4,"tagTypeHex":"0x0004"}],"errors":[]}],"directoryCount":6}
 ```
 
-And we see that our function works as expected. Now let's use a cloud event rule to trigger
-the function! 
+And we see that our function works as expected. Now let's use a cloud event rule
+to trigger the function! 
 
 
 ## Update the OCI Event rule action
 
-Let's go back to OCI Events service console, edit our rule and add a new action. In this 
-case, we want to call our serverless function.
+Let's go back to OCI Events service console, edit our rule and add a new action.
+In this case, we want to call our serverless function.
 
 ![user input](images/userinput.png)
 Under Actions, click "Add Action" and select the function created above.
@@ -507,23 +535,23 @@ Under Actions, click "Add Action" and select the function created above.
 
 ![Edit rule action](images/edit-rule-action.jpg)
 
-Now that we have set up the rule to trigger your function when your upload an image to
-your Object Storage bucket, let's try an end-to-end test.
+Now that we have set up the rule to trigger your function when your upload an
+image to your Object Storage bucket, let's try an end-to-end test.
 
 ## End-to-end test
 
-Let's upload an image file to your Object Storage bucket and see your function triggered
-automatically by OCI Events service!
+Let's upload an image file to your Object Storage bucket and see your function
+triggered automatically by OCI Events service!
 
 ![user input](images/userinput.png)
-Go to your bucket details page in the OCI Object Storage console and upload an image. 
-Note: If you wish to upload the same image [sachin-in.jpg](/oci-event-triggers/sachin-in.jpg) 
-again, make sure you delete the existing image from your bucket and then upload the same 
-image again. 
+Go to your bucket details page in the OCI Object Storage console and upload an
+image. Note: If you wish to upload the same image
+[sachin-in.jpg](/oci-event-triggers/sachin-in.jpg) again, make sure you delete
+the existing image from your bucket and then upload the same image again.
 
 
 ![user input](images/userinput.png)
-In about 1-2 minutes, check your function logs in PaperTrail! You should see the 
+In about 1-2 minutes, check your function logs in PaperTrail! You should see the
 following:
 
 ![Check function logs](images/function-logs.jpg)
@@ -531,11 +559,11 @@ following:
 
 ## Wrap Up
 
-Congratulations! In this lab we created a serverless function (to extract image metadata) that 
-is automatically triggered when an image is uploaded to a given OCI Object Storage bucket. We 
-learned that cloud event rules can be tied to various actions within our OCI tenancy such as 
-Object Storage activities and can automatically trigger serverless Functions, and send 
-Notifications.  
+Congratulations! In this lab we created a serverless function (to extract image
+metadata) that is automatically triggered when an image is uploaded to a given
+OCI Object Storage bucket. We learned that cloud event rules can be tied to
+various actions within our OCI tenancy such as Object Storage activities and can
+automatically trigger serverless Functions, and send Notifications.  
 
 Before you go, don't forget to mark your bucket (object-upload-NNN) as "Private" again!
 
