@@ -372,4 +372,5 @@ to stdout so it's easy to capture or pipe either for processing.
 That's a brief intro to current techniques available for troubleshooting for Fn.
 We'll update this lab as new features become available.
 
-NEXT: [*Container as Function*](6-Container-as-Function.md), UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
+NEXT: [*Automatically invoke Functions using OCI Events*](9-Functions-Invoke-OCI-Events.md), 
+UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
