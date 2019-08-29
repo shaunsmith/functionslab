@@ -40,6 +40,22 @@ etc.  Fortunately the
 [Troubleshooting](5-Troubleshooting.md) tutorial
 introduces techniques you can use to track down the source of a failure.
 
+## Automatically invoke Functions using OCI Events service
+
+OCI Events service lets you monitor OCI resource changes and send 
+notifications and/or trigger a function automatically in response to that 
+change. We'll explore sending email notifications, and invoking a function via 
+the OCI Events when an image is uploaded to an OCI Object Storage bucket in 
+[Automatically invoke Functions using OCI Events](9-Functions-Invoke-OCI-Events.md).
+
+## Functions Clients
+
+Functions can be invoked over HTTP using their "invoke endpoint". You can
+either invoke the endpoint directly or use the OCI SDK to both manage and 
+invoke functions. We'll explore how to invoke a function using:
+* [OCI SDK for Functions](8-Functions-Clients-SDK.md)
+* [`oci-curl` utility](7-Functions-Clients-oci-curl.md) 
+
 ## Containers as Functions
 
 One of the coolest features of Fn is that while it's easy to write functions in
@@ -48,19 +64,3 @@ This opens up entire worlds of opportunity as you can package existing code,
 utilities, or use a programming language not yet supported by Fn.  Try the
 [Containers as Functions](6-Container-as-Function.md)
 tutorial to see how easy it is.
-
-## Functions Clients
-
-Functions can be invoked over HTTP using their "invoke endpoint".  You can
-either invoke the endpoint directly or use the OCI SDK to both manage and invoke
-functions.  We'll explore invoking a function via the
-[`oci-curl` utility](7-Functions-Clients-oci-curl.md) as well as invocation using the
-[OCI SDK for Functions](8-Functions-Clients-SDK.md).
-
-## Automatically invoke Functions using OCI Events service
-
-OCI Events service lets you monitor OCI resource changes and send notifications and/or trigger 
-a function automatically in response to that change. We'll explore sending email notifications,
-and invoking a function via the OCI Events when an image is uploaded to an OCI Object Storage
-bucket in [Automatically invoke Functions using OCI Events](9-Functions-Invoke-OCI-Events.md).
-
