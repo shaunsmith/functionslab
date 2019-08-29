@@ -21,10 +21,10 @@ including:
 1. Function Basics
 2. Java Functions and Unit testing
 3. Troubleshooting Functions
-4. Customizing the function execution environment
-5. Calling functions using oci-curl
-6. Functions clients including the OCI SDK
-7. Invoking functions automatically with OCI Events
+4. Automatically invoking functions with OCI Events service
+5. Functions clients including the OCI SDK
+6. Calling functions using oci-curl
+7. Customizing the function execution environment
 
 Step one is getting your environment setup.
 
