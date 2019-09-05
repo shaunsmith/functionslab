@@ -51,7 +51,7 @@ Phoenix region console.
 ## Configuring your Environment
 
 Now that your user account is accessible, let's log into the provided VM where
-you'll be ready to start no configuration.
+you'll be ready to start your configuration.
 
 To access your cloud-based development environment you'll need a VNC client
 on your laptop.  You can use whatever you have previously installed or you can
@@ -95,7 +95,7 @@ CURRENT NAME      PROVIDER  API URL                                         REGI
 *       workshop  oracle    https://functions.us-phoenix-1.oraclecloud.com  phx.ocir.io/cloudnative-devrel/workshop-NNN
 ```
 
-Now to make sure you can be authenticated correctly and communicate with 
+Now to make sure you can be authenticated correctly and communicate with
 Oracle Functions let's run a command to list all of the existing applications.
 It doesn't matter what the results--just that it runs successfully to confirm
 connectivity.
@@ -134,4 +134,3 @@ Now that you're logged into your development machine and are able to communicate
 with Oracle Functions it's time to get started!
 
 NEXT: [*Function Labs*](1-Labs.md), UP: [*INDEX*](README.md)
-

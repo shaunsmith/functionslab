@@ -35,7 +35,7 @@ have to install the native library in addition to adding the Node module to our
 ![](images/userinput.png)
 > In an **empty folder** create a file named `func.js` and copy/paste the
 following as its content:
- 
+
 ```javascript
 const fdk = require('@fnproject/fdk');
 const fs  = require('fs');
@@ -104,7 +104,7 @@ image processing.
 
 ## Function Metadata
 
-Now that we have a Node.js function and it's dependencies captured in the 
+Now that we have a Node.js function and it's dependencies captured in the
 `package.json` we need a `func.yaml` to capture the function metadata.
 
 ![](images/userinput.png)
@@ -156,7 +156,7 @@ It's a two stage build with the `fnproject/node:dev` image containing `npm` and
 other build tools, and the `fnproject/node` image containing just the Node
 runtime.  This approach is designed to ensure that deployable function container
 images are as small as possible--which is beneficial for a number of reasons
-including the time it takes to transfer the image from a Docker respository to
+including the time it takes to transfer the image from a Docker repository to
 the compute node where the function is to be run.
 
 ## Custom Node.js Function Dockerfile
@@ -262,7 +262,7 @@ With the function deployed let's invoke it to make sure it's working as
 expected. You'll need a jpeg or png file so either find one on your machine
 or download one.  If you've cloned this lab's Git repo you can use the
 `3x3.jpg` image that has a height and width of 3 pixels, or you can download
-it from the `images` folder in github.
+it from the `images` folder in GitHub.
 
 ![](images/userinput.png)
 >```

@@ -67,10 +67,10 @@ which will return a JSON object similar to the following:
 }
 ```
 
-If you look closely you can see there's an `fnproject.io/fn/invokeEndpoint` 
+If you look closely you can see there's an `fnproject.io/fn/invokeEndpoint`
 property buried in the JSON.  You could copy/paste from here but there's a
 somewhat more convenient way to just get the invoke endpoint.  You just add
-`--endpoint` to your ispect command:
+`--endpoint` to your inspect command:
 
 ![user input](images/userinput.png)
 >```
@@ -122,13 +122,13 @@ of your function endpoint, but using those from our example we'd have:
 You'll be prompted for the passphrase for your private key, which is **workshop**.
 
 ![](images/userinput.png)
->``` 
+>```
 > Enter pass phrase for /home/demo/.oci/workshop_pri_key.pem
 .pem: workshop
-> 
+>
 >```
 
-If all goes well you should see the output concatinating "Hello, " with the
+If all goes well you should see the output concatenating "Hello, " with the
 contents of the payload.txt file.
 
 ```sh
@@ -138,5 +138,5 @@ Hello, Functions
 You've successfully invoked a function using a signed HTTP request using curl!
 Next we'll look how we can call functions from client code using the OCI SDK.
 
-NEXT: [*Container as Function*](6-Container-as-Function.md), 
+NEXT: [*Container as Function*](6-Container-as-Function.md),
 UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)

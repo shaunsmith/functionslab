@@ -16,7 +16,7 @@ Computing Foundation (CNCF) CloudEvents for seamless interoperability with the
 cloud native ecosystem.
 
 You can build event-driven, cloud native, serverless applications using Oracle Functions
-and OCI Events. 
+and OCI Events.
 
 ![OCI Events Service](images/oci-events-service.jpg)
 
@@ -101,11 +101,11 @@ the following values:
 
 >```
 > Name: cloud-events-NNN
-> 
+>
 > Select "Event Type"
 > Service Name: Object Storage
 > Event Type: Object Storage - Create Object
-> 
+>
 > Add Condition and select "Attribute"
 > Attribute Name: bucketName
 > Attribute Value: object-upload-NNN
@@ -206,7 +206,7 @@ function in response to the event.
 
 ## Create a function
 
-Now, let us create a function to process the cloud event. 
+Now, let us create a function to process the cloud event.
 
 ![user input](images/userinput.png)
 Create a boilerplate Java function using the fn CLI:
@@ -230,9 +230,9 @@ func.yaml created.
 
 Now we will add two dependencies to the pom.xml file. One for the
 cloudevents-api, and another for metadata-extractor so we can extract the image
-metadata later on. 
+metadata later on.
 
-![user input](images/userinput.png) 
+![user input](images/userinput.png)
 Edit the pom.xml file and add the following dependencies:
 
 ```xml
@@ -248,7 +248,7 @@ Edit the pom.xml file and add the following dependencies:
 </dependency>
 ```
 
-Next, lets implement a function to handle the incoming cloud event. Since OCI
+Next, let's implement a function to handle the incoming cloud event. Since OCI
 Cloud Events conform to the CNCF Cloud Events specification, we can safely type
 our incoming parameter as a CloudEvent and the FDK will handle properly
 serializing the parameter when the function is triggered. Once we have our
@@ -256,7 +256,7 @@ CloudEvent data we can construct a URL that points to our image (a public image
 in this case) and open that URL as a stream that can be passed to the metadata
 extractor.
 
-![user input](images/userinput.png) 
+![user input](images/userinput.png)
 Replace the definition of HelloFunction with the following:
 
 ```java
@@ -303,7 +303,7 @@ public class HelloFunction {
 Before we run an end-to-end test, let us write a simple test for our
 function.
 
-**Note: This test assumes the image `sachin-in.jpg` has been uploaded to 
+**Note: This test assumes the image `sachin-in.jpg` has been uploaded to
 your `public` bucket `object-upload-NNN` in the above step**
 
 ![user input](images/userinput.png)
@@ -340,16 +340,16 @@ Generate a string representation of the Object Created cloud event JSON using a
 JSON-to-string conversion tool like
 https://tools.knowledgewalls.com/jsontostring
 
-**Note: In the string representation, look for `application\/json` and remove 
+**Note: In the string representation, look for `application\/json` and remove
 the backslash `\` so that it looks like `application/json`**
- 
+
 
 ```json
 "{\"cloudEventsVersion\":\"0.1\",\"eventID\":\"aa00367d-8281-476a-b918-0e821f1e2f6d\",\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"source\":\"objectstorage\",\"eventTypeVersion\":\"1.0\",\"eventTime\":\"2019-08-25T14:01:46Z\",\"schemaURL\":null,\"contentType\":\"application/json\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\"},\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaa...\",\"compartmentName\":\"your-compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"\",\"availabilityDomain\":null,\"freeFormTags\":{},\"definedTags\":{},\"additionalDetails\":{\"eTag\":\"65efdaae-9464-45e8-b564-4df86f11198a\",\"namespace\":\"your-tenancy-namepsace\",\"archivalState\":\"Available\",\"bucketName\":\"object-upload-NNN\",\"bucketId\":\"ocid1.bucket.oc1.iad.aaa...\"}}}"
 ```
 
 ![user input](images/userinput.png)
-In HelloFunctionTest.java, replace the test event "your test image event 
+In HelloFunctionTest.java, replace the test event "your test image event
 JSON" with the generated string representation of the cloud event JSON:
 
 ```java
@@ -376,7 +376,7 @@ You should see the following output:
 ```shell
 Deploying cloud-events-demo-fn to app: labapp-NNN
 Bumped to version 0.0.8
-Building image iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8 
+Building image iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8
 FN_REGISTRY:  iad.ocir.io/tenant-namespace/workshop-NNN
 Current Context:  workshop
 Sending build context to Docker daemon   16.9kB
@@ -399,29 +399,29 @@ Step 6/11 : ADD src /function/src
 Step 7/11 : RUN ["mvn", "package"]
  ---> Running in 4d481e7bfa33
 [INFO] Scanning for projects...
-[INFO] 
+[INFO]
 [INFO] ------------------------< com.example.fn:hello >------------------------
 [INFO] Building hello 1.0.0
 [INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ hello ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] skip non existing resourceDirectory /function/src/main/resources
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ hello ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 1 source file to /function/target/classes
-[INFO] 
+[INFO]
 [INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ hello ---
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] skip non existing resourceDirectory /function/src/test/resources
-[INFO] 
+[INFO]
 [INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ hello ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 1 source file to /function/target/test-classes
-[INFO] 
+[INFO]
 [INFO] --- maven-surefire-plugin:2.22.1:test (default-test) @ hello ---
-[INFO] 
+[INFO]
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
@@ -429,12 +429,12 @@ Step 7/11 : RUN ["mvn", "package"]
 imageUrl: https://objectstorage.us-phoenix-1.oraclecloud.com/n/tenant-namespace/b/object-upload-NNN/o/sachin-in.jpg
 {"directoryCount":6,"directories":[{"imageWidth":500,"imageHeight":324,"numberOfComponents":3,"name":"JPEG","tagCount":8,"errorCount":0,"tags":[{"description":"Baseline","tagName":"Compression Type","tagType":-3,"tagTypeHex":"0xfffffffd","directoryName":"JPEG"},{"description":"8 bits","tagName":"Data Precision","tagType":0,"tagTypeHex":"0x0000","directoryName":"JPEG"},{"description":"324 pixels","tagName":"Image Height","tagType":1,"tagTypeHex":"0x0001","directoryName":"JPEG"},{"description":"500 pixels","tagName":"Image Width","tagType":3,"tagTypeHex":"0x0003","directoryName":"JPEG"},{"description":"3","tagName":"Number of Components","tagType":5,"tagTypeHex":"0x0005","directoryName":"JPEG"},{"description":"Y component: Quantization table 0, Sampling factors 1 horiz/1 vert","tagName":"Component 1","tagType":6,"tagTypeHex":"0x0006","directoryName":"JPEG"},{"description":"Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 2","tagType":7,"tagTypeHex":"0x0007","directoryName":"JPEG"},{"description":"Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert","tagName":"Component 3","tagType":8,"tagTypeHex":"0x0008","directoryName":"JPEG"}],"errors":[],"empty":false,"parent":null},{"version":258,"resUnits":0,"resY":100,"resX":100,"imageWidth":100,"imageHeight":100,"name":"JFIF","tagCount":6,"errorCount":0,"tags":[{"description":"1.2","tagName":"Version","tagType":5,"tagTypeHex":"0x0005","directoryName":"JFIF"},{"description":"none","tagName":"Resolution Units","tagType":7,"tagTypeHex":"0x0007","directoryName":"JFIF"},{"description":"100 dots","tagName":"X Resolution","tagType":8,"tagTypeHex":"0x0008","directoryName":"JFIF"},{"description":"100 dots","tagName":"Y Resolution","tagType":10,"tagTypeHex":"0x000a","directoryName":"JFIF"},{"description":"0","tagName":"Thumbnail Width Pixels","tagType":12,"tagTypeHex":"0x000c","directoryName":"JFIF"},{"description":"0","tagName":"Thumbnail Height Pixels","tagType":13,"tagTypeHex":"0x000d","directoryName":"JFIF"}],"errors":[],"empty":false,"parent":null},{"name":"Ducky","tagCount":2,"errorCount":0,"tags":[{"description":"64","tagName":"Quality","tagType":1,"tagTypeHex":"0x0001","directoryName":"Ducky"},{"description":"Oct 1989:  Portrait of Sachin Tendulkar of India in Lahore, Pakistan. \\ Mandatory Credit: Ben  Radford/Allsport","tagName":"Comment","tagType":2,"tagTypeHex":"0x0002","directoryName":"Ducky"}],"errors":[],"empty":false,"parent":null},{"name":"Adobe JPEG","tagCount":4,"errorCount":0,"tags":[{"description":"25600","tagName":"DCT Encode Version","tagType":0,"tagTypeHex":"0x0000","directoryName":"Adobe JPEG"},{"description":"192","tagName":"Flags 0","tagType":1,"tagTypeHex":"0x0001","directoryName":"Adobe JPEG"},{"description":"0","tagName":"Flags 1","tagType":2,"tagTypeHex":"0x0002","directoryName":"Adobe JPEG"},{"description":"YCbCr","tagName":"Color Transform","tagType":3,"tagTypeHex":"0x0003","directoryName":"Adobe JPEG"}],"errors":[],"empty":false,"parent":null},{"numberOfTables":4,"typical":false,"optimized":true,"name":"Huffman","tagCount":1,"errorCount":0,"tags":[{"description":"4 Huffman tables","tagName":"Number of Tables","tagType":1,"tagTypeHex":"0x0001","directoryName":"Huffman"}],"errors":[],"empty":false,"parent":null},{"name":"File Type","tagCount":4,"errorCount":0,"tags":[{"description":"JPEG","tagName":"Detected File Type Name","tagType":1,"tagTypeHex":"0x0001","directoryName":"File Type"},{"description":"Joint Photographic Experts Group","tagName":"Detected File Type Long Name","tagType":2,"tagTypeHex":"0x0002","directoryName":"File Type"},{"description":"image/jpeg","tagName":"Detected MIME Type","tagType":3,"tagTypeHex":"0x0003","directoryName":"File Type"},{"description":"jpg","tagName":"Expected File Name Extension","tagType":4,"tagTypeHex":"0x0004","directoryName":"File Type"}],"errors":[],"empty":false,"parent":null}]}
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.969 s - in com.example.fn.HelloFunctionTest
-[INFO] 
+[INFO]
 [INFO] Results:
-[INFO] 
+[INFO]
 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
-[INFO] 
-[INFO] 
+[INFO]
+[INFO]
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ hello ---
 [INFO] Building jar: /function/target/hello-1.0.0.jar
 [INFO] ------------------------------------------------------------------------
@@ -461,29 +461,29 @@ Successfully tagged iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-
 
 Parts:  [iad.ocir.io tenant-namespace workshop-NNN cloud-events-demo-fn:0.0.8]
 Pushing iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8 to docker registry...The push refers to repository [iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn]
-d910070a76f0: Pushed 
-41b8a6435811: Layer already exists 
-9f47f6e68a04: Layer already exists 
-815ce0cceeb3: Layer already exists 
-580508f3f933: Layer already exists 
-be4626a574d8: Layer already exists 
-15d57950dad3: Layer already exists 
-2bf534399aca: Layer already exists 
-1c95c77433e8: Layer already exists 
+d910070a76f0: Pushed
+41b8a6435811: Layer already exists
+9f47f6e68a04: Layer already exists
+815ce0cceeb3: Layer already exists
+580508f3f933: Layer already exists
+be4626a574d8: Layer already exists
+15d57950dad3: Layer already exists
+2bf534399aca: Layer already exists
+1c95c77433e8: Layer already exists
 0.0.8: digest: sha256:ed7f354009fd2a990e3a03eabd6fd0a887c7cb24ef32aee600bfaed4518448f6 size: 2208
 Updating function cloud-events-demo-fn using image iad.ocir.io/tenant-namespace/workshop-NNN/cloud-events-demo-fn:0.0.8...
 ```
 
 Congratulations! You have successfully built,  tested and deployed your function.
-Before we run the end-to-end test, let us try and invoke the deployed function 
-manually. 
+Before we run the end-to-end test, let us try and invoke the deployed function
+manually.
 
 
 ## Manually invoke your function
 
 We can manually invoke our function by passing the above cloud event string.
 
-**Note: This test assumes the image `sachin-in.jpg` has been uploaded to 
+**Note: This test assumes the image `sachin-in.jpg` has been uploaded to
 your `public` bucket `object-upload-NNN` in the above step**
 
 ![user input](images/userinput.png)
@@ -513,7 +513,7 @@ imageUrl: https://objectstorage.us-phoenix-1.oraclecloud.com/n/tenant-namespace/
 ```
 
 And we see that our function works as expected. Now let's use a cloud event rule
-to trigger the function! 
+to trigger the function!
 
 
 ## Update the OCI Event rule action
