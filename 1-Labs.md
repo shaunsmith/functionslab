@@ -25,7 +25,7 @@ So let's [create and deploy your first function](3-First-Function.md).
 
 Fn provides an FDK (Function Development Kit) for each of the core supported
 programming languages.  But the Java FDK is the most advanced with support for
-Maven builds, automatic function argument type conversions, and comprehenive
+Maven builds, automatic function argument type conversions, and comprehensive
 support for function testing with JUnit.
 
 The [Introduction to Java Functions](4-Java-Functions.md) lab covers all these
@@ -42,19 +42,19 @@ introduces techniques you can use to track down the source of a failure.
 
 ## Automatically invoke Functions using OCI Events service
 
-OCI Events service lets you monitor OCI resource changes and send 
-notifications and/or trigger a function automatically in response to that 
-change. We'll explore sending email notifications, and invoking a function via 
-the OCI Events when an image is uploaded to an OCI Object Storage bucket in 
+OCI Events service lets you monitor OCI resource changes and send
+notifications and/or trigger a function automatically in response to that
+change. We'll explore sending email notifications, and invoking a function via
+the OCI Events when an image is uploaded to an OCI Object Storage bucket in
 [Automatically invoke Functions using OCI Events](9-Functions-Invoke-OCI-Events.md).
 
 ## Functions Clients
 
 Functions can be invoked over HTTP using their "invoke endpoint". You can
-either invoke the endpoint directly or use the OCI SDK to both manage and 
+either invoke the endpoint directly or use the OCI SDK to both manage and
 invoke functions. We'll explore how to invoke a function using:
 * [OCI SDK for Functions](8-Functions-Clients-SDK.md)
-* [`oci-curl` utility](7-Functions-Clients-oci-curl.md) 
+* [`oci-curl` utility](7-Functions-Clients-oci-curl.md)
 
 ## Containers as Functions
 

@@ -104,7 +104,7 @@ everything you need to deploy the function to Oracle Functions.
 Make sure your context is set to point to Oracle Functions. Use the `fn list
 context` command to check. If everything is fine then let's deploy the function
 to the app you created in the previous lab.  It should be named `labapp-NNN`
-where `NNN` is your lap participant number. 
+where `NNN` is your lab participant number.
 
 ![user input](images/userinput.png)
 >`fn --v deploy --app labapp-NNN `

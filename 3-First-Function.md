@@ -2,7 +2,7 @@
 
 In this introductory lab we'll walk through developing a function using the
 JavaScript programming language and Node.js (without installing any Node.js
-tools!) and deploying that function Oracle Functions.  We'll also learn about
+tools!) and deploying that function to Oracle Functions.  We'll also learn about
 the core Fn concepts like applications and triggers.
 
 > As you make your way through this lab, look out for this icon.
@@ -116,7 +116,7 @@ declares a number of properties including:
 
 There are other user-specifiable properties but these will suffice for this
 example.  Note that if not specified, the name of your function will be taken
-from the containing folder name. 
+from the containing folder name.
 
 ### Other Function Files
 
@@ -162,9 +162,9 @@ process.
 ### Creating an Application
 
 Before you can deploy a function you'll need to create an application.  You can
-do this using the `fn` CLI or in the Oracle Functions web console.  We'll use the
-console as it's somewhat simpler to click on options than to copy/paste network
-IDs for use on the command line.
+do this using the `fn` CLI or in the Oracle Functions web console.  We'll use
+the console as it's somewhat simpler to click on options than to copy/paste
+network IDs for use on the command line.
 
 Open your browser to the Oracle Functions console and
 login:
@@ -179,8 +179,8 @@ login:
 
 ![Applications List](images/applications-compartment.png)
 
-If you haven't selected the `us-phoenix-1` region you'll see the following error.  To
-correct simply choose the Phoenix region from the drop down menu.
+If you haven't selected the `us-phoenix-1` region you'll see the following
+error.  To correct simply choose the Phoenix region from the drop down menu.
 
 ![Functions Unavailable](images/functions-unavailable.png)
 
@@ -201,9 +201,9 @@ substitute in your number.
 ![Create Application](images/create-application.png)
 
 Functions deployed as part of this application will be attached to the
-specifiied vcn and subnet.
+specified VCN and subnet.
 
-![user input](images/userinput.png) click "Create" to finish.
+![user input](images/userinput.png) Click "Create" to finish.
 
 ### Building and Deploying your Function
 
@@ -327,7 +327,7 @@ Dockerfile.  Of course this is exactly what's happening!  When you deploy a
 function like this the `fn` CLI is dynamically generating a Dockerfile for your
 function and building a container image.
 
-> __NOTE__: two images are actually being used.  The first contains the language
+> __NOTE__: Two images are actually being used.  The first contains the language
 > compiler and all the necessary build tools. The second image packages all
 > dependencies and any necessary language runtime components. Using this
 > strategy, the final function image size can be kept as small and secure as
@@ -336,9 +336,9 @@ function and building a container image.
 > technique see [Multi-Stage Docker Builds for Creating Tiny Go
 > Images](https://medium.com/travis-on-docker/multi-stage-docker-builds-for-creating-tiny-go-images-e0e1867efe5a).
 
-As the `fn` CLI is built on Docker you can use the `docker` command to see the local
-container image you just generated. You may have a number of Docker images so
-use the following command to see only versions of nodefn:
+As the `fn` CLI is built on Docker you can use the `docker` command to see the
+local container image you just generated. You may have a number of Docker images
+so use the following command to see only versions of nodefn:
 
 ![user input](images/userinput.png)
 >```sh

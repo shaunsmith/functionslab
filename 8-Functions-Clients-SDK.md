@@ -2,7 +2,7 @@
 
 This lab walks you through how to invoke a function deployed to Oracle Functions
 using (a preview version of) the Oracle Cloud Infrastructure Java SDK.  The OCI
-Java SDK exposes two endpoints specificially for Oracle Functions:
+Java SDK exposes two endpoints specifically for Oracle Functions:
 
 - `FunctionsManagementClient` - which provides APIs for function and application
   lifecycle management (e.g., CRUD operations)
@@ -55,7 +55,7 @@ AuthenticationDetailsProvider authProvider = new ConfigFileAuthenticationDetails
 ```
 
 The next two lines instantiate a `FunctionsInvokeClient` using the config file
-auth provide and sets the Oracle Functions service endpoint for the region.
+auth provider and sets the Oracle Functions service endpoint for the region.
 
 ```java
 try (FunctionsInvokeClient fnInvokeClient = new FunctionsInvokeClient(authProvider)) {
@@ -108,7 +108,7 @@ an `InvokeFunctionResponse` in return.
     for your tenancy, compartment, user id, etc.  So it's ready to go!  There's
     only one profile defined, but you can have many profiles for use with
     different tenancies or compartments.
-    
+
     Review your `~/.oci/config` file to become familiar with its contents and
     structure.  In a terminal type:
 
@@ -203,5 +203,5 @@ Functions to invoke a function.  The OCI SDK provides support for the entire
 Functions API so you can both invoke and manage functions and applications.
 Please refer to the SDK docs for more details.
 
-NEXT: [*Functions Clients-oci curl*](7-Functions-Clients-oci-curl.md), 
+NEXT: [*Functions Clients-oci curl*](7-Functions-Clients-oci-curl.md),
 UP: [*Labs*](1-Labs.md), HOME: [*INDEX*](README.md)
