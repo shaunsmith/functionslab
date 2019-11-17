@@ -222,10 +222,7 @@ With the function defined let's invoke it and see what happens when it fails:
 >```
 
 ```sh
-{"code":"StatusBadGateway","message":"function failed"}
-Fn: Error calling function: status 502
-
-See 'fn <command> --help' for more information. Client version: 0.5.63
+Error invoking function. status: 502 message: function failed
 ```
 
 "function failed" is not much information to go on to debug the problem.  What
