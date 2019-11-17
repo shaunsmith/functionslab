@@ -180,12 +180,12 @@ the cloud event JSON (similar to the JSON shown below):
       "compartmentId" : "ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq",
       "compartmentName" : "compartment-name",
       "resourceName" : "sachin-in.jpg",
-      "resourceId" : "/n/namespace/b/object-upload-NNN/o/sachin-in.jpg",
+      "resourceId" : "/n/namespace/b/bucket/o/sachin-in.jpg",
       "availabilityDomain" : "PHX-AD-1",
       "additionalDetails" : {
         "bucketName" : "object-upload-NNN",
         "archivalState" : "Available",
-        "namespace" : "namespace",
+        "namespace" : "your-namespace-name",
         "bucketId" : "ocid1.bucket.oc1.phx.aaaaaaaaaboojfoukd7gdvkfundi33pl6cxcebev5b237t6asdfasdfasdfuq",
         "eTag" : "b744b0de-db9f-4804-8624-90a2883821f0"
       }
@@ -333,26 +333,26 @@ public class HelloFunctionTest {
 ```
 
 ![user input](images/userinput.png)
-Generate a string representation of the Object Created cloud event JSON using a
-JSON-to-string conversion tool like
+Generate a string representation of **your** Object Created cloud event JSON 
+using a JSON-to-string conversion tool like
 https://tools.knowledgewalls.com/jsontostring
 
 **Note: In the string representation, look for `\/` and remove the backslash `\` 
 so for example `application\/json` looks like `application/json` and 
-`"\/n\/namespace\/b\/object-upload-NNN\/o\/sachin-in.jpg\"` looks like 
-`"/n/namespace/b/object-upload-NNN/o/sachin-in.jpg\"` **
+`"\/n\/namespace\/b\/bucket\/o\/sachin-in.jpg\"` looks like 
+`"/n/namespace/b/bucket/o/sachin-in.jpg\"` **
  
 
 ```json
-"{\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"cloudEventsVersion\":\"0.1\",\"eventTypeVersion\":\"2.0\",\"source\":\"ObjectStorage\",\"eventTime\":\"2019-11-17T21:08:03.401Z\",\"contentType\":\"application/json\",\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\",\"compartmentName\":\"compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"/n/namespace/b/object-upload-NNN/o/sachin-in.jpg\",\"availabilityDomain\":\"PHX-AD-1\",\"additionalDetails\":{\"bucketName\":\"object-upload-NNN\",\"archivalState\":\"Available\",\"namespace\":\"namespace\",\"bucketId\":\"ocid1.bucket.oc1.phx.aaaaaaaaaboojfoukd7gdvkfundi33pl6cxcebev5b237t6asdfasdfasdfuq\",\"eTag\":\"b744b0de-db9f-4804-8624-90a2883821f0\"}},\"eventID\":\"c5c593eb-8dad-f249-97fe-9a1a9cad0e25\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\"}}"
+"{\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"cloudEventsVersion\":\"0.1\",\"eventTypeVersion\":\"2.0\",\"source\":\"ObjectStorage\",\"eventTime\":\"2019-11-17T21:08:03.401Z\",\"contentType\":\"application/json\",\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\",\"compartmentName\":\"compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"/n/namespace/b/bucket/o/sachin-in.jpg\",\"availabilityDomain\":\"PHX-AD-1\",\"additionalDetails\":{\"bucketName\":\"object-upload-NNN\",\"archivalState\":\"Available\",\"namespace\":\"your-namespace-name\",\"bucketId\":\"ocid1.bucket.oc1.phx.aaaaaaaaaboojfoukd7gdvkfundi33pl6cxcebev5b237t6asdfasdfasdfuq\",\"eTag\":\"b744b0de-db9f-4804-8624-90a2883821f0\"}},\"eventID\":\"c5c593eb-8dad-f249-97fe-9a1a9cad0e25\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\"}}"
 ```
 
 ![user input](images/userinput.png)
 In HelloFunctionTest.java, replace the test event "your test image event 
-JSON" with the generated string representation of the cloud event JSON:
+JSON" with the generated string representation of **your** cloud event JSON:
 
 ```java
-String event = "{\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"cloudEventsVersion\":\"0.1\",\"eventTypeVersion\":\"2.0\",\"source\":\"ObjectStorage\",\"eventTime\":\"2019-11-17T21:08:03.401Z\",\"contentType\":\"application/json\",\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\",\"compartmentName\":\"compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"/n/namespace/b/object-upload-NNN/o/sachin-in.jpg\",\"availabilityDomain\":\"PHX-AD-1\",\"additionalDetails\":{\"bucketName\":\"object-upload-NNN\",\"archivalState\":\"Available\",\"namespace\":\"namespace\",\"bucketId\":\"ocid1.bucket.oc1.phx.aaaaaaaaaboojfoukd7gdvkfundi33pl6cxcebev5b237t6asdfasdfasdfuq\",\"eTag\":\"b744b0de-db9f-4804-8624-90a2883821f0\"}},\"eventID\":\"c5c593eb-8dad-f249-97fe-9a1a9cad0e25\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\"}}";
+String event = "{\"eventType\":\"com.oraclecloud.objectstorage.createobject\",\"cloudEventsVersion\":\"0.1\",\"eventTypeVersion\":\"2.0\",\"source\":\"ObjectStorage\",\"eventTime\":\"2019-11-17T21:08:03.401Z\",\"contentType\":\"application/json\",\"data\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\",\"compartmentName\":\"compartment-name\",\"resourceName\":\"sachin-in.jpg\",\"resourceId\":\"/n/namespace/b/bucket/o/sachin-in.jpg\",\"availabilityDomain\":\"PHX-AD-1\",\"additionalDetails\":{\"bucketName\":\"object-upload-NNN\",\"archivalState\":\"Available\",\"namespace\":\"your-namespace-name\",\"bucketId\":\"ocid1.bucket.oc1.phx.aaaaaaaaaboojfoukd7gdvkfundi33pl6cxcebev5b237t6asdfasdfasdfuq\",\"eTag\":\"b744b0de-db9f-4804-8624-90a2883821f0\"}},\"eventID\":\"c5c593eb-8dad-f249-97fe-9a1a9cad0e25\",\"extensions\":{\"compartmentId\":\"ocid1.compartment.oc1..aaaaaaaanqa2dxz6gtcygu6yeh6wigslwxvwllbhd2sxasdfasdfasdfbq\"}}";
 ```
 
 Now our test class is ready for use. Let's proceed to build/deploy your
